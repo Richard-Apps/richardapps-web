@@ -1,6 +1,7 @@
 @font-face {
     font-family: 'Terminus';
-    src: url('src/fonts/terminus-webfont.woff');
+    src: url('src/fonts/terminus-webfont.woff2');
+    font-display: swap;
 }
 
 :root {
