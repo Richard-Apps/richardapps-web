@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="The personal webpage of RichardApps! Explore projects, pictures, contact details and more.">
+	<meta name="author" content="RichardApps">
+
+	<title>RichardApps</title>
+	
+	<link rel="icon" type="image/png" href="src/media/favicon.png">
+
+	<link rel="stylesheet" href="style.css">
+
+	<meta proberty="og:title" content="RichardApps">
+	<meta proberty="og:description" content="The personal webpage of RichardApps! Explore projects, pictures, contact details and more.">
+	<meta proberty="og:image" content="">
+	<meta proberty="og:url" content="https://richardapps.net">
+	
+	<meta name="keywords" content="RichardApps, NameGEN, luqiedesign, portfolio, Richard, Apps, Richard Apps, projects">
+	<meta name="robots" content="index, follow">
+	<meta name="revisit-after" content="7 days">
+</head>
+<body>
+	<video autoplay muted loop id="noise_vid">
+		<source src="/src/media/noise.mp4" type="video/mp4">
+	</video>
+	
+	<div id="videohue"></div>
+	<div id="canvas">
+		<pre id="title">RichardApps</pre>
+		<p>Welcome, visitor!</p>
+		<p>Hope you're doing well! This is my corner of the internet. Feel free to have a look around! You can find some really cool stuff here! :)</p>
+		<br>
+		<p>Some things you might be interested in:</p>
+		<nav>
+			<ul>
+				<li><a onclick="changeTab('news')">News</a></li>
+				<li><a onclick="changeTab('projects')">Projects</a></li>
+				<li><a onclick="changeTab('pictures')">Pictures</a></li>
+				<li><a onclick="changeTab('about')">About</a></li>
+				<li><a onclick="changeTab('contact')">Contact</a></li>
+			</ul>
+		</nav>
+		<div id="news" class="tabs">
+			<h2>Fully updated webpage now online!</h2>
+			<p><em>Written on 24.03.2024</em></p>
+			<br>
+			<p>I'm excited to launch the new webpage!</p>
+			<p>Everything from the design to the content has been redone. There are still some things that I have to improve, but I'm pretty happy with it so far!</p>
+			<br>
+			<p>Regarding the design, I was inspired by some old vintage terminals! Hope you like it!</p>
+			<br>
+			<p>[!] Projects section will be limited for now because most of them need fixes and improvements before hosting them on the new web server.</p>
+			<p><em>This could take some time...</em></p>
+			<br>
+			<p>[!] Due to the heavy use of text-shadow <em>(the glow)</em>, as well as animations, performance might not be good on every computer.</p>
+			<p><em>Needs more testing. It might be fine.</em></p>
+		</div>
+		<div id="projects" class="tabs invisible">
+			<h2>PROJECTS</h2>
+			<br>
+			<ul id="pr_list">
+				<li>
+					<p class="pr_title">NameGEN</p>
+					<p class="pr_desc">Generate random, but good sounding, names for your everyday needs! Simple, yet effective tool if you need a nickname, project name, or anything else!</p>
+					<br>
+					<p><a href="https://namegen.richardapps.net" target="_blank">VISIT PAGE</a></p>
+				</li>
+				<li>
+					<p class="pr_title">VisualINC</p>
+					<p class="pr_desc">A website builder for creating awesome webpages without coding!</p>
+					<p class="pr_info">[!] Still under development, not functional yet! You can still visit the site if you're adventurous!</p>
+					<br>
+					<p><a href="https://visualinc.richardapps.net" target="_blank">VISIT PAGE</a></p>
+				</li>
+			</ul>
+			<p>...</p>
+			<br>
+			<p><em>(This list is currently limited. I will update it as soon as I get more projects online! :) )</em></p>
+		</div>
+
+		<div id="pictures" class="tabs invisible">
+			<h2>PICTURES</h2>
+			<br>
+			<p>Here's a collection of photos I made with the open-source software <a href="https://blender.org" target="_blank">Blender</a>! Color-grading and correction was done using the built-in compositor, as well as a bit of <a href="https://www.adobe.com/de/products/photoshop-lightroom-classic.html" target="_blank">Lightroom-Classic</a>!</p>
+			<p><em>(Don't tell <a href="https://www.artstation.com/richardapps" target="_blank">ArtStation</a> that I use their service as an image hoster... :O )</em></p>
+			<div id="pictures_list">
+				<div class="row">
+					<img src="https://cdna.artstation.com/p/assets/images/images/061/703/488/large/richardapps-spaceship-testrender-widescreen.jpg?1681422196" onclick="window.open('https://www.artstation.com/artwork/qe0eo2', '_blank')">
+					<img src="https://cdnb.artstation.com/p/assets/images/images/061/703/817/large/richardapps-cinematic-space-render3.jpg?1681423969" onclick="window.open('https://www.artstation.com/artwork/rJzJOe', '_blank')">
+				</div>
+				<div class="row">
+					<img src="https://cdnb.artstation.com/p/assets/images/images/061/805/555/large/richardapps-default-cube-final-widescreen.jpg?1681683035" onclick="window.open('https://www.artstation.com/artwork/491knk', '_blank')">
+					<img src="https://cdna.artstation.com/p/assets/images/images/074/130/214/large/richardapps-hms-victory-10.jpg?1711315737" onclick="window.open('https://www.artstation.com/artwork/49n2Lk', '_blank')">
+				</div>
+			</div>
+			<p>Be sure to visit my <a href="https://instagram.com/luqiedesign" target="_blank">INSTAGRAM</a> account, if you want to see more of this stuff!</p>
+			<p><em>(The name is an old pseudonym of mine, I might change it later.)</em></p>
+		</div>
+		
+		<div id="about" class="tabs invisible">
+			<h2>ABOUT ME</h2>
+			<br>
+			<p>Hi! Firstly, thank you for visiting my website! Glad to have you here.</p>
+			<br>
+			<p>As to me, my name is Richard. <em>(Crazy, right?)</em> I'm really interested in everything computer related! I've done some coding, 3D-art, game-development - even digital drawing!</p>
+			<p><em>(I'm no expert in any of these, but it's fun!)</em></p>
+			<br>
+			<p>I learned a bit of those during my journey: <em>Python, HTML/CSS, Javascript, GD-Script, Blender, Lightroom, Inkscape</em></p>
+			<br>
+			<br>
+			<p>Apart from that am I also playing <em>(Or better said: learning)</em> the piano! I've taken piano lessons for 5 years, but now I'm learning at home.</p>
+			<br>
+			<br>
+			<p>Furthermore, I love listening to music! <em>(Before you ask, I listen to all genres :P)</em> Take a listen here: <em><a href="https://www.youtube.com/watch?v=QkF3oxziUI4" target="_blank">MYSTERY GIFT</a></em></p>
+			<br>
+			<br>
+			<p>I also play games! Some of my favourites are:</p>
+			<table>
+				<tr><td>-> Metro Exodus</td><td class="desc"><em>This game has such a unique ambience and immersion to it... Good story, likable characters and one of the best OST!!</em></td></tr>
+				<tr><td>-> Cyberpunk 2077</td><td class="desc"><em>Actually playable since 2.0 Patch. The DLC is so good! Worth playing.</em></td></tr>
+				<tr><td>-> The Elder Scrolls: Skyrim V</td><td class="desc"><em>Nothing much to say about this, probally one of the best RPG's ever made!</em></td></tr>
+				<tr><td>-> Portal</td><td class="desc"><em>A classic! Worth playing, even in [insert current year here]! (Even though the cake was indeed a lie...)</em></td></tr>
+			</table>
+			<br>
+			<br>
+			<p><em>Last updated on 23. March, 2024.</em></p>
+		</div>
+
+		<div id="contact" class="tabs invisible">
+			<h2>CONTACT</h2>
+			<br>
+			<p>Socials:</p>
+			<br>
+			<p class="contact_link"><a href="https://instagram.com/luqiedesign" target="_blank">Instagram</a></p>
+			<p class="contact_link"><a href="https://youtube.com/@RichardApps." target="_blank">YouTube</a></p>
+			<p class="contact_link"><a href="https://github.com/richard-apps" target="_blank">GitHub</a></p>
+			<p class="contact_link"><a href="https://discord.com/users/506508225722580992" target="_blank">Discord</a></p>
+			<br>
+			<p><em>(I mostly prefer Discord for contact!)</em></p>
+			<br>
+			<p>Questions, wishes, inquiries, problems, and everything else can go to:</p>
+			<p><a href="mailto:support@richardapps.net" target="_blank">support@richardapps.net</a></p>
+		</div>
+	</div>
+
+</body>
+<script type="text/javascript" src="script.js"></script>
+</html>
