@@ -5,9 +5,9 @@ Github-Repository of my personal webpage.
 Featuring a design inspired by old vintage terminals!
 ## Screenshots
 
-![App Screenshot](https://github.com/Richard-Apps/richardapps-web/tree/master/assets/preview.png)
+![App Screenshot](/assets/preview.png)
 
-![App Screenshot](https://github.com/Richard-Apps/richardapps-web/tree/master/assets/preview_2.png)
+![App Screenshot](/assets/preview_2.png)
 ## Roadmap
 
 - Change to external hosted font
