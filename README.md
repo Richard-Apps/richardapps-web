@@ -1,29 +1,32 @@
 
 # RichardApps - Webpage
-Github-Repository of my personal webpage.
+Github-Repository of my personal webpage. Including news, projects, picture grid, about and contact pages.
+Made using vanilla HTML/CSS and JavaScript.
 
 Featuring a design inspired by old vintage terminals!
+
 ## Screenshots
 
 ![App Screenshot](/assets/preview.png)
-
 ![App Screenshot](/assets/preview_2.png)
+
 ## Roadmap
 
-- Change to external hosted font
+- [ ] Change to external hosted font
 
-- Add color-themes
+- [ ] Add color-themes
 
-- Add a functional blog for news
+- [ ] Add a functional blog for news
 
-- If possible: Add screen curvature and other effects like simulated burn-in
+- [ ] If possible: Add screen curvature and other effects like simulated burn-in
 
-- Finish/complete the project list
+- [ ] Finish/complete the project list
+
 ## Contributing
 
 Contributions are always welcome!
 
-...
+How/what to contribute: [CONTRIBUTING.md](CONTRIBUTING.md)
 ## Credit
 
 #### Font
