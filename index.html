@@ -25,25 +25,37 @@
 	<meta name="robots" content="index, follow">
 	<meta name="revisit-after" content="7 days">
 </head>
+
 <body>
-	<video autoplay muted loop id="noise_vid">
-		<source src="src/media/noise.mp4" type="video/mp4">
+	<video
+		onloadstart="this.playbackRate = 0.65;"
+		autoplay
+		muted
+		loop
+		id="noise_vid"
+		src="src/media/noise.mp4">
 	</video>
 	
 	<div id="videohue"></div>
 	<div id="canvas">
-		<pre id="title">RichardApps</pre>
+		<pre id="title">    ____  _      __                   _____                    
+   / __ \(_)____/ /_  ____ __________/ /   |  ____  ____  _____
+  / /_/ / / ___/ __ \/ __ `/ ___/ __  / /| | / __ \/ __ \/ ___/
+ / _, _/ / /__/ / / / /_/ / /  / /_/ / ___ |/ /_/ / /_/ (__  ) 
+/_/ |_/_/\___/_/ /_/\__,_/_/   \__,_/_/  |_/ .___/ .___/____/  
+                                          /_/   /_/            </pre>
+
 		<p>Welcome, visitor!</p>
 		<p>Hope you're doing well! This is my corner of the internet. Feel free to have a look around! You can find some really cool stuff here! :)</p>
 		<br>
 		<p>Some things you might be interested in:</p>
 		<nav>
 			<ul>
-				<li><a onclick="changeTab('news')">News</a></li>
-				<li><a onclick="changeTab('projects')">Projects</a></li>
-				<li><a onclick="changeTab('pictures')">Pictures</a></li>
-				<li><a onclick="changeTab('about')">About</a></li>
-				<li><a onclick="changeTab('contact')">Contact</a></li>
+				<li><a onclick="changeTab('news')" href="#news">News</a></li>
+				<li><a onclick="changeTab('projects')" href="#projects">Projects</a></li>
+				<li><a onclick="changeTab('pictures')" href="#pictures">Pictures</a></li>
+				<li><a onclick="changeTab('about')" href="#about">About</a></li>
+				<li><a onclick="changeTab('contact')" href="#contact">Contact</a></li>
 			</ul>
 		</nav>
 		<div id="news" class="tabs">
@@ -61,7 +73,7 @@
 			<p>[!] If you want to use the old page, use this link: <a href="https://old.richardapps.net" target="_blank">old.richardapps.net</a></p>
 			<p><em>This will most likely not be updated anymore.</em></p>
 		</div>
-		<div id="projects" class="tabs invisible">
+		<div id="projects" class="tabs">
 			<h2>PROJECTS</h2>
 			<br>
 			<ul id="pr_list">
@@ -84,11 +96,10 @@
 			<p><em>(This list is currently limited. I will update it as soon as I get more projects online! :) )</em></p>
 		</div>
 
-		<div id="pictures" class="tabs invisible">
+		<div id="pictures" class="tabs">
 			<h2>PICTURES</h2>
 			<br>
 			<p>Here's a collection of photos I made with the open-source software <a href="https://blender.org" target="_blank">Blender</a>! Color-grading and correction was done using the built-in compositor, as well as a bit of <a href="https://www.adobe.com/de/products/photoshop-lightroom-classic.html" target="_blank">Lightroom-Classic</a>!</p>
-			<p><em>(Don't tell <a href="https://www.artstation.com/richardapps" target="_blank">ArtStation</a> that I use their service as an image hoster... :O )</em></p>
 			<div id="pictures_list">
 				<div class="row">
 					<img src="https://cdna.artstation.com/p/assets/images/images/061/703/488/large/richardapps-spaceship-testrender-widescreen.jpg?1681422196" onclick="window.open('https://www.artstation.com/artwork/qe0eo2', '_blank')">
@@ -99,11 +110,13 @@
 					<img src="https://cdna.artstation.com/p/assets/images/images/074/130/214/large/richardapps-hms-victory-10.jpg?1711315737" onclick="window.open('https://www.artstation.com/artwork/49n2Lk', '_blank')">
 				</div>
 			</div>
-			<p>Be sure to visit my <a href="https://instagram.com/luqiedesign" target="_blank">INSTAGRAM</a> account, if you want to see more of this stuff!</p>
+			<p>Click on one of the pictures to see information about it, or visit my <a href="https://www.artstation.com/richardapps" target="_blank">ArtStation</a> profile.</p>
+			<br>
+			<P>I'm also uploading on <a href="https://instagram.com/luqiedesign" target="_blank">Instagram</a>.</P>
 			<p><em>(The name is an old pseudonym of mine, I might change it later.)</em></p>
 		</div>
 		
-		<div id="about" class="tabs invisible">
+		<div id="about" class="tabs">
 			<h2>ABOUT ME</h2>
 			<br>
 			<p>Hi! Firstly, thank you for visiting my website! Glad to have you here.</p>
@@ -132,7 +145,7 @@
 			<p><em>Last updated on 23. March, 2024.</em></p>
 		</div>
 
-		<div id="contact" class="tabs invisible">
+		<div id="contact" class="tabs">
 			<h2>CONTACT</h2>
 			<br>
 			<p>Socials:</p>

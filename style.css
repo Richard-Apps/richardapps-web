@@ -52,7 +52,6 @@ body {
     font-family: 'Courier New', Courier, monospace;
     -webkit-user-select: none;
     user-select: none;
-
 }
 
 pre, p, li, h2, td{
@@ -159,8 +158,12 @@ a:hover {
     background-color: var(--selection);
 }
 
-/* PAGES */
+/* PAGES */ 
 .invisible {
+    display: none;
+}
+
+.tabs:not(:target) {
     display: none;
 }
 
@@ -168,8 +171,8 @@ a:hover {
     border: solid var(--main-color);
     padding: 1.5em;
     transition: background 0.4s ease-out;
-
 }
+
 
 /* PROJECTS */
 #pr_list {

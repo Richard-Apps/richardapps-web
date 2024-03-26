@@ -1,11 +1,15 @@
-fetch('src/ascii.txt')
-    .then(res => res.text())
-    .then(res => document.getElementById('title').innerHTML = res)
-    document.getElementById('noise_vid').playbackRate = 0.65;
+location = location.hash||"#news"
+changeTab(location.hash.slice(1))
 
 function changeTab(tab) {
-    document.querySelectorAll('.tabs').forEach(element => {
+// 'Print' animation
+    let cln = document.getElementById(tab).querySelectorAll('*')
+    let delay = 0
+    Array.from(cln).forEach(element => {
         element.classList.add('invisible')
+        setTimeout(function() {
+            element.classList.remove('invisible')
+        }, delay)
+        delay += 20
     })
-    document.getElementById(tab).classList.remove('invisible')
 }

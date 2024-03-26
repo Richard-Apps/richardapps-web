@@ -27,6 +27,7 @@ Featuring a design inspired by old vintage terminals!
 Contributions are always welcome!
 
 How/what to contribute: [CONTRIBUTING.md](CONTRIBUTING.md)
+
 ## Credit
 
 #### Font
@@ -36,5 +37,5 @@ How/what to contribute: [CONTRIBUTING.md](CONTRIBUTING.md)
 #### Background noise video
 - Video by [Thomas Breher](https://pixabay.com/de/users/tbit-715211/?utm_source=link-attribution&utm_medium=referral&utm_campaign=video&utm_content=1285) / [Pixabay](https://pixabay.com/de/videos/fernseher-st%C3%B6rung-bildrauschen-1285/)
 
-#### Inspired by:
+#### Inspired by
 - [cool-retro-term](https://github.com/Swordfish90/cool-retro-term)
