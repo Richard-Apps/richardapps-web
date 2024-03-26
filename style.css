@@ -12,6 +12,10 @@
     --bg-opacity: 0.094;
     --selection: rgba(235, 250, 250, 0.95);
     --info-color: rgb(240, 86, 86);
+
+    Green Theme:
+    -main-color: #57f052;
+    --bg-color: #54f30b;
     */
     --main-color: #a4cdf8;
     --bg-color: #0f81ec;
@@ -21,6 +25,8 @@
 
     font-size: 10px;
 }
+
+
 
 pre:not(#title), code {
     white-space: pre-wrap;
@@ -32,10 +38,12 @@ body {
     background-color: black;
 
     overflow-x: hidden;
+
+    color: var(--main-color);
 }
 
-* {
-    color: var(--main-color)
+a:link, a:visited {
+    color: var(--main-color);
 }
 
 #canvas {
@@ -67,16 +75,17 @@ pre, p, li, h2, td{
 @keyframes flicker {
     from {
         opacity: 100%;
-        margin-left: 0em;
     }
 
     to {
         opacity: 90%;
-        margin-left: 0.03em;
+        /* margin-left: 0.03em; /* Potentially causes performance issues and leads to less readability*/
     }
 }
+
 #canvas {
     animation: 0.5s infinite both flicker;
+    transform: translateZ(0); /* offload to GPU, might improve performance */
 }
 
 /* NOISE */
@@ -100,6 +109,8 @@ pre, p, li, h2, td{
     animation: 4s infinite forward noise;
 
     opacity: 0.75;
+
+    transform: translateZ(0); /* offload to GPU, might improve performance */
 }
 
 #videohue {
@@ -139,7 +150,7 @@ nav ul li a {
 
     padding: 0.3em 0 0.3em 0;
 
-    transition: background-color 0.5s ease-out;
+    transition: background-color 0.1s ease-out;
 }
 
 
@@ -148,9 +159,29 @@ a:hover {
     cursor: pointer;
     color: rgba(39, 76, 124, 0.616);
 
-    transition: 0.2s;
+    transition: background 0s;
+    transition: color box-shadow 0.1s;
 
     box-shadow: 0 0 18px 0px rgba(152, 211, 238, 0.9);
+
+    text-decoration: none;
+}
+
+/* print animation */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+
+.fade-in.visible:not(em) {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fade-in.visible em {
+    opacity: 0.7;
+    transform: translateY(0);
 }
 
 /* SELECT */
@@ -200,11 +231,6 @@ a:hover {
 }
 
 /* PICTURES */
-#pictures_list {
-    overflow-y: scroll;
-    position: relative;
-}
-
 .row {
     margin-top: 1.5em;
     margin-bottom: 1.5em;
@@ -217,12 +243,13 @@ a:hover {
 }
 
 .row img {
-    flex-grow: 1;
-    width: 60%;
+    flex: 1 1 auto;
     -webkit-user-select: none;
     user-select: none;
 
     transition: filter 0.3s ease-in-out;
+
+    width: 0; /* To make it work in Chrome, for some reason */
 }
 
 .row img:hover {
@@ -243,13 +270,15 @@ table {
     text-align: left;
 }
 
-em {
+p em {
     opacity: 0.7;
 }
 
 em a {
     transition: background-color 0.4s ease-out;
 }
+
+
 
 /* CONTACT */
 #contact p a {
