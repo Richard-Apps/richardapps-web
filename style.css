@@ -5,28 +5,34 @@
 }
 
 :root {
-    /*
-    Default values:
     --main-color: #a4cdf8;
     --bg-color: #0f81ec;
-    --bg-opacity: 0.094;
-    --selection: rgba(235, 250, 250, 0.95);
-    --info-color: rgb(240, 86, 86);
-
-    Green Theme:
-    -main-color: #57f052;
-    --bg-color: #54f30b;
-    */
-    --main-color: #a4cdf8;
-    --bg-color: #0f81ec;
-    --bg-opacity: 0.094;
+    --bg-color-2: #0f81eca9;
+    --bg-opacity: 0.194;
     --selection: rgba(235, 250, 250, 0.95);
     --info-color: rgb(240, 86, 86);
 
     font-size: 10px;
+/*
+    Default values:
+    --main-color: #a4cdf8;
+    --bg-color: #0f81ec;
+    --bg-color-2: #0f81ec75;
+    --bg-opacity: 0.194;
+    --selection: rgba(235, 250, 250, 0.95);
+    --info-color: rgb(240, 86, 86);
+
+    Green Theme:
+    --main-color: #57f052;
+    --bg-color: #54f30b;
+    --bg-color-2: #54f30b77;
+    
+    Orange Theme:
+    --main-color: #ff8215;
+    --bg-color: #e07314;
+    --bg-color-2: #f5780c77;
+    */
 }
-
-
 
 pre:not(#title), code {
     white-space: pre-wrap;
@@ -52,7 +58,6 @@ a:link, a:visited {
 
     height: 100%;
 }
-
 
 #title {
     width: 100%;
@@ -84,7 +89,7 @@ pre, p, li, h2, td{
 }
 
 #canvas {
-    animation: 0.5s infinite both flicker;
+    animation: 0.9s infinite both flicker;
     transform: translateZ(0); /* offload to GPU, might improve performance */
 }
 
@@ -95,7 +100,7 @@ pre, p, li, h2, td{
     }
 
     to {
-        filter: brightness(0.075);
+        filter: brightness(0.08);
     }
 }
 
@@ -106,18 +111,29 @@ pre, p, li, h2, td{
     object-fit: cover;
 
     filter: brightness(0.1);
-    animation: 4s infinite forward noise;
+    animation: 5s infinite forward noise;
 
     opacity: 0.75;
 
     transform: translateZ(0); /* offload to GPU, might improve performance */
 }
 
+@keyframes gradient {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 0% -145%;
+    }
+}
+
 #videohue {
+    opacity: var(--bg-opacity);
     display: block;
 
-    background: var(--bg-color);
-    opacity: var(--bg-opacity);
+    background: linear-gradient(var(--bg-color-2) 70%, var(--bg-color) 100%);
+    background-size: 100% 200%; /* This ensures the gradient covers the entire element */
+    animation: gradient 10s infinite linear;
 }
 
 #videohue, #noise_vid {
@@ -128,6 +144,17 @@ pre, p, li, h2, td{
     left: 0;
     bottom: 0;
     right: 0;
+}
+
+.vignette {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    opacity: 0.2;
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0) 50%, var(--bg-color) 250%);
 }
 
 /* NAV BAR */
@@ -159,7 +186,6 @@ a:hover {
     cursor: pointer;
     color: rgba(39, 76, 124, 0.616);
 
-    transition: background 0s;
     transition: color box-shadow 0.1s;
 
     box-shadow: 0 0 18px 0px rgba(152, 211, 238, 0.9);
@@ -201,7 +227,6 @@ a:hover {
 .tabs {
     border: solid var(--main-color);
     padding: 1.5em;
-    transition: background 0.4s ease-out;
 }
 
 

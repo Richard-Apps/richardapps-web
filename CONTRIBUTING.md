@@ -47,6 +47,6 @@ Have a great idea for a new feature? We'd love to hear it! Follow these steps:
 
 ## Feedback
 
-We welcome any feedback that can help me improve the project. Whether it's a suggestion, a critique, or just a general comment, feel free to share it with me.
+I welcome any feedback that can help me improve the project. Whether it's a suggestion, a critique, or just a general comment, feel free to share it with me.
 
 Thank you for contributing!
