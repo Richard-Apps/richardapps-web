@@ -10,7 +10,8 @@
     --bg-color-2: #0f81eca9;
     --bg-opacity: 0.194;
     --selection: rgba(235, 250, 250, 0.95);
-    --info-color: rgb(240, 86, 86);
+    --warning-color: rgb(240, 86, 86);
+    --info-color: #ffffff;
 
     font-size: 10px;
 /*
@@ -20,7 +21,7 @@
     --bg-color-2: #0f81ec75;
     --bg-opacity: 0.194;
     --selection: rgba(235, 250, 250, 0.95);
-    --info-color: rgb(240, 86, 86);
+    --warning-color: rgb(240, 86, 86);
 
     Green Theme:
     --main-color: #57f052;
@@ -48,7 +49,11 @@ body {
     color: var(--main-color);
 }
 
-a:link, a:visited {
+a:link, a:visited {.pr_warning em::before {
+    content: "⚠️ ";
+    
+}
+
     color: var(--main-color);
 }
 
@@ -250,6 +255,11 @@ a:hover {
     font-size: 1.2em;
 }
 
+.pr_warning, .pr_warning em{
+    color: var(--warning-color);
+    text-shadow: 0 0 7px var(--warning-color), 0 0 20px var(--warning-color), 0 0 40px var(--warning-color);
+}
+
 .pr_info, .pr_info em{
     color: var(--info-color);
     text-shadow: 0 0 7px var(--info-color), 0 0 20px var(--info-color), 0 0 40px var(--info-color);
@@ -353,5 +363,15 @@ em a {
     }
     .tabs {
         padding: 0.75em;
+    }
+}
+
+@media screen and (min-width: 1600px) {
+    /* Prevent the images from getting too big on wide screens */
+    .row img {
+        max-width: 800px;
+    }
+    .row {
+        justify-content: left;
     }
 }
