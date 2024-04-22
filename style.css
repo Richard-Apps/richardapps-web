@@ -9,7 +9,7 @@
     --bg-color: #0f81ec;
     --bg-color-2: #0f81eca9;
     --bg-opacity: 0.194;
-    --selection: rgba(235, 250, 250, 0.95);
+    --selection: #3b6d8b;
     --warning-color: rgb(240, 86, 86);
     --info-color: #ffffff;
 
@@ -94,7 +94,7 @@ pre, p, li, h2, td{
 }
 
 #canvas {
-    animation: 0.9s infinite both flicker;
+    animation: 1.1s infinite both flicker;
     transform: translateZ(0); /* offload to GPU, might improve performance */
 }
 
@@ -105,7 +105,7 @@ pre, p, li, h2, td{
     }
 
     to {
-        filter: brightness(0.08);
+        filter: brightness(0.085);
     }
 }
 
@@ -118,7 +118,7 @@ pre, p, li, h2, td{
     filter: brightness(0.1);
     animation: 5s infinite forward noise;
 
-    opacity: 0.75;
+    opacity: 0.5;
 
     transform: translateZ(0); /* offload to GPU, might improve performance */
 }
@@ -245,6 +245,8 @@ a:hover {
     border: solid var(--main-color);
     border-width: 1px;
     padding: .5em;
+    
+    background: linear-gradient(45deg, rgba(0, 132, 255, 0.05) 70%, rgba(3, 175, 255, 0.2) 110%);
 }
 
 #pr_list li:not(:last-child) {
