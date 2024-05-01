@@ -49,11 +49,7 @@ body {
     color: var(--main-color);
 }
 
-a:link, a:visited {.pr_warning em::before {
-    content: "⚠️ ";
-    
-}
-
+a:link, a:visited {
     color: var(--main-color);
 }
 
@@ -78,6 +74,10 @@ pre, p, li, h2, td{
     font-weight: bold;
 
     text-shadow: 0 0 7px var(--main-color), 0 0 20px var(--main-color), 0 0 40px var(--main-color);
+}
+
+#changeEffects a {
+    text-decoration: underline;
 }
 
 
@@ -315,7 +315,14 @@ em a {
     transition: background-color 0.4s ease-out;
 }
 
+p i {
+    margin-right: .75em;
+    vertical-align: middle;
+}
 
+.contact_link {
+    margin-bottom: .25em;
+}
 
 /* CONTACT */
 #contact p a {
