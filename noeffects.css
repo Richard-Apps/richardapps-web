@@ -1,0 +1,21 @@
+#videohue {
+    animation: none;
+}
+p, .pr_info, .pr_warning, a, pre, h2, td, em {
+    text-shadow: none;
+    font-weight: 400;
+}
+#canvas {
+    animation: none;
+}
+#title, .pr_title {
+    font-weight: 800;
+}
+
+video {
+    display: none;
+}
+
+a:hover {
+    box-shadow: none;
+}

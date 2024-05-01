@@ -17,3 +17,25 @@ function changeTab(tab) {
         delay += 30;
     });
 }
+
+// No-effects mode, for better readability and performance - more or less experimental for now
+var link = document.createElement('link');
+link.rel = 'stylesheet';
+link.type = 'text/css';
+link.href = 'noeffects.css';
+
+let effectsDisabled = localStorage.getItem('effectsDisabled') === 'true';
+let nfbText = document.getElementById('changeEffects');
+if (effectsDisabled) { document.head.appendChild(link); nfbText.innerHTML = 'Want some fancy effects? Click <a onclick="noeffects()">HERE</a> to turn them on.';}
+
+function noeffects() {
+    effectsDisabled = !effectsDisabled;
+    localStorage.setItem('effectsDisabled', effectsDisabled);
+    if (effectsDisabled) {
+        document.head.appendChild(link);
+        nfbText.innerHTML = 'Want some fancy effects? Click <a onclick="noeffects()">HERE</a> to turn them on.';
+    } else {
+        document.head.removeChild(link);
+        nfbText.innerHTML = 'Don\'t like the effects? Click <a onclick="noeffects()">HERE</a> to turn them off.';
+    }
+}
