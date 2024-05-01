@@ -31,6 +31,13 @@ Contributions are always welcome!
 
 Refer to [CONTRIBUTING.md](CONTRIBUTING.md).
 
+## License
+#### GNU GPLv3 (GNU General Public License v3.0)
+
+You're free to copy, modify, distribute and use any of the source code in your own projects.
+
+Credit is not required, altough highly appreciated.
+
 ## Credit
 
 #### Font
