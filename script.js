@@ -1,11 +1,14 @@
-location = location.hash||"#news"
+location = location.hash||"#news" // Defaults to #news if no hash is present
 changeTab(location.hash.slice(1))
 
 function changeTab(tab) {
-    // 'Print' animation
+    // 'Print' animation in a modern way
     document.querySelectorAll('.fade-in.visible').forEach(element => {
-        element.classList.remove('visible');
+            element.classList.remove('visible');
     });
+
+    document.querySelectorAll('.tab_switcher').forEach(element => { element.classList.remove('tab_active');});
+    document.getElementById(tab + '_tab').classList.add('tab_active');
 
     let elements = document.getElementById(tab).querySelectorAll('*');
     let delay = 0;
@@ -16,6 +19,14 @@ function changeTab(tab) {
         }, delay);
         delay += 30;
     });
+}
+
+// Picture-Collection
+function changeColl(coll) {
+    document.querySelectorAll('.pic_coll').forEach(element => { element.style.display = 'none';});
+    document.getElementById(coll).style.display = 'block';
+    document.querySelectorAll('.pic_coll_tabs').forEach(element => { element.classList.remove('tab_active');});
+    this.event.target.classList.add('tab_active');
 }
 
 // No-effects mode, for better readability and performance - more or less experimental for now

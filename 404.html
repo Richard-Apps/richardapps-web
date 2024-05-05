@@ -38,11 +38,15 @@
     <p>It is <em>safer</em> to go back.</p>
     <br>&nbsp;
     <a href="index.html">HOMEPAGE</a>
+    <div class="footer">
+        <p>ここは安全ではない</p>
+    </div>
 </body>
 <style>
     :root {
         --main-color: #f32121;
-        --bg-color: #e01414;
+        --bg-color: rgb(224, 20, 20); /* Change, and paste inner values below */
+        --bg-color: 224, 20, 20; /* Needs to be in this format, so opacity can be controlled individually */
         --bg-color-2: #f50c0c77;
     }
 
@@ -84,6 +88,17 @@
 
     #noise_vid {
         opacity: 0.4;
+    }
+
+    .footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 0.5em;
+        text-align: center;
+        font-weight: 100;
+        font-family:'Courier New', Courier, monospace;
     }
 </style>
 </html>
