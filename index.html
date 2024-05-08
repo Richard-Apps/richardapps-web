@@ -56,10 +56,10 @@
 		<p>Some things you might be interested in:</p>
 		<nav>
 			<ul>
-				<li><a onclick="changeTab('news')" href="#news">News</a></li>
-				<li><a onclick="changeTab('projects')" href="#projects">Projects</a></li>
-				<li><a onclick="changeTab('pictures')" href="#pictures">Pictures</a></li>
-				<li><a onclick="changeTab('about')" href="#about">About</a></li>
+				<li><a onclick="changeTab('news')" href="#news" class="tab_switcher" id="news_tab">News</a></li>
+				<li><a onclick="changeTab('projects')" href="#projects" class="tab_switcher" id="projects_tab">Projects</a></li>
+				<li><a onclick="changeTab('pictures')" href="#pictures" class="tab_switcher" id="pictures_tab">Pictures</a></li>
+				<li><a onclick="changeTab('about')" href="#about" class="tab_switcher" id="about_tab">About</a></li>
 			</ul>
 		</nav>
 		<div id="news" class="tabs">
@@ -113,16 +113,45 @@
 
 		<div id="pictures" class="tabs">
 			<h2>PICTURES</h2>
-			<br>
-			<p>Here's a collection of photos I made with the open-source software <a href="https://blender.org" target="_blank">Blender</a>! Color-grading was done using <a href="https://www.adobe.com/de/products/photoshop-lightroom-classic.html" target="_blank">Lightroom-Classic</a>!</p>
 			<div id="pictures_list">
-				<div class="row">
-					<img src="https://cdna.artstation.com/p/assets/images/images/061/703/488/large/richardapps-spaceship-testrender-widescreen.jpg?1681422196" onclick="window.open('https://www.artstation.com/artwork/qe0eo2', '_blank')">
-					<img src="https://cdnb.artstation.com/p/assets/images/images/061/703/817/large/richardapps-cinematic-space-render3.jpg?1681423969" onclick="window.open('https://www.artstation.com/artwork/rJzJOe', '_blank')">
+				<nav>
+					<ul>
+						<li><a onclick="changeColl('blender')" class="tab_active pic_coll_tabs">Blender</a></li>
+						<li><a onclick="changeColl('photography')" class="pic_coll_tabs">Photography</a></li>
+					</ul>
+				</nav>
+				<div id="blender" class="pic_coll">
+					<p>Here's a collection of photos I made with the open-source software <a href="https://blender.org" target="_blank">Blender</a>! Color-grading was done using <a href="https://www.adobe.com/de/products/photoshop-lightroom-classic.html" target="_blank">Lightroom-Classic</a>!</p>
+					<div class="row">
+						<img src="https://cdna.artstation.com/p/assets/images/images/061/703/488/large/richardapps-spaceship-testrender-widescreen.jpg?1681422196" onclick="window.open('https://www.artstation.com/artwork/qe0eo2', '_blank')">
+						<img src="https://cdnb.artstation.com/p/assets/images/images/061/703/817/large/richardapps-cinematic-space-render3.jpg?1681423969" onclick="window.open('https://www.artstation.com/artwork/rJzJOe', '_blank')">
+					</div>
+					<div class="row">
+						<img src="https://cdnb.artstation.com/p/assets/images/images/061/805/555/large/richardapps-default-cube-final-widescreen.jpg?1681683035" onclick="window.open('https://www.artstation.com/artwork/491knk', '_blank')">
+						<img src="https://cdna.artstation.com/p/assets/images/images/074/130/214/large/richardapps-hms-victory-10.jpg?1711315737" onclick="window.open('https://www.artstation.com/artwork/49n2Lk', '_blank')">
+					</div>
 				</div>
-				<div class="row">
-					<img src="https://cdnb.artstation.com/p/assets/images/images/061/805/555/large/richardapps-default-cube-final-widescreen.jpg?1681683035" onclick="window.open('https://www.artstation.com/artwork/491knk', '_blank')">
-					<img src="https://cdna.artstation.com/p/assets/images/images/074/130/214/large/richardapps-hms-victory-10.jpg?1711315737" onclick="window.open('https://www.artstation.com/artwork/49n2Lk', '_blank')">
+				<div id="photography" class="pic_coll">
+					<p>Here are some images I took in the USA! Hover over them to view more information.</p>
+					<p>All these were taken with a Panasonic Lumix DMC-TZ71, a suprisingly good travel camera for a low price.</p>
+					<div class="row">
+						<div class="img_container">
+							<img src="https://i.postimg.cc/9FkB5hND/P1020060.jpg">
+							<div class="img_desc"><p>The famous Golden-Gate-Brige! Was a bit cloudy that day, but that probably made it even better!</p></div>
+						</div>
+						<div class="img_container">
+							<img src="https://i.postimg.cc/bvVkXXT6/P1020722.jpg">
+							<div class="img_desc"><p>A chipmunk! We found them in a lot of different places. They were really friendly, weren't even scared of us, thus making photographing them pretty easy!</p></div>
+						</div>
+						<div class="img_container">
+							<img src="https://i.postimg.cc/MG6H9cbV/P1020951.jpg">
+							<div class="img_desc"><p>Nothing much to say here, but sometimes even the simple, minimalistic photos turn out quite cool!</p></div>
+						</div>
+						<div class="img_container">
+							<img src="https://i.postimg.cc/J0kzsjMV/P1020095.jpg">
+							<div class="img_desc"><p>We found this cool-looking bird! Fits well with the cloudy weather and the black stone, monochrome from nature!</p></div>
+						</div>
+					</div>
 				</div>
 			</div>
 			<p>Click on one of the pictures to see information about it, or visit my <a href="https://www.artstation.com/richardapps" target="_blank">ArtStation</a> profile. I'm also on <a href="https://instagram.com/luqiedesign" target="_blank">Instagram</a>!</p>
@@ -165,10 +194,7 @@
 			<br>
 			<p>Questions, wishes, inquiries, problems, and everything else can go to:</p>
 			<p><a href="mailto:support@richardapps.net" target="_blank">support@richardapps.net</a></p>
-			<br>
-			<p><em>Last updated on 26. March, 2024.</em></p>
 		</div>
 	</div>
-
 </body>
 </html>

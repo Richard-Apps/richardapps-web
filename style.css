@@ -6,18 +6,19 @@
 
 :root {
     --main-color: #a4cdf8;
-    --bg-color: #0f81ec;
-    --bg-color-2: #0f81eca9;
+    --bg-color: rgb(15, 129, 236); /* Change, and paste inner values below */
+    --bg-color: 15, 129, 236; /* Needs to be in this format, so opacity can be controlled individually */
+    --bg-color-2: rgba(15, 129, 236, 0.663);
     --bg-opacity: 0.194;
     --selection: #3b6d8b;
     --warning-color: rgb(240, 86, 86);
     --info-color: #ffffff;
 
     font-size: 10px;
-/*
+    /*
     Default values:
     --main-color: #a4cdf8;
-    --bg-color: #0f81ec;
+    --bg-color: 15, 129, 236;
     --bg-color-2: #0f81ec75;
     --bg-opacity: 0.194;
     --selection: rgba(235, 250, 250, 0.95);
@@ -25,12 +26,12 @@
 
     Green Theme:
     --main-color: #57f052;
-    --bg-color: #54f30b;
+    --bg-color: 84, 243, 11;
     --bg-color-2: #54f30b77;
     
     Orange Theme:
     --main-color: #ff8215;
-    --bg-color: #e07314;
+    --bg-color: 224, 115, 20;
     --bg-color-2: #f5780c77;
     */
 }
@@ -49,7 +50,7 @@ body {
     color: var(--main-color);
 }
 
-a:link, a:visited {
+a:link:not(.tab_active, a:hover), a:visited {
     color: var(--main-color);
 }
 
@@ -88,14 +89,14 @@ pre, p, li, h2, td{
     }
 
     to {
-        opacity: 90%;
+        opacity: 92.5%;
         /* margin-left: 0.03em; /* Potentially causes performance issues and leads to less readability*/
     }
 }
 
 #canvas {
     animation: 1.1s infinite both flicker;
-    transform: translateZ(0); /* offload to GPU, might improve performance */
+    transform: translateZ(0); /* Might improve performance */
 }
 
 /* NOISE */
@@ -120,7 +121,7 @@ pre, p, li, h2, td{
 
     opacity: 0.5;
 
-    transform: translateZ(0); /* offload to GPU, might improve performance */
+    transform: translateZ(0); /* Might improve performance */
 }
 
 @keyframes gradient {
@@ -136,7 +137,7 @@ pre, p, li, h2, td{
     opacity: var(--bg-opacity);
     display: block;
 
-    background: linear-gradient(var(--bg-color-2) 70%, var(--bg-color) 100%);
+    background: linear-gradient(var(--bg-color-2) 70%, rgb(var(--bg-color)) 100%);
     background-size: 100% 200%; /* This ensures the gradient covers the entire element */
     animation: gradient 10s infinite linear;
 }
@@ -159,7 +160,7 @@ pre, p, li, h2, td{
     height: 100%;
 
     opacity: 0.2;
-    background: radial-gradient(ellipse at center, rgba(0,0,0,0) 50%, var(--bg-color) 250%);
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0) 50%, rgb(var(--bg-color)) 250%);
 }
 
 /* NAV BAR */
@@ -180,25 +181,32 @@ nav ul li a {
     display: block;
     text-decoration: underline;
 
-    padding: 0.3em 0 0.3em 0;
+    padding: 0.2em 0.3em;
 
     transition: background-color 0.1s ease-out;
 }
 
+.tab_active {
+    background-color: var(--main-color);
+    color:rgba(24, 45, 75, 0.616);
+    text-decoration: none;
+}
 
 a:hover {
-    background-color: rgba(235, 250, 250, 0.95);
+    background-color: var(--main-color);
     cursor: pointer;
-    color: rgba(39, 76, 124, 0.616);
+    color: rgba(24, 45, 75, 0.616);
 
     transition: color box-shadow 0.1s;
-
-    box-shadow: 0 0 18px 0px rgba(152, 211, 238, 0.9);
 
     text-decoration: none;
 }
 
-/* print animation */
+a:hover:not(.tab_switcher, .pic_coll_tabs) {
+    box-shadow: 0 0 18px 0px var(--main-color);
+}
+
+/* PRINT ANIMATION */
 .fade-in {
     opacity: 0;
     transform: translateY(20px);
@@ -246,11 +254,15 @@ a:hover {
     border-width: 1px;
     padding: .5em;
     
-    background: linear-gradient(45deg, rgba(0, 132, 255, 0.05) 70%, rgba(3, 175, 255, 0.2) 110%);
+    background: linear-gradient(45deg, rgba(var(--bg-color), 0.05) 70%, rgba(var(--bg-color), 0.2) 110%);
 }
 
 #pr_list li:not(:last-child) {
     margin-bottom: 1.5em;
+}
+
+#pr_list li a {
+    padding: 0.1em 0;
 }
 
 .pr_title {
@@ -268,7 +280,7 @@ a:hover {
 }
 
 /* PICTURES */
-.row {
+.row, .img_container {
     margin-top: 1.5em;
     margin-bottom: 1.5em;
     
@@ -279,7 +291,7 @@ a:hover {
     width: 100%;
 }
 
-.row img {
+.row img, .img_container {
     flex: 1 1 auto;
     -webkit-user-select: none;
     user-select: none;
@@ -289,9 +301,54 @@ a:hover {
     width: 0; /* To make it work in Chrome, for some reason */
 }
 
+.img_desc {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    vertical-align: bottom;
+}
+
+.img_desc {
+    align-items: end;
+    filter: opacity(0%);
+    transition: .3s;
+}
+
+.img_desc:hover {
+    filter: opacity(100%);
+    background: linear-gradient(transparent 50%, black);
+}
+
+.img_container {
+    position: relative;
+}
+
 .row img:hover {
     filter: brightness(1.5);
     cursor: pointer;
+}
+
+#photography .row img:hover {
+    filter: brightness(1.2);
+    cursor: default;
+}
+
+.pic_coll:not(:first-of-type) {
+    display: none;
+}
+
+.pic_coll div img {
+    filter: brightness(1.2)
+}
+
+#pictures_list nav ul li a {
+    padding: 0.2em 0.3em;
+    user-select: none;
+}
+
+#pictures_list nav {
+    margin-top: -.5em;
 }
 
 /* ABOUT */
@@ -327,6 +384,26 @@ p i {
 /* CONTACT */
 #contact p a {
     text-decoration: underline;
+}
+
+/* FOOTER */
+footer {
+    position: fixed;
+    bottom: 1em;
+    width: 100%;
+    padding: 0px;
+    justify-content: space-between;
+    display: flex;
+
+    font-size: 1.5em;
+}
+
+#date {
+    margin-left: 2em;
+}
+
+#time {
+    margin-right: 2.5em;
 }
 
 /* MOBILE */

@@ -5,6 +5,9 @@ Made using vanilla HTML/CSS and JavaScript.
 
 Featuring a design inspired by old vintage terminals and cyberpunk themes!
 
+You can view the full website here:
+[richardapps.net](https://richardapps.net)
+
 ## Screenshots
 
 ![App Screenshot](/assets/preview.png)
