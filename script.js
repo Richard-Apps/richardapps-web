@@ -1,4 +1,4 @@
-location = location.hash||"#news" // Defaults to #news if no hash is present
+location = location.hash||'#news' // Defaults to #news if no hash is present
 changeTab(location.hash.slice(1))
 
 function changeTab(tab) {
@@ -52,6 +52,6 @@ function noeffects() {
 }
 
 // Turn off major effects on default for mobile devices
-if (typeof screen.orientation !== 'undefined' && localStorage.getItem('effectsDisabled' === null)) {
+if (typeof screen.orientation !== 'undefined' && !('effectsDisabled' in localStorage)) {
     noeffects();
 }
