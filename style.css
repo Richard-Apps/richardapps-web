@@ -420,6 +420,23 @@ footer {
     .row img {
         width: 100%;
     }
+    .img_desc {
+        filter: opacity(100%);
+        left: 100%;
+        padding: 0 .5em;
+        align-items: start;
+    }
+    .img_desc:hover {
+        background: none;
+    }
+    .row_photography {
+        flex-direction: column;
+        display:flex;
+        gap: 0;
+    }
+    .img_container {
+        width: 50%;
+    }
 }
 
 @media screen and (max-width: 600px) {
@@ -429,10 +446,10 @@ footer {
     .contact_link a {
         padding: 0.5em 0 0.5em 0;
     }
-    nav ul li:not(:last-child) {
+    #nav_tabs ul li:not(:last-child) {
         padding-right: 0;
     }
-    nav ul {
+    #nav_tabs ul {
         width: 100%;
         display: flex;
         justify-content: space-between;
