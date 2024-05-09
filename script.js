@@ -50,3 +50,8 @@ function noeffects() {
         nfbText.innerHTML = 'Don\'t like the effects? Click <a onclick="noeffects()">HERE</a> to turn them off.';
     }
 }
+
+// Turn off major effects on default for mobile devices
+if (typeof screen.orientation !== 'undefined' && localStorage.getItem('effectsDisabled' === null)) {
+    noeffects();
+}
