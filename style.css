@@ -69,7 +69,7 @@ a:link:not(.tab_active, a:hover), a:visited:not(.tab_active), em a:visited {
     user-select: none;
 }
 
-pre, p, li, h2, td{
+pre, p, li, h1, h2, h3, h4, td{
     margin: 0;
 
     font-weight: bold;
@@ -77,10 +77,20 @@ pre, p, li, h2, td{
     text-shadow: 0 0 7px var(--main-color), 0 0 20px var(--main-color), 0 0 40px var(--main-color);
 }
 
+#pre_title, h4 {
+    font-size: 1em;
+}
+
 #changeEffects a {
     text-decoration: underline;
 }
 
+#div_h {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: .2em;
+}
 
 /* FLICKER ANIMATION */
 @keyframes flicker {

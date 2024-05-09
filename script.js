@@ -52,6 +52,6 @@ function noeffects() {
 }
 
 // Turn off major effects on default for mobile devices
-if (typeof screen.orientation !== 'undefined' && !('effectsDisabled' in localStorage)) {
+if (window.matchMedia("(max-width: 767px)").matches && !('effectsDisabled' in localStorage)) {
     noeffects();
 }
