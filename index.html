@@ -52,9 +52,9 @@
 		<p>Welcome, visitor!</p>
 		<p>Hope you're doing well! This is my corner of the internet. Feel free to have a look around! You can find some really cool stuff here! :)</p>
 		<br>
-		<p id="changeEffects">Don't like the effects? Click <a onclick="noeffects()">HERE</a> to turn them off.</p>
+		<p id="changeEffects">Don't like the effects? Click <a onclick="noeffects()" tabindex="0" title="Link to turn off effects.">HERE</a> to turn them off.</p>
 		<p>Some things you might be interested in:</p>
-		<nav>
+		<nav id="nav_tabs">
 			<ul>
 				<li><a onclick="changeTab('news')" href="#news" class="tab_switcher" id="news_tab">News</a></li>
 				<li><a onclick="changeTab('projects')" href="#projects" class="tab_switcher" id="projects_tab">Projects</a></li>
@@ -134,7 +134,7 @@
 				<div id="photography" class="pic_coll">
 					<p>Here are some images I took in the USA! Hover over them to view more information.</p>
 					<p>All these were taken with a Panasonic Lumix DMC-TZ71, a suprisingly good travel camera for a low price.</p>
-					<div class="row">
+					<div class="row row_photography">
 						<div class="img_container">
 							<img src="https://i.postimg.cc/9FkB5hND/P1020060.jpg">
 							<div class="img_desc"><p>The famous Golden-Gate-Brige! Was a bit cloudy that day, but that probably made it even better!</p></div>

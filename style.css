@@ -50,7 +50,7 @@ body {
     color: var(--main-color);
 }
 
-a:link:not(.tab_active, a:hover), a:visited {
+a:link:not(.tab_active, a:hover), a:visited:not(.tab_active), em a:visited {
     color: var(--main-color);
 }
 
@@ -192,18 +192,19 @@ nav ul li a {
     text-decoration: none;
 }
 
-a:hover {
-    background-color: var(--main-color);
-    cursor: pointer;
-    color: rgba(24, 45, 75, 0.616);
+@media (hover: hover) {
+    a:hover {
+        background-color: var(--main-color);
+        cursor: pointer;
+        color: rgba(24, 45, 75, 0.616);
 
-    transition: color box-shadow 0.1s;
+        transition: color box-shadow 0.1s;
 
-    text-decoration: none;
-}
-
-a:hover:not(.tab_switcher, .pic_coll_tabs) {
-    box-shadow: 0 0 18px 0px var(--main-color);
+        text-decoration: none;
+    }
+    a:hover:not(.tab_switcher, .pic_coll_tabs) {
+        box-shadow: 0 0 18px 0px var(--main-color);
+    }
 }
 
 /* PRINT ANIMATION */
@@ -420,6 +421,23 @@ footer {
     .row img {
         width: 100%;
     }
+    .img_desc {
+        filter: opacity(100%);
+        left: 100%;
+        padding: 0 .5em;
+        align-items: start;
+    }
+    .img_desc:hover {
+        background: none;
+    }
+    .row_photography {
+        flex-direction: column;
+        display:flex;
+        gap: 0;
+    }
+    .img_container {
+        width: 50%;
+    }
 }
 
 @media screen and (max-width: 600px) {
@@ -429,10 +447,10 @@ footer {
     .contact_link a {
         padding: 0.5em 0 0.5em 0;
     }
-    nav ul li:not(:last-child) {
+    #nav_tabs ul li:not(:last-child) {
         padding-right: 0;
     }
-    nav ul {
+    #nav_tabs ul {
         width: 100%;
         display: flex;
         justify-content: space-between;
@@ -460,4 +478,13 @@ footer {
     .row {
         justify-content: left;
     }
+}
+
+/* To comply with outlinenone.com :) */
+:focus {
+    outline: 2px solid var(--main-color);
+    color: var(--main-color);
+    background: rgba(var(--bg-color), 0.3);
+    
+    text-decoration: none;
 }
