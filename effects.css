@@ -1,0 +1,79 @@
+/* Default text-glow */
+pre, p, li, h1, h2, h3, h4, td {
+    text-shadow: 0 0 7px var(--main-color), 0 0 20px var(--main-color), 0 0 40px var(--main-color);
+}
+
+/* FLICKER ANIMATION */
+@keyframes flicker {
+    from {
+        opacity: 100%;
+    }
+
+    to {
+        opacity: 92.5%;
+        /* margin-left: 0.03em; /* Potentially causes performance issues and leads to less readability*/
+    }
+}
+
+#canvas {
+    animation: 1.1s infinite both flicker;
+}
+
+/* NOISE */
+@keyframes noise {
+    from {
+        filter: brightness(0.1);
+    }
+
+    to {
+        filter: brightness(0.085);
+    }
+}
+
+#noise_vid {
+    
+    object-fit: cover;
+
+    filter: brightness(0.1);
+    animation: 5s infinite forward noise;
+
+    opacity: 0.5;
+}
+
+#noise_vid, #videohue {
+    animation: 5s infinite forward noise;
+    opacity: 0.5;
+}
+
+/* SCAN-LINES */
+@keyframes gradient {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 0% -145%;
+    }
+}
+
+#videohue {
+    opacity: var(--bg-opacity);
+    display: block;
+
+    background: linear-gradient(var(--bg-color-2) 70%, rgb(var(--bg-color)) 100%);
+    background-size: 100% 200%; /* This ensures the gradient covers the entire element */
+    animation: gradient 10s infinite linear;
+}
+
+/* not displayed by default */
+video {
+    display: block;
+}
+
+/* PROJECTS GLOW */
+.pr_warning, .pr_warning em {
+    text-shadow: 0 0 7px var(--warning-color), 0 0 20px var(--warning-color), 0 0 40px var(--warning-color);
+}
+
+.pr_info, .pr_info em{
+    text-shadow: 0 0 7px var(--info-color), 0 0 20px var(--info-color), 0 0 40px var(--info-color);
+}

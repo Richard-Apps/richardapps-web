@@ -6,19 +6,20 @@
 	<meta name="description" content="The personal webpage of RichardApps! Explore projects, pictures, contact details and more.">
 	<meta name="author" content="RichardApps">
 
-	<title>RichardApps - personal webpage</title>
+	<title>RichardApps' Personal Website: Coding, Photography, and More</title>
 	
 	<link rel="icon" type="image/png" href="src/media/favicon.png">
 	<link rel="apple-touch-icon" href="apple-touch-icon.png">
+	<link rel="canonical" href="https://www.richardapps.net">
 
-	<script type="text/javascript" src="script.js" defer></script>
+	<script src="script.js" defer></script>
 
 	<link rel="preload" as="font" href="src/fonts/terminus-webfont.woff2" type="font/woff2" crossorigin="anonymous">
 
 	<link rel="stylesheet" href="style.css">
 
 	<meta proberty="og:title" content="RichardApps">
-	<meta proberty="og:description" content="The personal webpage of RichardApps! Explore projects, pictures, contact details and more.">
+	<meta proberty="og:description" content="RichardApps' personal webpage! Explore a place with all my projects, pictures, and thoughts. Featuring a terminal-inspired design with stunning effects.">
 	<meta proberty="og:image" content="">
 	<meta proberty="og:url" content="https://richardapps.net">
 	
@@ -32,37 +33,40 @@
 
 <body>
 	<video
+		preload="none"
 		onloadstart="this.playbackRate = 0.65;"
 		autoplay
 		muted
 		loop
 		id="noise_vid"
-		src="src/media/noise.mp4">
+		src="src/media/noise.mp4"
+		>
 	</video>
 	<div class="vignette"></div>
 	
 	<div id="videohue"></div>
 	<div id="canvas">
-		<pre id="title">    ____  _      __                   _____                    
+		<header>
+			<pre id="title">    ____  _      __                   _____                    
    / __ \(_)____/ /_  ____ __________/ /   |  ____  ____  _____
   / /_/ / / ___/ __ \/ __ `/ ___/ __  / /| | / __ \/ __ \/ ___/
  / _, _/ / /__/ / / / /_/ / /  / /_/ / ___ |/ /_/ / /_/ (__  ) 
 /_/ |_/_/\___/_/ /_/\__,_/_/   \__,_/_/  |_/ .___/ .___/____/  
                                           /_/   /_/            </pre>
-
-		<h1 id="pre_title">RichardApps' lab: coding, photography, 3D-art and personal projects!</h1>
-		<br>
-		<p>Welcome, visitor!</p>
-		<p>Hope you're doing well! This is my corner of the internet. Feel free to have a look around! You can find some really cool stuff here! :)</p>
-		<br>
-		<p id="changeEffects">Don't like the effects? Click <a onclick="noeffects()" tabindex="0" title="Link to turn off effects.">HERE</a> to turn them off.</p>
+			<h1 id="sub_title">RichardApps' lab: coding, photography, 3D-art and personal projects!</h1>
+			<br>
+			<p>Welcome, visitor!</p>
+			<p>Hope you're doing well! This is my corner of the internet. Feel free to have a look around! You can find some really cool stuff here! :)</p>
+			<br>
+			<p id="changeEffects">Don't like the effects? Click <a onclick="changeEffects()" tabindex="0" title="Click to turn off effects.">HERE</a> to turn them off.</p>
+		</header>
 		<p>Some things you might be interested in:</p>
 		<nav id="nav_tabs">
 			<ul>
-				<li><a onclick="changeTab('news')" href="#news" class="tab_switcher" id="news_tab">News</a></li>
-				<li><a onclick="changeTab('projects')" href="#projects" class="tab_switcher" id="projects_tab">Projects</a></li>
-				<li><a onclick="changeTab('pictures')" href="#pictures" class="tab_switcher" id="pictures_tab">Pictures</a></li>
-				<li><a onclick="changeTab('about')" href="#about" class="tab_switcher" id="about_tab">About</a></li>
+				<li><a onclick="changeTab('news')" href="#news" class="tab_switcher" id="news_tab" title="Link to news tab, view the latest informations.">News</a></li>
+				<li><a onclick="changeTab('projects')" href="#projects" class="tab_switcher" id="projects_tab" title="Link to projects tab, view some of my projects.">Projects</a></li>
+				<li><a onclick="changeTab('pictures')" href="#pictures" class="tab_switcher" id="pictures_tab" title="Link to pictures tab, view my 3D-renders and photos.">Pictures</a></li>
+				<li><a onclick="changeTab('about')" href="#about" class="tab_switcher" id="about_tab" title="Link to about tab, you'll find some information about me there.">About</a></li>
 			</ul>
 		</nav>
 		<div id="news" class="tabs">
@@ -77,7 +81,7 @@
 			<p>[!] Projects section will be limited for now because most of them need fixes and improvements before hosting them on the new web server.</p>
 			<p><em>This could take some time...</em></p>
 			<br>
-			<p>[!] If you want to use the old page, use this link: <a href="https://old.richardapps.net" target="_blank">old.richardapps.net</a></p>
+			<p>[!] If you want to use the old page, use this link: <a href="https://old.richardapps.net" target="_blank" title="Link to my old, unsupported site.">old.richardapps.net</a></p>
 			<p><em>This will most likely not be updated anymore.</em></p>
 		</div>
 		<div id="projects" class="tabs">
@@ -88,26 +92,26 @@
 					<p class="pr_title">NameGEN</p>
 					<p class="pr_desc">Generate random, but good sounding, names for your everyday needs! Simple, yet effective tool if you need a nickname, project name, or anything else!</p>
 					<br>
-					<p><a href="https://namegen.richardapps.net" target="_blank">VISIT PAGE</a></p>
+					<p><a href="https://namegen.richardapps.net" target="_blank" title="Open the sub-domain namegen.richardapps.net">VISIT PAGE</a></p>
 				</li>
 				<li>
 					<p class="pr_title">VisualINC</p>
 					<p class="pr_desc">A website builder for creating awesome webpages without coding!</p>
 					<p class="pr_warning">[!] Still under development, not functional yet! You can still visit the site if you're adventurous!</p>
 					<br>
-					<p><a href="https://visualinc.richardapps.net" target="_blank">VISIT PAGE</a></p>
+					<p><a href="https://visualinc.richardapps.net" target="_blank" title="Open the sub-domain visualinc.richardapps.net">VISIT PAGE</a></p>
 				</li>
 				<li>
 					<p class="pr_title">RichardApps-web</p>
 					<p class="pr_desc">The public repository of the website's source code.</p>
 					<p class="pr_info">[?] Feel free to report bugs, add features and contribute if you'd like! :)</p>
 					<br>
-					<p><a href="https://github.com/Richard-Apps/richardapps-web" target="_blank">VISIT PAGE</a></p>
+					<p><a href="https://github.com/Richard-Apps/richardapps-web" target="_blank" title="Open the github-repository of this site.">VISIT PAGE</a></p>
 				</li>
 				<li>
 					<p class="pr_title">Archive</p>
 					<p class="pr_desc">A small list of old, abandoned projects.</p>
-					<p><a href="archive.html">VISIT PAGE</a></p>
+					<p><a href="archive.html" title="View the archive page which lists old and abandoned projects.">VISIT PAGE</a></p>
 				</li>
 			</ul>
 			<br>
@@ -119,12 +123,12 @@
 			<div id="pictures_list">
 				<nav>
 					<ul>
-						<li><a onclick="changeColl('blender')" class="tab_active pic_coll_tabs">Blender</a></li>
-						<li><a onclick="changeColl('photography')" class="pic_coll_tabs">Photography</a></li>
+						<li><a onclick="changeColl('blender')" class="tab_active pic_coll_tabs" title="Change picture-collection tab to pictures made with Blender.">Blender</a></li>
+						<li><a onclick="changeColl('photography')" class="pic_coll_tabs" title="Change picture-colection tab to real images.">Photography</a></li>
 					</ul>
 				</nav>
 				<div id="blender" class="pic_coll">
-					<h3>Here's a collection of photos I made with the open-source software <a href="https://blender.org" target="_blank">Blender</a>! Color-grading was done using <a href="https://www.adobe.com/de/products/photoshop-lightroom-classic.html" target="_blank">Lightroom-Classic</a>!</h3>
+					<h3>Here's a collection of photos I made with the open-source software <a href="https://blender.org" target="_blank" titel="Link to official Blender-webpage.">Blender</a>! Color-grading was done using <a href="https://www.adobe.com/de/products/photoshop-lightroom-classic.html" target="_blank">Lightroom-Classic</a>!</h3>
 					<div class="row">
 						<img src="https://cdna.artstation.com/p/assets/images/images/061/703/488/large/richardapps-spaceship-testrender-widescreen.jpg?1681422196" onclick="window.open('https://www.artstation.com/artwork/qe0eo2', '_blank')" alt="A cinematic image of a spaceship flying trough a space-station, created by me with Blender 3D.">
 						<img src="https://cdnb.artstation.com/p/assets/images/images/061/703/817/large/richardapps-cinematic-space-render3.jpg?1681423969" onclick="window.open('https://www.artstation.com/artwork/rJzJOe', '_blank')" alt="A cinematic image of a spaceship flying above the ground with mountains in the background, created by me with Blender 3D.">
@@ -139,19 +143,19 @@
 					<p><em>Hover over them to view more information!</em></p>
 					<div class="row row_photography">
 						<div class="img_container">
-							<img src="https://i.postimg.cc/9FkB5hND/P1020060.jpg" alt="A monochrome picture of the Golden-Gate-Brige.">
+							<img src="https://i.postimg.cc/9FkB5hND/P1020060.jpg" preload="none" alt="A monochrome picture of the Golden-Gate-Brige.">
 							<div class="img_desc"><p>The famous Golden-Gate-Brige! Was a bit cloudy that day, but that probably made it even better!</p></div>
 						</div>
 						<div class="img_container">
-							<img src="https://i.postimg.cc/bvVkXXT6/P1020722.jpg" alt="A close-up picture of a chipmunk.">
+							<img src="https://i.postimg.cc/bvVkXXT6/P1020722.jpg" preload="none" alt="A close-up picture of a chipmunk.">
 							<div class="img_desc"><p>A chipmunk! We found them in a lot of different places. They were really friendly, weren't even scared of us, thus making photographing them pretty easy!</p></div>
 						</div>
 						<div class="img_container">
-							<img src="https://i.postimg.cc/MG6H9cbV/P1020951.jpg" alt="A minimalistic picture of a helicopter.">
+							<img src="https://i.postimg.cc/MG6H9cbV/P1020951.jpg" preload="none" alt="A minimalistic picture of a helicopter.">
 							<div class="img_desc"><p>Nothing much to say here, but sometimes even the simple, minimalistic photos turn out quite cool!</p></div>
 						</div>
 						<div class="img_container">
-							<img src="https://i.postimg.cc/J0kzsjMV/P1020095.jpg" alt="A picture of a bird in cloudy, dark weather.">
+							<img src="https://i.postimg.cc/J0kzsjMV/P1020095.jpg" preload="none" alt="A picture of a bird in cloudy, dark weather.">
 							<div class="img_desc"><p>We found this cool-looking bird! Fits well with the cloudy weather and the black stone, monochrome from nature!</p></div>
 						</div>
 					</div>
@@ -159,7 +163,7 @@
 					<br>
 				</div>
 			</div>
-			<p>Click on one of the pictures to see information about it, or visit my <a href="https://www.artstation.com/richardapps" target="_blank">ArtStation</a> profile. I'm also on <a href="https://instagram.com/luqiedesign" target="_blank">Instagram</a>!</p>
+			<p>Click on one of the pictures to see information about it, or visit my <a href="https://www.artstation.com/richardapps" target="_blank" title="Open my ArtStation profile.">ArtStation</a> profile. I'm also on <a href="https://instagram.com/luqiedesign" target="_blank">Instagram</a>!</p>
 		</div>
 		
 		<div id="about" class="tabs">
@@ -178,7 +182,7 @@
 				I decided to keep the name, since it's more or less unique - even though I don't do much mobile development anymore.
 			</p>
 			<br>
-			<p>Furthermore, I love listening to music! <em>(Before you ask, I listen to all genres :P)</em> Take a listen here: <em><a href="https://www.youtube.com/watch?v=QkF3oxziUI4" target="_blank">MYSTERY GIFT</a></em></p>
+			<p>Furthermore, I love listening to music! <em>(Before you ask, I listen to all genres :P)</em> Take a listen here: <em><a href="https://www.youtube.com/watch?v=QkF3oxziUI4" target="_blank" title="Link to a YouTube video of a song I like.">MYSTERY GIFT</a></em></p>
 			<br>
 			<p>I also play games! Some of my favourites are:</p>
 			<table>
@@ -189,16 +193,16 @@
 			</table>
 			<br>
 			<p>Socials:</p>
-			<p class="contact_link"><i class="fa-brands fa-instagram fa-fw"></i><a href="https://instagram.com/luqiedesign" target="_blank">Instagram</a></p>
-			<p class="contact_link"><i class="fa-brands fa-google fa-fw"></i><a href="https://youtube.com/@RichardApps." target="_blank">YouTube</a></p>
-			<p class="contact_link"><i class="fa-brands fa-github fa-fw"></i><a href="https://github.com/richard-apps" target="_blank">GitHub</a></p>
-			<p class="contact_link"><i class="fa-brands fa-discord fa-fw"></i><a href="https://discord.com/users/506508225722580992" target="_blank">Discord</a></p>
-			<p class="contact_link"><i class="fa-brands fa-artstation fa-fw"></i><a href="https://www.artstation.com/richardapps" target="_blank">ArtStation</a></p>
+			<p class="contact_link"><i class="fa-brands fa-instagram fa-fw"></i><a href="https://instagram.com/luqiedesign" target="_blank" title="My instagram account.">Instagram</a></p>
+			<p class="contact_link"><i class="fa-brands fa-google fa-fw"></i><a href="https://youtube.com/@RichardApps." target="_blank" title="My YouTube account.">YouTube</a></p>
+			<p class="contact_link"><i class="fa-brands fa-github fa-fw"></i><a href="https://github.com/richard-apps" target="_blank" title="My GitHub account.">GitHub</a></p>
+			<p class="contact_link"><i class="fa-brands fa-discord fa-fw"></i><a href="https://discord.com/users/506508225722580992" target="_blank" title="My Discord Account.">Discord</a></p>
+			<p class="contact_link"><i class="fa-brands fa-artstation fa-fw"></i><a href="https://www.artstation.com/richardapps" target="_blank" title="My ArtStation Account.">ArtStation</a></p>
 			<br>
 			<p><em>(I mostly prefer Discord for contact!)</em></p>
 			<br>
 			<p>Questions, wishes, inquiries, problems, and everything else can go to:</p>
-			<p><a href="mailto:support@richardapps.net" target="_blank">support@richardapps.net</a></p>
+			<p><a href="mailto:support@richardapps.net" target="_blank" title="Contact me.">support@richardapps.net</a></p>
 		</div>
 	</div>
 </body>
