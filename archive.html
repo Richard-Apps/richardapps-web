@@ -14,7 +14,7 @@
 	<div id="videohue"></div>
 
     <div id="canvas">
-        <p id="title">Archive</p>
+        <h1 id="archive-title">Archive</h1>
         <br>
         <p>Here's a list of unfinished or abandoned projects.</p>
         <p>Some of them might not work anymore, but feel free to explore. :)</p>
@@ -54,9 +54,14 @@
     #canvas {
         animation: none;
     }
-    #title, .pr_title {
+    #archive-title, .pr_title {
         font-weight: 800;
     }
+
+    #archive-title {
+        font-family: 'Courier New', Courier, monospace;
+    }
+    
     :root {
         --main-color: #ff8215;
         --bg-color: 224, 115, 20; /* Needs to be in this format, so opacity can be controlled individually */

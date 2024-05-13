@@ -17,7 +17,7 @@ function changeTab(tab) {
         setTimeout(function() {
             element.classList.add('visible');
         }, delay);
-        delay += 30;
+        delay += 20;
     });
 }
 
@@ -37,6 +37,12 @@ link.href = 'effects.css';
 
 let effectsDisabled = localStorage.getItem('effectsDisabled') === 'true';
 let nfbText = document.getElementById('changeEffects');
+
+// Turn off major effects on default for mobile devices
+if (window.matchMedia("(max-width: 767px)").matches && !('effectsDisabled' in localStorage)) {
+    effectsDisabled = true;
+}
+
 if (!effectsDisabled) { document.head.appendChild(link); nfbText.innerHTML = 'Don\'t like the effects? Click <a onclick="changeEffects()">HERE</a> to turn them off.';}
 
 function changeEffects() {
@@ -49,9 +55,4 @@ function changeEffects() {
         document.head.appendChild(link);
         nfbText.innerHTML = 'Don\'t like the effects? Click <a onclick="changeEffects()">HERE</a> to turn them off.';
     }
-}
-
-// Turn off major effects on default for mobile devices
-if (window.matchMedia("(max-width: 767px)").matches && !('effectsDisabled' in localStorage)) {
-    changeEffects();
 }
