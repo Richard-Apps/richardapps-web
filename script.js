@@ -1,5 +1,5 @@
 location = location.hash||'#news' // Defaults to #news if no hash is present
-changeTab(location.hash.slice(1))
+changeTab(location.hash.slice(1));
 
 function changeTab(tab) {
     // 'Print' animation in a modern way
@@ -29,29 +29,29 @@ function changeColl(coll) {
     this.event.target.classList.add('tab_active');
 }
 
-// No-effects mode, for better readability and performance - more or less experimental for now
+// Load effects if not disabled
 var link = document.createElement('link');
 link.rel = 'stylesheet';
 link.type = 'text/css';
-link.href = 'noeffects.css';
+link.href = 'effects.css';
 
 let effectsDisabled = localStorage.getItem('effectsDisabled') === 'true';
 let nfbText = document.getElementById('changeEffects');
-if (effectsDisabled) { document.head.appendChild(link); nfbText.innerHTML = 'Want some fancy effects? Click <a onclick="noeffects()">HERE</a> to turn them on.';}
+if (!effectsDisabled) { document.head.appendChild(link); nfbText.innerHTML = 'Don\'t like the effects? Click <a onclick="changeEffects()">HERE</a> to turn them off.';}
 
-function noeffects() {
+function changeEffects() {
     effectsDisabled = !effectsDisabled;
     localStorage.setItem('effectsDisabled', effectsDisabled);
     if (effectsDisabled) {
-        document.head.appendChild(link);
-        nfbText.innerHTML = 'Want some fancy effects? Click <a onclick="noeffects()">HERE</a> to turn them on.';
-    } else {
         document.head.removeChild(link);
-        nfbText.innerHTML = 'Don\'t like the effects? Click <a onclick="noeffects()">HERE</a> to turn them off.';
+        nfbText.innerHTML = 'Want some fancy effects? Click <a onclick="changeEffects()">HERE</a> to turn them on.';
+    } else {
+        document.head.appendChild(link);
+        nfbText.innerHTML = 'Don\'t like the effects? Click <a onclick="changeEffects()">HERE</a> to turn them off.';
     }
 }
 
 // Turn off major effects on default for mobile devices
 if (window.matchMedia("(max-width: 767px)").matches && !('effectsDisabled' in localStorage)) {
-    noeffects();
+    changeEffects();
 }
