@@ -16,15 +16,9 @@ You can view the full website here:
 
 ## Roadmap
 
-- [ ] Change to external hosted font
+- [ ] Add a functional dynamic page content for news and updates
 
-- [ ] Categorize and add images
-
-- [ ] Add color-themes
-
-- [ ] Add a functional blog for news
-
-- [ ] If possible: Add screen curvature and other effects like simulated burn-in
+- [ ] Add more effects to improve on the terminal-look (screen curvature)
 
 - [ ] Finish/complete the project list
 
@@ -49,6 +43,9 @@ Credit is not required, altough highly appreciated.
 
 #### Background Noise Video
 - Video by [Thomas Breher](https://pixabay.com/de/users/tbit-715211/?utm_source=link-attribution&utm_medium=referral&utm_campaign=video&utm_content=1285) / [Pixabay](https://pixabay.com/de/videos/fernseher-st%C3%B6rung-bildrauschen-1285/)
+
+#### Background Rain Video
+- Video by [RainStockEffect](https://pixabay.com/users/rainstockeffect-34483686/) / [Pixabay](https://pixabay.com/videos/raindrops-drops-rain-water-liquid-158959/)
 
 #### Inspired by
 - [cool-retro-term](https://github.com/Swordfish90/cool-retro-term)
