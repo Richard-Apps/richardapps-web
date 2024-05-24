@@ -8,9 +8,8 @@
 
     <link rel="icon" type="image/png" href="src/media/favicon.png">
     
-    <link rel="preload" as="font" href="src/fonts/terminus-webfont.woff2" type="font/woff2" crossorigin="anonymous">
-
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="effects.css">
 </head>
 <body>
     <video
@@ -25,22 +24,29 @@
 	
 	<div id="videohue"></div>
     <pre>
-██╗██╗    ██╗ █████╗ ██████╗ ███╗   ██╗██╗███╗   ██╗ ██████╗ ██╗
-██║██║    ██║██╔══██╗██╔══██╗████╗  ██║██║████╗  ██║██╔════╝ ██║
-██║██║ █╗ ██║███████║██████╔╝██╔██╗ ██║██║██╔██╗ ██║██║  ███╗██║
-╚═╝██║███╗██║██╔══██║██╔══██╗██║╚██╗██║██║██║╚██╗██║██║   ██║╚═╝
-██╗╚███╔███╔╝██║  ██║██║  ██║██║ ╚████║██║██║ ╚████║╚██████╔╝██╗
-╚═╝ ╚══╝╚══╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝╚═╝  ╚═══╝ ╚═════╝ ╚═╝
+██╗    ██╗██╗  ██╗███████╗██████╗ ███████╗     █████╗ ██████╗ ███████╗    ██╗    ██╗███████╗██████╗ 
+██║    ██║██║  ██║██╔════╝██╔══██╗██╔════╝    ██╔══██╗██╔══██╗██╔════╝    ██║    ██║██╔════╝╚════██╗
+██║ █╗ ██║███████║█████╗  ██████╔╝█████╗      ███████║██████╔╝█████╗      ██║ █╗ ██║█████╗    ▄███╔╝
+██║███╗██║██╔══██║██╔══╝  ██╔══██╗██╔══╝      ██╔══██║██╔══██╗██╔══╝      ██║███╗██║██╔══╝    ▀▀══╝ 
+╚███╔███╔╝██║  ██║███████╗██║  ██║███████╗    ██║  ██║██║  ██║███████╗    ╚███╔███╔╝███████╗  ██╗   
+ ╚══╝╚══╝ ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚══════╝    ╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝     ╚══╝╚══╝ ╚══════╝  ╚═╝
 </pre>
     <br>&nbsp
-    <p>You're going down a path I can't follow</p>
+    <p>You stumble forward, eyes adjusting to the harsh light.</p>
+    <p>The landscape stretches out before you, an endless expanse of sand.</p>
     <br>&nbsp;
-    <p>It is <em>safer</em> to go back.</p>
+    <p>How did we end up here?</p>
+    <br>&nbsp;
+    <p>A figure emerges from the haze, their features indistinct.</p>
+    <br>&nbsp;
+    <p><em>"Lost you way, have you?" </em>they say, their voice low and detached. <em>"This region isn't mapped out, it's not safe out here."</em></p>
+    <br>&nbsp;
+    <p><em>"Anyways.. just go south and you'll be back on the right track in no time.":</em></p>
     <br>&nbsp;
     <a href="index.html">HOMEPAGE</a>
-    <div class="footer">
-        <p>ここは安全ではない</p>
-    </div>
+    <footer>
+        <p><em>ERROR 404 - PAGE NOT FOUND</em></p>
+    </footer>
 </body>
 <style>
     :root {
@@ -68,6 +74,10 @@
         white-space: unset;
     }
 
+    pre {
+        user-select: none;
+    }
+
     p, em, a {
         font-size: 1.75rem;
     }
@@ -90,7 +100,7 @@
         opacity: 0.4;
     }
 
-    .footer {
+    footer {
         position: fixed;
         bottom: 0;
         left: 0;
@@ -98,7 +108,6 @@
         padding: 0.5em;
         text-align: center;
         font-weight: 100;
-        font-family:'Courier New', Courier, monospace;
     }
 </style>
 </html>
