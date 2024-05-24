@@ -37,7 +37,7 @@ a:link:not(.tab_active, a:hover), a:visited:not(.tab_active), em a:visited {
 
 #canvas {
     font-size: 1.75em;
-    padding: 2em;
+    padding: 1.8em;
 
     height: 100%;
 
@@ -46,10 +46,12 @@ a:link:not(.tab_active, a:hover), a:visited:not(.tab_active), em a:visited {
 
 #title {
     width: 100%;
-    font-size: 1.5em;
+    font-size: 1.3em;
     font-family: 'Courier New', Courier, monospace;
     -webkit-user-select: none;
     user-select: none;
+
+    margin-bottom: 1em;
 }
 
 pre, p, li, h1, h2, h3, h4, td{
@@ -81,7 +83,7 @@ pre, p, li, h1, h2, h3, h4, td{
     background: var(--bg-color-2);
 }
 
-#videohue, #noise_vid, .vignette {
+#videohue, #noise_vid, .vignette, #rain_vid {
     position: fixed;
     overflow: hidden;
 
@@ -99,6 +101,14 @@ pre, p, li, h1, h2, h3, h4, td{
 .vignette {
     opacity: 0.2;
     background: radial-gradient(ellipse at center, rgba(0,0,0,0) 50%, rgb(var(--bg-color)) 250%);
+}
+
+/* RAIN VIDEO */
+#rain_vid {
+    opacity: 0.125;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 /* NAV BAR */
@@ -148,8 +158,7 @@ nav ul li a {
 /* PRINT ANIMATION */
 .fade-in {
     opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+    /*transform: translateY(20px);*/
 }
 
 .fade-in.visible:not(em) {
@@ -160,6 +169,25 @@ nav ul li a {
 .fade-in.visible em {
     opacity: 0.7;
     transform: translateY(0);
+}
+
+@keyframes fade-in-anim {
+    0% {
+        opacity: 0.75;
+        transform: scale(0.975);
+    }
+    35% {
+        opacity: 0.8
+    }
+    
+    100% {
+        opacity: 1.0;
+        transform: scale(1.0);
+    }
+}
+
+.fade-in-anim:not(em) {
+    animation: fade-in-anim 0.5s ease-in-out;
 }
 
 /* SELECT */
@@ -179,8 +207,36 @@ nav ul li a {
 .tabs {
     border: solid var(--main-color);
     padding: 1.5em;
+    backdrop-filter: blur(100px);
 }
 
+/* GRID-CONTENT (HOME/ABOUT) */
+.grid_row, .grid {
+    display: flex;
+    gap: 1em;
+}
+
+.grid {
+    flex-direction: column;
+}
+
+.grid_row_box {
+    padding: .5em;
+    width: 100%;
+
+    border: 1px solid var(--main-color);
+}
+
+/* Maybe a bit too destracting.
+.grid_row_box:hover {
+    background: linear-gradient(45deg, rgba(var(--bg-color), 0.05) 70%, rgba(var(--bg-color), 0.2) 110%);
+    scale: 1.02;
+}
+
+.grid_row_box:active {
+    scale: 1.15;
+}
+*/
 
 /* PROJECTS */
 #pr_list {
@@ -309,7 +365,7 @@ em a {
     transition: background-color 0.4s ease-out;
 }
 
-p i {
+i {
     margin-right: .75em;
     vertical-align: middle;
 }
@@ -324,12 +380,6 @@ p i {
 }
 
 /* MOBILE */
-@media screen and (max-width: 85em) {
-    .desc {
-        display: none;
-    }
-}
-
 @media screen and (max-width: 50em) {
     .row {
         display: block;
@@ -354,14 +404,20 @@ p i {
     .img_container {
         width: 50%;
     }
+    .grid_row {
+        flex-direction: column;
+    }
 }
 
 @media screen and (max-width: 600px) {
     .contact_link {
-        margin-bottom: 1.75em;
+        margin-top: .5em;
+    }
+    .contact_link {
+        margin-bottom: .75em;
     }
     .contact_link a {
-        padding: 0.5em 0 0.5em 0;
+        padding: 0.25em 0 0.25em 0;
     }
     #nav_tabs ul li:not(:last-child) {
         padding-right: 0;
@@ -406,6 +462,6 @@ p i {
 }
 
 /* Will be overwritten if effects enabled */
-video {
+#noise_vid, #rain_vid {
     display: none;
 }
