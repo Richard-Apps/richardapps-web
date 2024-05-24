@@ -65,7 +65,7 @@ pre, p, li, h1, h2, h3, h4, td {
 }
 
 /* not displayed by default */
-video {
+#noise_vid, #rain_vid {
     display: block;
 }
 
