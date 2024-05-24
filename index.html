@@ -3,8 +3,8 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="The personal webpage of RichardApps! Explore projects, pictures, contact details and more.">
-	<meta name="author" content="RichardApps">
+	<meta name="description" content="Richard-Apps' personal webpage! Explore a place with all my projects, pictures, and thoughts. Featuring a terminal-inspired design with stunning effects.">
+	<meta name="author" content="Richard-Apps">
 
 	<title>RichardApps' Personal Website: Coding, Photography, and More</title>
 	
@@ -23,7 +23,7 @@
 	<meta proberty="og:image" content="">
 	<meta proberty="og:url" content="https://richardapps.net">
 	
-	<meta name="keywords" content="RichardApps, Richard Apps, richardapps portfolio">
+	<meta name="keywords" content="RichardApps, Richard Apps, Richard-Apps">
 	<meta name="robots" content="index, follow">
 	<meta name="revisit-after" content="7 days">
 
@@ -42,8 +42,20 @@
 		src="src/media/noise.mp4"
 		>
 	</video>
+
+	<video
+		preload="none"
+		onloadstart="this.playbackRate = 0.85;"
+		autoplay
+		muted
+		loop
+		id="rain_vid"
+		src="src/media/rain_bg.mp4"
+		>
+	</video>
+
 	<div class="vignette"></div>
-	
+
 	<div id="videohue"></div>
 	<div id="canvas">
 		<header>
@@ -63,26 +75,39 @@
 		<p>Some things you might be interested in:</p>
 		<nav id="nav_tabs">
 			<ul>
-				<li><a onclick="changeTab('news')" href="#news" class="tab_switcher" id="news_tab" title="Link to news tab, view the latest informations.">News</a></li>
-				<li><a onclick="changeTab('projects')" href="#projects" class="tab_switcher" id="projects_tab" title="Link to projects tab, view some of my projects.">Projects</a></li>
-				<li><a onclick="changeTab('pictures')" href="#pictures" class="tab_switcher" id="pictures_tab" title="Link to pictures tab, view my 3D-renders and photos.">Pictures</a></li>
-				<li><a onclick="changeTab('about')" href="#about" class="tab_switcher" id="about_tab" title="Link to about tab, you'll find some information about me there.">About</a></li>
+				<li><a href="#home" class="tab_switcher" id="home_tab">Home</a></li>
+				<li><a href="#projects" class="tab_switcher" id="projects_tab">Projects</a></li>
+				<li><a href="#pictures" class="tab_switcher" id="pictures_tab">Pictures</a></li>
+				<li><a href="#about" class="tab_switcher" id="about_tab">About</a></li>
 			</ul>
 		</nav>
-		<div id="news" class="tabs">
-			<h2>Fully updated webpage now online!</h2>
-			<p><em>Written on 24.03.2024</em></p>
-			<br>
-			<p>I'm excited to launch the new webpage!</p>
-			<p>Everything from the design to the content has been redone. There are still some things that I have to improve, but I'm pretty happy with it so far!</p>
-			<br>
-			<p>Regarding the design, I was inspired by some old vintage terminals! Hope you like it!</p>
-			<br>
-			<p>[!] Projects section will be limited for now because most of them need fixes and improvements before hosting them on the new web server.</p>
-			<p><em>This could take some time...</em></p>
-			<br>
-			<p>[!] If you want to use the old page, use this link: <a href="https://old.richardapps.net" target="_blank" title="Link to my old, unsupported site.">old.richardapps.net</a></p>
-			<p><em>This will most likely not be updated anymore.</em></p>
+		<div id="home" class="tabs">
+			<div class="grid">
+				<div class="grid_row">
+					<div class="grid_row_box">
+						<h2>Fully updated webpage now online!</h2>
+						<p><em>Written on 24.03.2024</em></p>
+						<br>
+						<p>I'm excited to launch the new webpage!</p>
+						<p>Everything from the design to the content has been redone. There are still some things that I have to improve, but I'm pretty happy with it so far!</p>
+						<br>
+						<p>Regarding the design, I was inspired by some old vintage terminals! Hope you like it!</p>
+						<br>
+						<p>[!] Projects section will be limited for now because most of them need fixes and improvements before hosting them on the new web server.</p>
+						<p><em>This could take some time...</em></p>
+						<br>
+						<p>[!] If you want to use the old page, use this link: <a href="https://old.richardapps.net" target="_blank">old.richardapps.net</a></p>
+						<p><em>This will most likely not be updated anymore.</em></p>
+					</div>
+				</div>
+				<div class="grid_row">
+					<div class="grid_row_box">
+						<h2>Latest Updates</h2>
+						<p><em>MAY 24TH, 2024:</em> New animations, added another background, improved the about-page and a lot of minor improvements!</p>
+						<p><em>MAY 20TH, 2024:</em> Redesigned the main- and about-page. Changed from news-tab to home-tab, now presenting more of a 'hub' design.</p>
+					</div>
+				</div>
+			</div>
 		</div>
 		<div id="projects" class="tabs">
 			<h2>PROJECTS</h2>
@@ -92,26 +117,26 @@
 					<p class="pr_title">NameGEN</p>
 					<p class="pr_desc">Generate random, but good sounding, names for your everyday needs! Simple, yet effective tool if you need a nickname, project name, or anything else!</p>
 					<br>
-					<p><a href="https://namegen.richardapps.net" target="_blank" title="Open the sub-domain namegen.richardapps.net">VISIT PAGE</a></p>
+					<p><a href="https://namegen.richardapps.net" target="_blank">VISIT PAGE</a></p>
 				</li>
 				<li>
 					<p class="pr_title">VisualINC</p>
 					<p class="pr_desc">A website builder for creating awesome webpages without coding!</p>
 					<p class="pr_warning">[!] Still under development, not functional yet! You can still visit the site if you're adventurous!</p>
 					<br>
-					<p><a href="https://visualinc.richardapps.net" target="_blank" title="Open the sub-domain visualinc.richardapps.net">VISIT PAGE</a></p>
+					<p><a href="https://visualinc.richardapps.net" target="_blank">VISIT PAGE</a></p>
 				</li>
 				<li>
 					<p class="pr_title">RichardApps-web</p>
 					<p class="pr_desc">The public repository of the website's source code.</p>
 					<p class="pr_info">[?] Feel free to report bugs, add features and contribute if you'd like! :)</p>
 					<br>
-					<p><a href="https://github.com/Richard-Apps/richardapps-web" target="_blank" title="Open the github-repository of this site.">VISIT PAGE</a></p>
+					<p><a href="https://github.com/Richard-Apps/richardapps-web" target="_blank">VISIT PAGE</a></p>
 				</li>
 				<li>
 					<p class="pr_title">Archive</p>
 					<p class="pr_desc">A small list of old, abandoned projects.</p>
-					<p><a href="archive.html" title="View the archive page which lists old and abandoned projects.">VISIT PAGE</a></p>
+					<p><a href="archive.html">VISIT PAGE</a></p>
 				</li>
 			</ul>
 			<br>
@@ -123,12 +148,12 @@
 			<div id="pictures_list">
 				<nav>
 					<ul>
-						<li><a onclick="changeColl('blender')" class="tab_active pic_coll_tabs" title="Change picture-collection tab to pictures made with Blender.">Blender</a></li>
-						<li><a onclick="changeColl('photography')" class="pic_coll_tabs" title="Change picture-colection tab to real images.">Photography</a></li>
+						<li><a onclick="changeColl('blender')" class="tab_active pic_coll_tabs">Blender</a></li>
+						<li><a onclick="changeColl('photography')" class="pic_coll_tabs">Photography</a></li>
 					</ul>
 				</nav>
 				<div id="blender" class="pic_coll">
-					<h3>Here's a collection of photos I made with the open-source software <a href="https://blender.org" target="_blank" titel="Link to official Blender-webpage.">Blender</a>! Color-grading was done using <a href="https://www.adobe.com/de/products/photoshop-lightroom-classic.html" target="_blank">Lightroom-Classic</a>!</h3>
+					<h3>Here's a collection of photos I made with the open-source software <a href="https://blender.org" target="_blank">Blender</a>! Color-grading was done using <a href="https://www.adobe.com/de/products/photoshop-lightroom-classic.html" target="_blank">Lightroom-Classic</a>!</h3>
 					<div class="row">
 						<img loading="lazy" src="https://i.postimg.cc/tgxSVBZf/richardapps-spaceship-testrender-widescreen.jpg" onclick="window.open('https://www.artstation.com/artwork/qe0eo2', '_blank')" alt="A cinematic image of a spaceship flying trough a space-station, created by me with Blender 3D." preload="none">
 						<img loading="lazy" src="https://i.postimg.cc/Gm9SbLcb/richardapps-cinematic-space-render3.jpg" onclick="window.open('https://www.artstation.com/artwork/rJzJOe', '_blank')" alt="A cinematic image of a spaceship flying above the ground with mountains in the background, created by me with Blender 3D." preload="none">
@@ -167,42 +192,66 @@
 		</div>
 		
 		<div id="about" class="tabs">
-			<h2>ABOUT ME</h2>
-			<br>
-			<p>Hi! Firstly, thank you for visiting my website! Glad to have you here.</p>
-			<br>
-			<p>As to me, my name is Richard. <em>(Crazy, right?)</em> I'm really interested in everything computer related! I've done some coding, 3D-art, game-development - even digital drawing!</p>
-			<p><em>(I'm no expert in any of these, but it's fun!)</em></p>
-			<br>
-			<p>I learned a bit of those during my journey: <em>Python, HTML/CSS, Javascript, GD-Script, Blender, Lightroom, Inkscape</em></p>
-			<br>
-			<p>
-				Regarding my pseudonym 'RichardApps': Since I had limited resources <em>(only a phone)</em> when starting programming / content creation, I started with creating apps for it!
-				This was the first time I really started sharing my work with others, so I've chosen to name myself after that.
-				I decided to keep the name, since it's more or less unique - even though I don't do much mobile development anymore.
-			</p>
-			<br>
-			<p>Furthermore, I love listening to music! <em>(Before you ask, I listen to all genres :P)</em> Take a listen here: <em><a href="https://www.youtube.com/watch?v=QkF3oxziUI4" target="_blank" title="Link to a YouTube video of a song I like.">MYSTERY GIFT</a></em></p>
-			<br>
-			<p>I also play games! Some of my favourites are:</p>
-			<table>
-				<tr><td>-> Metro Exodus</td><td class="desc"><em>This game has such a unique ambience and immersion to it... Good story, likable characters and one of the best OST!!</em></td></tr>
-				<tr><td>-> Cyberpunk 2077</td><td class="desc"><em>Actually playable since 2.0 Patch. The DLC is so good! Worth playing.</em></td></tr>
-				<tr><td>-> The Elder Scrolls: Skyrim V</td><td class="desc"><em>Nothing much to say about this, probally one of the best RPG's ever made!</em></td></tr>
-				<tr><td>-> Portal</td><td class="desc"><em>A classic! Worth playing, still holds up.</em></td></tr>
-			</table>
-			<br>
-			<p>Socials:</p>
-			<p class="contact_link"><i class="fa-brands fa-instagram fa-fw"></i><a href="https://instagram.com/luqiedesign" target="_blank" title="My instagram account.">Instagram</a></p>
-			<p class="contact_link"><i class="fa-brands fa-google fa-fw"></i><a href="https://youtube.com/@RichardApps." target="_blank" title="My YouTube account.">YouTube</a></p>
-			<p class="contact_link"><i class="fa-brands fa-github fa-fw"></i><a href="https://github.com/richard-apps" target="_blank" title="My GitHub account.">GitHub</a></p>
-			<p class="contact_link"><i class="fa-brands fa-discord fa-fw"></i><a href="https://discord.com/users/506508225722580992" target="_blank" title="My Discord Account.">Discord</a></p>
-			<p class="contact_link"><i class="fa-brands fa-artstation fa-fw"></i><a href="https://www.artstation.com/richardapps" target="_blank" title="My ArtStation Account.">ArtStation</a></p>
-			<br>
-			<p><em>(I mostly prefer Discord for contact!)</em></p>
-			<br>
-			<p>Questions, wishes, inquiries, problems, and everything else can go to:</p>
-			<p><a href="mailto:support@richardapps.net" target="_blank" title="Contact me.">support@richardapps.net</a></p>
+			<div class="grid">
+				<div class="grid_row">
+					<div class="grid_row_box">
+						<h2>About me</h2>
+						<p>Hi! Firstly, thank you for visiting my website! Glad to have you here.</p>
+						<p>As to me, my name is Richard. <em>(Crazy, right?)</em> I'm really interested in everything computer related!</p>
+						<p>I've done some coding, 3D-art, game-development - even digital drawing!</p>
+						<p><em>I'm no expert in any of these, but it's fun!)</em></p>
+					</div>
+					<div class="grid_row_box">
+						<h2>Skills</h2>
+						<p>Some things I learned during my journey:</p>
+						<p>-> Blender <em>I use it to create some cool 3D worlds!</em></p>
+						<p>-> HTML/CSS/JS <em>Obviously used to create this site.</em></p>
+						<p>-> GD-Script <em>The language of Godot! Used for some light game-development.</em></p>
+						<p>-> Python <em>Useful for a lot of projects. Still in the process of learning it, though.</em></p>
+					</div>
+				</div>
+				<div class="grid_row">
+					<div class="grid_row_box">
+						<h2>Pseudonym</h2>
+						<p>Since I had only a phone</em> when starting programming / content creation, I made apps on it! I decided to keep the name, since it's more or less unique - even though I don't do mobile development anymore.</p>
+					</div>
+					<div class="grid_row_box">
+						<h2>Site Goals</h2>
+						<p>Why did I made this site you may ask?</p>
+						<p>It's just nice to have a personal space where I can host and show whatever I want, while having full control over it.</p>
+						<p>Long live the indie-web!</p>
+					</div>
+					<div class="grid_row_box">
+						<h2>Social Media</h2>
+						<p class="contact_link"><i class="fa-brands fa-instagram fa-fw"></i><a href="https://instagram.com/luqiedesign" target="_blank">Instagram</a></p>
+						<p class="contact_link"><i class="fa-brands fa-github fa-fw"></i><a href="https://github.com/richard-apps" target="_blank">GitHub</a></p>
+						<p class="contact_link"><i class="fa-brands fa-artstation fa-fw"></i><a href="https://www.artstation.com/richardapps" target="_blank">Artstation</a></p>
+					</div>
+					<div class="grid_row_box">
+						<h2>Contact</h2>
+						<p>I mostly prefer Discord for contact! As you may have guessed, my username there is 'richardapps'.</p>
+						<br>
+						<p>Questions, wishes, inquiries, problems, and everything else can also go to:</p>
+						<p><a href="mailto:support@richardapps.net" target="_blank">support@richardapps.net</a></p>
+					</div>
+				</div>
+				<div class="grid_row">
+					<div class="grid_row_box">
+						<h2>Resources</h2>
+						<p>Here are some useful resources I use regularly:</p>
+						<br>
+						<p>- development -</p>
+						<p>-> Vercel [<a href="https://www.vercel.com" target="_blank">link</a>] <em>A really good web-hosting platform that offers many features for free! I use it in almost all my projects.</em></p>
+						<p>-> MDN-Docs [<a href="https://developer.mozilla.org/en-US/" target="_blank">link</a>] <em>My go-to platform if I have any problems with HTML/CSS/JS, or for exploring all the posibilities!</em></p>
+						<p>-> Fontshare [<a href="https://www.fontshare.com/" target="_blank">link</a>] <em>Fonts for your website, similar to google-fonts. The library is a bit smaller, but with the same functionality and without trackers!</em></p>
+						<br>
+						<p>- graphics -</p>
+						<p>-> Photopea [<a href="https://www.photopea.com" target="_blank">link</a>] <em>A good browser-based image editor for quick edits!</em></p>
+						<p>-> postimages [<a href="https://postimages.com" target="_blank">link</a>] <em>Best service for hosting your images, without compressing them!</em></p>
+						<p>-> Caesium-ic [<a href="https://github.com/Lymphatus/caesium-image-compressor" target="_blank">link</a>] <em>Desktop software to optimize your images to make your page load faster.</em></p>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </body>
