@@ -12,40 +12,26 @@
     <link rel="stylesheet" href="effects.css">
 </head>
 <body>
-    <video
-		onloadstart="this.playbackRate = 0.65;"
-		autoplay
-		muted
-		loop
-		id="noise_vid"
-		src="src/media/noise.mp4">
-	</video>
-	<div class="vignette"></div>
-	
-	<div id="videohue"></div>
-    <pre>
-██╗    ██╗██╗  ██╗███████╗██████╗ ███████╗     █████╗ ██████╗ ███████╗    ██╗    ██╗███████╗██████╗ 
-██║    ██║██║  ██║██╔════╝██╔══██╗██╔════╝    ██╔══██╗██╔══██╗██╔════╝    ██║    ██║██╔════╝╚════██╗
-██║ █╗ ██║███████║█████╗  ██████╔╝█████╗      ███████║██████╔╝█████╗      ██║ █╗ ██║█████╗    ▄███╔╝
-██║███╗██║██╔══██║██╔══╝  ██╔══██╗██╔══╝      ██╔══██║██╔══██╗██╔══╝      ██║███╗██║██╔══╝    ▀▀══╝ 
-╚███╔███╔╝██║  ██║███████╗██║  ██║███████╗    ██║  ██║██║  ██║███████╗    ╚███╔███╔╝███████╗  ██╗   
- ╚══╝╚══╝ ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚══════╝    ╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝     ╚══╝╚══╝ ╚══════╝  ╚═╝
-</pre>
+	<pre>
+███████╗██╗   ██╗███████╗████████╗███████╗███╗   ███╗    ███████╗ █████╗ ██╗██╗     ██╗   ██╗██████╗ ███████╗
+██╔════╝╚██╗ ██╔╝██╔════╝╚══██╔══╝██╔════╝████╗ ████║    ██╔════╝██╔══██╗██║██║     ██║   ██║██╔══██╗██╔════╝
+███████╗ ╚████╔╝ ███████╗   ██║   █████╗  ██╔████╔██║    █████╗  ███████║██║██║     ██║   ██║██████╔╝█████╗  
+╚════██║  ╚██╔╝  ╚════██║   ██║   ██╔══╝  ██║╚██╔╝██║    ██╔══╝  ██╔══██║██║██║     ██║   ██║██╔══██╗██╔══╝  
+███████║   ██║   ███████║   ██║   ███████╗██║ ╚═╝ ██║    ██║     ██║  ██║██║███████╗╚██████╔╝██║  ██║███████╗
+╚══════╝   ╚═╝   ╚══════╝   ╚═╝   ╚══════╝╚═╝     ╚═╝    ╚═╝     ╚═╝  ╚═╝╚═╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝
+                                                                                                             </pre>
     <br>&nbsp
-    <p>You stumble forward, eyes adjusting to the harsh light.</p>
-    <p>The landscape stretches out before you, an endless expanse of sand.</p>
+    <p>This page appears to be missing.</p>
     <br>&nbsp;
-    <p>How did we end up here?</p>
+    <p>It might have been <em>relocated, deleted</em>, or <em>never existed</em> in the first place!</p>
     <br>&nbsp;
-    <p>A figure emerges from the haze, their features indistinct.</p>
     <br>&nbsp;
-    <p><em>"Lost you way, have you?" </em>they say, their voice low and detached. <em>"This region isn't mapped out, it's not safe out here."</em></p>
+    <p>If you're looking for something specific, try checking the homepage or the archive, which is accessible from the projects tab.</p>
     <br>&nbsp;
-    <p><em>"Anyways.. just go south and you'll be back on the right track in no time.":</em></p>
     <br>&nbsp;
     <a href="index.html">HOMEPAGE</a>
     <footer>
-        <p><em>ERROR 404 - PAGE NOT FOUND</em></p>
+        <p>ERROR 404 - PAGE NOT FOUND</p>
     </footer>
 </body>
 <style>
@@ -65,6 +51,8 @@
         align-items: center;
 
         overflow: hidden;
+
+        background-color: #220707;
     }
 
     pre, p, em, br, a {
@@ -72,6 +60,8 @@
 
         opacity: 0.9;
         white-space: unset;
+
+        text-shadow: none;
     }
 
     pre {
@@ -80,6 +70,11 @@
 
     p, em, a {
         font-size: 1.75rem;
+    }
+
+    p em {
+        opacity: 1.0;
+        text-decoration: underline;
     }
 
     a {
