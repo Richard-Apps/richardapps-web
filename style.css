@@ -1,6 +1,8 @@
 @font-face {
     font-family: 'Terminus';
-    src: url('src/fonts/terminus-webfont.woff2');
+    src: url('src/fonts/terminus-webfont.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
     font-display: swap;
 }
 
@@ -22,7 +24,7 @@ pre:not(#title), code {
 }
 
 body {
-    font-family: 'Terminus', sans-serif;                    
+    font-family: 'Terminus', sans-serif;
 
     background-color: black;
 
@@ -56,8 +58,7 @@ a:link:not(.tab_active, a:hover), a:visited:not(.tab_active), em a:visited {
 
 pre, p, li, h1, h2, h3, h4, td{
     margin: 0;
-
-    font-weight: bold;
+    font-weight: normal;
 }
 
 #sub_title, h4 {
