@@ -46,7 +46,7 @@ Have a great idea for a new feature? We'd love to hear it! Follow these steps:
 2. If not, open a new issue and describe the feature you'd like to see.
 
 ## Feedback
-
+ 
 I welcome any feedback that can help me improve the project. Whether it's a suggestion, a critique, or just a general comment, feel free to share it with me.
 
 Thank you for contributing!
