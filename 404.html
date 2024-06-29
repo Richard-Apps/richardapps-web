@@ -42,6 +42,12 @@
         --bg-color-2: #f50c0c77;
     }
 
+    html, body {
+        overflow: hidden;
+        height: 100%;
+        margin: 0;
+    }
+
     body {
         width: 100vw;
         height: 100vh;
@@ -49,8 +55,6 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-
-        overflow: hidden;
 
         background-color: #220707;
     }
@@ -85,7 +89,7 @@
         background: linear-gradient(45deg, rgba(255, 0, 0, 0.09) 20%, rgba(255, 3, 3, 0.329) 100%);
     }
 
-    a:hover {
+    a:visited:hover, a:hover {
         background-color: red;
         color: white;
         box-shadow: none;
@@ -100,9 +104,22 @@
         bottom: 0;
         left: 0;
         right: 0;
-        padding: 0.5em;
+        padding-bottom: 1.5em;
         text-align: center;
         font-weight: 100;
+    }
+
+    /* << MOBILE >> */
+    @media screen and (max-width: 1050px) {
+        pre {
+            font-size: 1.3vw;
+        }
+
+        p {
+            width: 100%;
+            text-wrap: balance;
+            text-align: center;
+        }
     }
 </style>
 </html>
