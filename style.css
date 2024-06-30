@@ -8,10 +8,9 @@
 
 :root {
     /* Will be overwritten if theme is selected (theme-selections are saved in localStorage) */
-    --main-color: #a4cdf8;
-    --bg-color: rgb(15, 129, 236); /* If your programm has a color widget here, edit it there and paste inner values below */
-    --bg-color: 15, 129, 236; /* Needs to be in this format, so opacity can be controlled individually - mainly used for the scanner*/
-    --bg-color-2: rgba(15, 129, 236, 0.663); /* background-color behind scanner */
+    --main-color: #72b6ff;
+    --bg-color: rgb(15, 129, 236);
+    --bg-color-2: rgba(10, 120, 223, 0.663); /* background-color behind scanner */
     --bg-opacity: 0.294;
     --selection: #3b6d8b;
     --warning-color: rgb(240, 86, 86);

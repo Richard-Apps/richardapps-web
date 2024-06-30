@@ -1,6 +1,9 @@
 const default_hash = '#home';
 let effectsDisabled = localStorage.getItem('effectsDisabled') === 'true';
 
+// remove 'rgb' and brackets from --bg-value so the color can be used in combination with individual opacity-values (rgba)
+document.documentElement.style.setProperty('--bg-color', getComputedStyle(document.documentElement).getPropertyValue('--bg-color').trim().replace(/rgb\(|\)/g, ''));
+
 location = location.hash||default_hash
 changeTab(location.hash.slice(1));
 
@@ -69,7 +72,7 @@ function changeTheme(theme) {
     localStorage.setItem('theme', theme);
     let noise_vid = document.getElementById('noise_vid');
     let rain_vid = document.getElementById('rain_vid');
-    this.innerHTML = theme + '<'
+    // show > and < on selected theme
     let theme_list_items = document.getElementById('theme_list').children;
     Array.from(theme_list_items).forEach(item => {
         let a = item.firstChild
@@ -81,7 +84,17 @@ function changeTheme(theme) {
     })
     // default values
     document.documentElement.style.setProperty('--bg-opacity', '0.294');
-    switch (theme) {
+    rain_vid.style.display = 'none';
+    if (noise_vid.src.includes('noise.mp4')) {noise_vid.src = '/src/media/noise2.mp4';}
+    noise_vid.style.opacity = 0.5;
+    switch (theme) { 
+        case 'ocean':
+            document.documentElement.style.setProperty('--bg-color', '15, 129, 236');
+            document.documentElement.style.setProperty('--bg-color-2', 'rgba(10, 120, 223, 0.663)');
+            document.documentElement.style.setProperty('--main-color', '#72b6ff');
+            document.documentElement.style.setProperty('--selection', '#3b6d8b');
+            noise_vid.style.opacity = 0.3;
+            break;
         case 'rainy':
             document.documentElement.style.setProperty('--bg-color', '15, 129, 236');
             document.documentElement.style.setProperty('--bg-color-2', 'rgba(15, 129, 236, 0.663)');
@@ -95,24 +108,18 @@ function changeTheme(theme) {
             document.documentElement.style.setProperty('--bg-color-2', 'rgba(81, 165, 72, 0.663)');
             document.documentElement.style.setProperty('--main-color', '#6dfd60');
             document.documentElement.style.setProperty('--selection', '#3b8b42');
-            noise_vid.src = '/src/media/noise2.mp4';
-            rain_vid.style.display = 'none';
             break;
         case 'cherry':
             document.documentElement.style.setProperty('--bg-color', '192, 63, 63');
             document.documentElement.style.setProperty('--bg-color-2', 'rgba(165, 72, 72, 0.663)');
             document.documentElement.style.setProperty('--main-color', '#fd6060');
             document.documentElement.style.setProperty('--selection', '#8b3b3b');
-            noise_vid.src = '/src/media/noise2.mp4';
-            rain_vid.style.display = 'none';
             break;
         case 'amber':
             document.documentElement.style.setProperty('--bg-color', '179, 105, 21');
             document.documentElement.style.setProperty('--bg-color-2', 'rgba(179, 109, 4, 0.663)');
             document.documentElement.style.setProperty('--main-color', '#fda93c');
             document.documentElement.style.setProperty('--selection', '#946612');
-            noise_vid.src = '/src/media/noise2.mp4';
-            rain_vid.style.display = 'none';
             break;
         case 'danger':
             document.documentElement.style.setProperty('--bg-color', '121, 6, 2');
@@ -120,11 +127,7 @@ function changeTheme(theme) {
             document.documentElement.style.setProperty('--main-color', '#e62b2b');
             document.documentElement.style.setProperty('--selection', '#941212');
             document.documentElement.style.setProperty('--bg-opacity', '0.494');
-            noise_vid.src = '/src/media/noise2.mp4';
-            rain_vid.style.display = 'none';
             break;
     }
-    if (effectsDisabled) {
-        rain_vid.style.display = 'none';
-    }
+    if (effectsDisabled) {rain_vid.style.display = 'none';}
 }
