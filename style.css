@@ -7,11 +7,11 @@
 }
 
 :root {
-    --main-color: #a4cdf8;
-    --bg-color: rgb(15, 129, 236); /* Change, and paste inner values below */
-    --bg-color: 15, 129, 236; /* Needs to be in this format, so opacity can be controlled individually */
-    --bg-color-2: rgba(15, 129, 236, 0.663);
-    --bg-opacity: 0.194;
+    /* Will be overwritten if theme is selected (theme-selections are saved in localStorage) */
+    --main-color: #72b6ff;
+    --bg-color: rgb(15, 129, 236);
+    --bg-color-2: rgba(10, 120, 223, 0.663); /* background-color behind scanner */
+    --bg-opacity: 0.294;
     --selection: #3b6d8b;
     --warning-color: rgb(240, 86, 86);
     --info-color: #ffffff;
@@ -33,7 +33,7 @@ body {
     color: var(--main-color);
 }
 
-a:link:not(.tab_active, a:hover), a:visited:not(.tab_active), em a:visited {
+a:link:not(.tab_active, a:hover), a:visited:not(.tab_active, a:visited:hover), em a:visited {
     color: var(--main-color);
 }
 
@@ -228,16 +228,9 @@ nav ul li a {
     border: 1px solid var(--main-color);
 }
 
-/* Maybe a bit too destracting.
-.grid_row_box:hover {
-    background: linear-gradient(45deg, rgba(var(--bg-color), 0.05) 70%, rgba(var(--bg-color), 0.2) 110%);
-    scale: 1.02;
+.grid_row_box_shrink {
+    flex-shrink: 5;
 }
-
-.grid_row_box:active {
-    scale: 1.15;
-}
-*/
 
 /* PROJECTS */
 #pr_list {
@@ -292,7 +285,7 @@ nav ul li a {
 
     transition: filter 0.3s ease-in-out;
 
-    width: 0; /* To make it work in Chrome, for some reason */
+    width: 0; /* Needed to make it work in Chrome, for some reason */
 }
 
 .img_desc {
@@ -382,6 +375,9 @@ i {
 
 /* MOBILE */
 @media screen and (max-width: 50em) {
+    #rain_vid {
+        object-fit: fill;
+    }
     .row {
         display: block;
     }
@@ -407,6 +403,7 @@ i {
     }
     .grid_row {
         flex-direction: column;
+        margin-right: 1em;
     }
 }
 

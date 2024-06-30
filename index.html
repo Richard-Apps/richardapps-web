@@ -40,7 +40,8 @@
 		loop
 		playsinline
 		id="noise_vid"
-		src="/src/media/noise.mp4"
+		src="/src/media/noise_2.mp4"
+		poster="/src/media/noise_static.png"
 		>
 	</video>
 
@@ -106,9 +107,24 @@
 				<div class="grid_row">
 					<div class="grid_row_box">
 						<h2>Latest Updates</h2>
-						<p><em>JUNE 15TH, 2024</em> Some minor important changes! Font-weight reduced to make everything sharper, optimized the background videos for faster loading times and fixed the 404 page. :)</p>
+						<p><em>JUNE 30TH, 2024</em> Added Themes! You can switch between them to the right of the update list. 'cherry' is my favorite one :).</p>
+						<p><em>JUNE 15TH, 2024</em> Some important changes! Font-weight reduced to make everything sharper, optimized the background videos for faster loading times and fixed the 404 page. :)</p>
 						<p><em>MAY 24TH, 2024:</em> New animations, added another background, improved the about-page and a lot of minor improvements!</p>
 						<p><em>MAY 20TH, 2024:</em> Redesigned the main- and about-page. Changed from news-tab to home-tab, now presenting more of a 'hub' design.</p>
+					</div>
+					<div class="grid_row_box grid_row_box_shrink">
+						<div id="theme_selector">
+							<h2>THEMES</h2>
+							<div id="theme_list">
+								<p><a onclick="changeTheme('ocean')">> ocean <</a></p>
+								<p><a onclick="changeTheme('terminal')">terminal</a></p>
+								<p><a onclick="changeTheme('cherry')">cherry</a></p>
+								<p><a onclick="changeTheme('amber')">amber</a></p>
+								&nbsp;
+								<p><a onclick="changeTheme('danger')">danger</a></p>
+								<p><a onclick="changeTheme('rainy')">rainy</a></p>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
