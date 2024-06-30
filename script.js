@@ -85,7 +85,7 @@ function changeTheme(theme) {
     // default values
     document.documentElement.style.setProperty('--bg-opacity', '0.294');
     rain_vid.style.display = 'none';
-    if (noise_vid.src.includes('noise.mp4')) {noise_vid.src = '/src/media/noise2.mp4';}
+    if (noise_vid.src.includes('noise.mp4')) {noise_vid.src = '/src/media/noise_2.mp4';}
     noise_vid.style.opacity = 0.5;
     switch (theme) { 
         case 'ocean':

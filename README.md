@@ -3,7 +3,8 @@
 Github-Repository of my personal webpage. Including news, projects, picture grid, about and contact information.
 Made using vanilla HTML/CSS and JavaScript. Also includes basic responsiveness.
 
-Featuring a design inspired by old vintage terminals and cyberpunk themes!
+Featuring a design inspired by old vintage terminals and cyberpunk!
+Now supports themes.
 
 You can view the full website here:
 [richardapps.net](https://richardapps.net)
