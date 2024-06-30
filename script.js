@@ -85,7 +85,7 @@ function changeTheme(theme) {
     // default values
     document.documentElement.style.setProperty('--bg-opacity', '0.294');
     rain_vid.style.display = 'none';
-    if (noise_vid.src.includes('noise.mp4')) {noise_vid.src = '/src/media/noise_2.mp4';}
+    if (noise_vid.src.includes('noise.mp4')) {noise_vid.src = 'https://www.dropbox.com/scl/fi/ae4433c4jwdlmg23cvu4g/noise_2.mp4?rlkey=14r7bbsi3wc9kubw0i0xpp6v4&st=1snwq3f3&raw=1';}
     noise_vid.style.opacity = 0.5;
     switch (theme) { 
         case 'ocean':
@@ -100,7 +100,7 @@ function changeTheme(theme) {
             document.documentElement.style.setProperty('--bg-color-2', 'rgba(15, 129, 236, 0.663)');
             document.documentElement.style.setProperty('--main-color', '#a4cdf8');
             document.documentElement.style.setProperty('--selection', '#3b6d8b');
-            noise_vid.src = '/src/media/noise.mp4';
+            noise_vid.src = 'https://www.dropbox.com/scl/fi/v7h82qlli9u2qm2fs9sb1/noise.mp4?rlkey=lsp1obwd94qx653tvzrvunnqt&st=3zhx2fhk&raw=1';
             rain_vid.style.display = 'block';
             break;
         case 'terminal':
