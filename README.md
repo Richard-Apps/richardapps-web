@@ -1,7 +1,7 @@
 
 # RichardApps - Webpage
 Github-Repository of my personal webpage. Including news, projects, picture grid, about and contact information.
-Made using vanilla HTML/CSS and JavaScript.
+Made using vanilla HTML/CSS and JavaScript. Also includes basic responsiveness.
 
 Featuring a design inspired by old vintage terminals and cyberpunk themes!
 
@@ -16,11 +16,13 @@ You can view the full website here:
 
 ## Roadmap
 
-- [ ] Add a functional dynamic page content for news and updates
+- [ ] Add a functional dynamic page content for news, updates and blog-posts
+
+- [ ] Make the effects more performant on mobile
+
+- [ ] Add more individual pages
 
 - [ ] Add more effects to improve on the terminal-look (screen curvature)
-
-- [ ] Finish/complete the project list
 
 ## Contributing
 
@@ -46,9 +48,6 @@ Credit is not required, altough highly appreciated.
 
 #### Background Rain Video
 - Video by [RainStockEffect](https://pixabay.com/users/rainstockeffect-34483686/) / [Pixabay](https://pixabay.com/videos/raindrops-drops-rain-water-liquid-158959/)
-
-#### Inspired by
-- [cool-retro-term](https://github.com/Swordfish90/cool-retro-term)
 
 #### ASCII created with
 - [TAAG](https://patorjk.com/software/taag) by patorjk
