@@ -1,4 +1,6 @@
 const default_hash = '#home';
+const fade_in_delay = 27 // lower values makes the elements show faster on site loading and while changing tabs
+
 let effectsDisabled = localStorage.getItem('effectsDisabled') === 'true';
 
 // remove 'rgb' and brackets from --bg-value so the color can be used in combination with individual opacity-values (rgba)
@@ -30,7 +32,7 @@ function changeTab(tab) {
                     element.classList.add('visible');
                     element.classList.add('fade-in-anim');
                 }, delay);
-                delay += 27;
+                delay += fade_in_delay;
             });
         }
     } catch {
@@ -54,7 +56,7 @@ link.href = 'effects.css';
 
 let nfbText = document.getElementById('changeEffects');
 
-// Turn off major effects on default for mobile devices
+// Turn off major effects on default for mobile devices (performance issues on some mobile browsers)
 if (window.matchMedia("(max-width: 767px)").matches && !('effectsDisabled' in localStorage)) { effectsDisabled = true;}
 if (!effectsDisabled) { document.head.appendChild(link); nfbText.innerHTML = 'Don\'t like the effects? Click <a onclick="changeEffects()">HERE</a> to turn them off.';}
 
@@ -63,7 +65,7 @@ function changeEffects() {
     location.reload();
 }
 
-// THEMES
+// Themes
 if ('theme' in localStorage) {
     changeTheme(localStorage.getItem('theme'));
 }
@@ -83,50 +85,56 @@ function changeTheme(theme) {
         }
     })
     // default values
-    document.documentElement.style.setProperty('--bg-opacity', '0.294');
+    document.documentElement.style.setProperty('--bg-opacity', '0.31');
     rain_vid.style.display = 'none';
-    if (noise_vid.src.includes('noise.mp4')) {noise_vid.src = 'https://www.dropbox.com/scl/fi/ae4433c4jwdlmg23cvu4g/noise_2.mp4?rlkey=14r7bbsi3wc9kubw0i0xpp6v4&st=1snwq3f3&raw=1';}
     noise_vid.style.opacity = 0.5;
+    if (!document.head.contains(link) && !effectsDisabled) {document.head.appendChild(link);}
     switch (theme) { 
         case 'ocean':
             document.documentElement.style.setProperty('--bg-color', '15, 129, 236');
-            document.documentElement.style.setProperty('--bg-color-2', 'rgba(10, 120, 223, 0.663)');
             document.documentElement.style.setProperty('--main-color', '#72b6ff');
             document.documentElement.style.setProperty('--selection', '#3b6d8b');
             noise_vid.style.opacity = 0.3;
             break;
-        case 'rainy':
-            document.documentElement.style.setProperty('--bg-color', '15, 129, 236');
-            document.documentElement.style.setProperty('--bg-color-2', 'rgba(15, 129, 236, 0.663)');
-            document.documentElement.style.setProperty('--main-color', '#a4cdf8');
-            document.documentElement.style.setProperty('--selection', '#3b6d8b');
-            noise_vid.src = 'https://www.dropbox.com/scl/fi/v7h82qlli9u2qm2fs9sb1/noise.mp4?rlkey=lsp1obwd94qx653tvzrvunnqt&st=3zhx2fhk&raw=1';
-            rain_vid.style.display = 'block';
-            break;
         case 'terminal':
             document.documentElement.style.setProperty('--bg-color', '61, 150, 51');
-            document.documentElement.style.setProperty('--bg-color-2', 'rgba(81, 165, 72, 0.663)');
             document.documentElement.style.setProperty('--main-color', '#6dfd60');
             document.documentElement.style.setProperty('--selection', '#3b8b42');
             break;
         case 'cherry':
             document.documentElement.style.setProperty('--bg-color', '192, 63, 63');
-            document.documentElement.style.setProperty('--bg-color-2', 'rgba(165, 72, 72, 0.663)');
             document.documentElement.style.setProperty('--main-color', '#fd6060');
             document.documentElement.style.setProperty('--selection', '#8b3b3b');
             break;
         case 'amber':
             document.documentElement.style.setProperty('--bg-color', '179, 105, 21');
-            document.documentElement.style.setProperty('--bg-color-2', 'rgba(179, 109, 4, 0.663)');
             document.documentElement.style.setProperty('--main-color', '#fda93c');
             document.documentElement.style.setProperty('--selection', '#946612');
             break;
+        case 'deepsea':
+            document.documentElement.style.setProperty('--bg-color', '9, 95, 92');
+            document.documentElement.style.setProperty('--main-color', '#cbe9d1');
+            document.documentElement.style.setProperty('--selection', '#56705a');
+            break;
         case 'danger':
             document.documentElement.style.setProperty('--bg-color', '121, 6, 2');
-            document.documentElement.style.setProperty('--bg-color-2', 'rgb(75, 8, 8)');
             document.documentElement.style.setProperty('--main-color', '#e62b2b');
             document.documentElement.style.setProperty('--selection', '#941212');
             document.documentElement.style.setProperty('--bg-opacity', '0.494');
+            break;
+        case 'rainy':
+            document.documentElement.style.setProperty('--bg-color', '15, 129, 236');
+            document.documentElement.style.setProperty('--main-color', '#a4cdf8');
+            document.documentElement.style.setProperty('--selection', '#3b6d8b');
+            rain_vid.style.display = 'block';
+            break;
+        case 'win95':
+            document.documentElement.style.setProperty('--bg-color', '0, 128, 129');
+            document.documentElement.style.setProperty('--main-color', '#ffffff');
+            document.documentElement.style.setProperty('--selection', '#3b6d8b');
+            document.documentElement.style.setProperty('--bg-opacity', '1.0');
+            noise_vid.style.opacity = 0;
+            document.head.removeChild(link);
             break;
     }
     if (effectsDisabled) {rain_vid.style.display = 'none';}

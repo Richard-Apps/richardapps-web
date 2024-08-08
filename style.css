@@ -9,9 +9,8 @@
 :root {
     /* Will be overwritten if theme is selected (theme-selections are saved in localStorage) */
     --main-color: #72b6ff;
-    --bg-color: rgb(15, 129, 236);
-    --bg-color-2: rgba(10, 120, 223, 0.663); /* background-color behind scanner */
-    --bg-opacity: 0.294;
+    --bg-color: rgb(15, 129, 236); /* needs to be in rgb format */
+    --bg-opacity: 0.31;
     --selection: #3b6d8b;
     --warning-color: rgb(240, 86, 86);
     --info-color: #ffffff;
@@ -77,11 +76,11 @@ pre, p, li, h1, h2, h3, h4, td{
 }
 
 /* NOISE */
-#videohue {
-    opacity: var(--bg-opacity);
+#videohue { /* used for background color */
     display: block;
 
-    background: var(--bg-color-2);
+    background: rgba(var(--bg-color), var(--bg-opacity));
+    opacity: 0.5;
 }
 
 #videohue, #noise_vid, .vignette, #rain_vid {
@@ -209,6 +208,7 @@ nav ul li a {
     border: solid var(--main-color);
     padding: 1.5em;
     backdrop-filter: blur(100px);
+    background: linear-gradient(45deg, rgba(var(--bg-color), 0.05) 70%, rgba(var(--bg-color), 0.2) 110%);
 }
 
 /* GRID-CONTENT (HOME/ABOUT) */
