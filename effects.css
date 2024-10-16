@@ -1,0 +1,25 @@
+pre, p, li, h1, h2, h3, h4, td {
+    text-shadow: 0 0 7px var(--main-color), 0 0 25px var(--main-color), 0 0 40px var(--main-color);
+}
+
+.pr_warning, .pr_warning em {
+    text-shadow: 0 0 7px var(--warning-color), 0 0 20px var(--warning-color), 0 0 40px var(--warning-color);
+}
+
+.pr_info, .pr_info em{
+    text-shadow: 0 0 7px var(--info-color), 0 0 20px var(--info-color), 0 0 40px var(--info-color);
+}
+
+#noise_vid {
+    object-fit: cover;
+    filter: brightness(0.1);
+}
+
+#noise_vid {
+    opacity: 0.5;
+}
+
+/* not displayed by default */
+#noise_vid {
+    display: block;
+}

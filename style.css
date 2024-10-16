@@ -1,0 +1,465 @@
+@font-face {
+    font-family: 'Terminus';
+    src: url('src/fonts/terminus-webfont.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+:root {
+    /* Will be overwritten if theme is selected (theme-selections are saved in localStorage) */
+    --main-color: #72b6ff;
+    --bg-color: rgb(15, 129, 236); /* needs to be in rgb format */
+    --bg-opacity: 0.31;
+    --selection: #3b6d8b;
+    --warning-color: rgb(240, 86, 86);
+    --info-color: #ffffff;
+
+    font-size: 10px;
+}
+
+pre:not(#title), code {
+    white-space: pre-wrap;
+}
+
+body {
+    font-family: 'Terminus', sans-serif;
+
+    background-color: black;
+
+    overflow-x: hidden;
+
+    color: var(--main-color);
+}
+
+a:link:not(.tab_active, a:hover), a:visited:not(.tab_active, a:visited:hover), em a:visited {
+    color: var(--main-color);
+}
+
+#canvas {
+    font-size: 1.75em;
+    padding: 1.8em;
+
+    height: 100%;
+
+    transform: translateZ(0);
+}
+
+#title {
+    width: 100%;
+    font-size: 1.3em;
+    font-family: 'Courier New', Courier, monospace;
+    -webkit-user-select: none;
+    user-select: none;
+
+    margin-bottom: 1em;
+}
+
+pre, p, li, h1, h2, h3, h4, td{
+    margin: 0;
+    font-weight: normal;
+}
+
+#sub_title, h4 {
+    font-size: 1em;
+}
+
+#changeEffects a {
+    text-decoration: underline;
+}
+
+#div_h {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: .2em;
+}
+
+/* NOISE */
+#videohue { /* used for background color */
+    display: block;
+
+    background: rgba(var(--bg-color), var(--bg-opacity));
+    opacity: 0.5;
+}
+
+#videohue, #noise_vid, .vignette, #rain_vid {
+    position: fixed;
+    overflow: hidden;
+
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+    height: 100vh;
+    width: 100vw;
+
+    transform: translateZ(0);
+}
+
+.vignette {
+    opacity: 0.2;
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0) 50%, rgb(var(--bg-color)) 250%);
+}
+
+/* RAIN VIDEO */
+#rain_vid {
+    opacity: 0.125;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* NAV BAR */
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline-block;
+}
+
+nav ul li:not(:last-child) {
+    padding-right: 2.5em;
+}
+
+nav ul li a {
+    display: block;
+    text-decoration: underline;
+
+    padding: 0.2em 0.3em;
+
+    transition: background-color 0.1s ease-out;
+}
+
+.tab_active {
+    background-color: var(--main-color);
+    color:rgba(24, 45, 75, 0.616);
+    text-decoration: none;
+}
+
+@media (hover: hover) {
+    a:hover {
+        background-color: var(--main-color);
+        cursor: pointer;
+        color: rgba(24, 45, 75, 0.616);
+
+        transition: color box-shadow 0.1s;
+
+        text-decoration: none;
+    }
+    a:hover:not(.tab_switcher, .pic_coll_tabs) {
+        box-shadow: 0 0 18px 0px var(--main-color);
+    }
+}
+
+/* PRINT ANIMATION */
+.fade-in {
+    opacity: 0;
+    /*transform: translateY(20px);*/
+}
+
+.fade-in.visible:not(em) {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fade-in.visible em {
+    opacity: 0.7;
+    transform: translateY(0);
+}
+
+@keyframes fade-in-anim {
+    0% {
+        opacity: 0.75;
+        transform: scale(0.975);
+    }
+    35% {
+        opacity: 0.8
+    }
+    
+    100% {
+        opacity: 1.0;
+        transform: scale(1.0);
+    }
+}
+
+.fade-in-anim:not(em) {
+    animation: fade-in-anim 0.5s ease-in-out;
+}
+
+/* SELECT */
+::selection {
+    background-color: var(--selection);
+}
+
+/* PAGES */ 
+.invisible {
+    display: none;
+}
+
+.tabs:not(:target) {
+    display: none;
+}
+
+.tabs {
+    border: solid var(--main-color);
+    padding: 1.5em;
+    backdrop-filter: blur(100px);
+    background: linear-gradient(45deg, rgba(var(--bg-color), 0.05) 70%, rgba(var(--bg-color), 0.2) 110%);
+}
+
+/* GRID-CONTENT (HOME/ABOUT) */
+.grid_row, .grid {
+    display: flex;
+    gap: 1em;
+}
+
+.grid {
+    flex-direction: column;
+}
+
+.grid_row_box {
+    padding: .5em;
+    width: 100%;
+
+    border: 1px solid var(--main-color);
+}
+
+.grid_row_box_shrink {
+    flex-shrink: 5;
+}
+
+/* PROJECTS */
+#pr_list {
+    padding-left: 0;
+}
+
+#pr_list li {
+    list-style: none;
+    border: solid var(--main-color);
+    border-width: 1px;
+    padding: .5em;
+    
+    background: linear-gradient(45deg, rgba(var(--bg-color), 0.05) 70%, rgba(var(--bg-color), 0.2) 110%);
+}
+
+#pr_list li:not(:last-child) {
+    margin-bottom: 1.5em;
+}
+
+#pr_list li a {
+    padding: 0.1em 0;
+}
+
+.pr_title {
+    font-size: 1.2em;
+}
+
+.pr_warning, .pr_warning em{
+    color: var(--warning-color);
+}
+
+.pr_info, .pr_info em{
+    color: var(--info-color);
+}
+
+/* PICTURES */
+.row, .img_container {
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+    
+    display: flex;
+    justify-content: space-between;
+    gap: 1.5em;
+    
+    width: 100%;
+}
+
+.row img, .img_container {
+    flex: 1 1 auto;
+    -webkit-user-select: none;
+    user-select: none;
+
+    transition: filter 0.3s ease-in-out;
+
+    width: 0; /* Needed to make it work in Chrome, for some reason */
+}
+
+.img_desc {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    vertical-align: bottom;
+}
+
+.img_desc {
+    align-items: end;
+    filter: opacity(0%);
+    transition: .3s;
+}
+
+.img_desc:hover {
+    filter: opacity(100%);
+    background: linear-gradient(transparent 50%, black);
+}
+
+.img_container {
+    position: relative;
+}
+
+.row img:hover {
+    filter: brightness(1.5);
+    cursor: pointer;
+}
+
+#photography .row img:hover {
+    filter: brightness(1.2);
+    cursor: default;
+}
+
+.pic_coll:not(:first-of-type) {
+    display: none;
+}
+
+.pic_coll div img {
+    filter: brightness(1.2)
+}
+
+#pictures_list nav ul li a {
+    padding: 0.2em 0.3em;
+    user-select: none;
+}
+
+#pictures_list nav {
+    margin-top: -.5em;
+}
+
+/* ABOUT */
+table {
+    width: 100%;
+}
+
+.desc {
+    padding-left: 1.em;
+    width: max-content;
+    display: flex;
+    justify-content: left;
+    text-align: left;
+}
+
+p em {
+    opacity: 0.7;
+}
+
+em a {
+    transition: background-color 0.4s ease-out;
+}
+
+i {
+    margin-right: .75em;
+    vertical-align: middle;
+}
+
+.contact_link {
+    margin-bottom: .25em;
+}
+
+/* CONTACT */
+#contact p a {
+    text-decoration: underline;
+}
+
+/* MOBILE */
+@media screen and (max-width: 50em) {
+    #rain_vid {
+        object-fit: fill;
+    }
+    .row {
+        display: block;
+    }
+    .row img {
+        width: 100%;
+    }
+    .img_desc {
+        filter: opacity(100%);
+        left: 100%;
+        padding: 0 .5em;
+        align-items: start;
+    }
+    .img_desc:hover {
+        background: none;
+    }
+    .row_photography {
+        flex-direction: column;
+        display:flex;
+        gap: 0;
+    }
+    .img_container {
+        width: 50%;
+    }
+    .grid_row {
+        flex-direction: column;
+        margin-right: 1em;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .contact_link {
+        margin-top: .5em;
+    }
+    .contact_link {
+        margin-bottom: .75em;
+    }
+    .contact_link a {
+        padding: 0.25em 0 0.25em 0;
+    }
+    #nav_tabs ul li:not(:last-child) {
+        padding-right: 0;
+    }
+    #nav_tabs ul {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+@media screen and (max-width: 1050px) {
+    #title {
+        font-size: 2.3vw;
+        margin-bottom: 2em;
+    }
+    #canvas {
+        padding: 0.5em;
+    }
+    .tabs {
+        padding: 0.75em;
+    }
+}
+
+@media screen and (min-width: 1600px) {
+    /* Prevent the images from getting too big on wide screens */
+    .row img {
+        max-width: 800px;
+    }
+    .row {
+        justify-content: left;
+    }
+}
+
+/* To comply with outlinenone.com :) */
+:focus {
+    outline: 2px solid var(--main-color);
+    color: var(--main-color);
+    background: rgba(var(--bg-color), 0.3);
+    
+    text-decoration: none;
+}
+
+/* Will be overwritten if effects enabled */
+#noise_vid, #rain_vid {
+    display: none;
+}

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="RichardApps">
+    <title>404 - PAGE NOT FOUND</title>
+
+    <link rel="icon" type="image/png" href="src/media/favicon.png">
+    
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/effects.css">
+</head>
+<body>
+	<pre>
+███████╗██╗   ██╗███████╗████████╗███████╗███╗   ███╗    ███████╗ █████╗ ██╗██╗     ██╗   ██╗██████╗ ███████╗
+██╔════╝╚██╗ ██╔╝██╔════╝╚══██╔══╝██╔════╝████╗ ████║    ██╔════╝██╔══██╗██║██║     ██║   ██║██╔══██╗██╔════╝
+███████╗ ╚████╔╝ ███████╗   ██║   █████╗  ██╔████╔██║    █████╗  ███████║██║██║     ██║   ██║██████╔╝█████╗  
+╚════██║  ╚██╔╝  ╚════██║   ██║   ██╔══╝  ██║╚██╔╝██║    ██╔══╝  ██╔══██║██║██║     ██║   ██║██╔══██╗██╔══╝  
+███████║   ██║   ███████║   ██║   ███████╗██║ ╚═╝ ██║    ██║     ██║  ██║██║███████╗╚██████╔╝██║  ██║███████╗
+╚══════╝   ╚═╝   ╚══════╝   ╚═╝   ╚══════╝╚═╝     ╚═╝    ╚═╝     ╚═╝  ╚═╝╚═╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝
+                                                                                                             </pre>
+    <br>&nbsp
+    <p>This page appears to be missing.</p>
+    <br>&nbsp;
+    <p>It might have been <em>relocated, deleted</em>, or <em>never existed</em> in the first place!</p>
+    <br>&nbsp;
+    <br>&nbsp;
+    <p>If you're looking for something specific, try checking the homepage or the archive, which is accessible from the projects tab.</p>
+    <br>&nbsp;
+    <br>&nbsp;
+    <a href="/index.html">HOMEPAGE</a>
+    <footer>
+        <p>ERROR 404 - PAGE NOT FOUND</p>
+    </footer>
+</body>
+<style>
+    :root {
+        --main-color: #f32121;
+        --bg-color: rgb(224, 20, 20); /* Change, and paste inner values below */
+        --bg-color: 224, 20, 20; /* Needs to be in this format, so opacity can be controlled individually */
+        --bg-color-2: #f50c0c77;
+    }
+
+    html, body {
+        overflow: hidden;
+        height: 100%;
+        margin: 0;
+    }
+
+    body {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        background-color: #220707;
+    }
+
+    pre, p, em, br, a {
+        z-index: 5;
+
+        opacity: 0.9;
+        white-space: unset;
+
+        text-shadow: none;
+    }
+
+    pre {
+        user-select: none;
+    }
+
+    p, em, a {
+        font-size: 1.75rem;
+    }
+
+    p em {
+        opacity: 1.0;
+        text-decoration: underline;
+    }
+
+    a {
+        border: 1px solid red;
+        padding: 0.25em 1em 0.25em 1em;
+        text-decoration: none;
+
+        background: linear-gradient(45deg, rgba(255, 0, 0, 0.09) 20%, rgba(255, 3, 3, 0.329) 100%);
+    }
+
+    a:visited:hover, a:hover {
+        background-color: red;
+        color: white;
+        box-shadow: none;
+    }
+
+    #noise_vid {
+        opacity: 0.4;
+    }
+
+    footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding-bottom: 1.5em;
+        text-align: center;
+        font-weight: 100;
+    }
+
+    /* << MOBILE >> */
+    @media screen and (max-width: 1050px) {
+        pre {
+            font-size: 1.3vw;
+        }
+
+        p {
+            width: 100%;
+            text-wrap: balance;
+            text-align: center;
+        }
+    }
+</style>
+</html>
