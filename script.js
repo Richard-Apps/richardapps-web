@@ -34,6 +34,11 @@ function changeTab(tab) {
                 }, delay);
                 delay += fade_in_delay;
             });
+        } else {
+            // if effects are disabled make elements visible directly
+            Array.from(elements).forEach(element => {
+                element.classList.add('visible'); // ensure elements are visible
+            });
         }
     } catch {
         location.hash = default_hash;
