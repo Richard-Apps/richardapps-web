@@ -15,16 +15,24 @@ window.addEventListener('hashchange', function() {
 
 function changeTab(tab) {
     try {
+        // Hide all visible elements
         document.querySelectorAll('.fade-in.visible').forEach(element => {
-                element.classList.remove('visible');
-                element.classList.remove('fade-in-anim');
+            element.classList.remove('visible');
+            element.classList.remove('fade-in-anim');
         });
 
-        document.querySelectorAll('.tab_switcher').forEach(element => { element.classList.remove('tab_active');});
+        // Remove active tab class from all tab_switchers
+        document.querySelectorAll('.tab_switcher').forEach(element => { 
+            element.classList.remove('tab_active'); 
+        });
+
+        // Activate the selected tab
         document.getElementById(tab + '_tab').classList.add('tab_active');
 
+        // Show elements of the selected tab
+        let elements = document.getElementById(tab).querySelectorAll('*');
+        
         if (!effectsDisabled) {
-            let elements = document.getElementById(tab).querySelectorAll('*');
             let delay = 0;
             Array.from(elements).forEach(element => {
                 element.classList.add('fade-in');
@@ -33,6 +41,11 @@ function changeTab(tab) {
                     element.classList.add('fade-in-anim');
                 }, delay);
                 delay += fade_in_delay;
+            });
+        } else {
+            // If effects are disabled, make elements visible directly
+            Array.from(elements).forEach(element => {
+                element.classList.add('visible'); // Ensure elements are visible
             });
         }
     } catch {
