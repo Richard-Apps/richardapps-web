@@ -1,12 +1,12 @@
 const default_hash = '#home';
-const fade_in_delay = 27 // lower values makes the elements show faster on site loading and while changing tabs
+const fade_in_delay = 18; // lower values makes the elements show faster on site loading and while changing tabs
 
 let effectsDisabled = localStorage.getItem('effectsDisabled') === 'true';
 
 // remove 'rgb' and brackets from --bg-value so the color can be used in combination with individual opacity-values (rgba)
 document.documentElement.style.setProperty('--bg-color', getComputedStyle(document.documentElement).getPropertyValue('--bg-color').trim().replace(/rgb\(|\)/g, ''));
 
-location = location.hash||default_hash
+location = location.hash||default_hash;
 changeTab(location.hash.slice(1));
 
 window.addEventListener('hashchange', function() {
@@ -71,11 +71,19 @@ let nfbText = document.getElementById('changeEffects');
 
 // Turn off major effects on default for mobile devices (performance issues on some mobile browsers)
 if (window.matchMedia("(max-width: 767px)").matches && !('effectsDisabled' in localStorage)) { effectsDisabled = true;}
-if (!effectsDisabled) { document.head.appendChild(link); nfbText.innerHTML = 'Don\'t like the effects? Click <a onclick="changeEffects()">HERE</a> to turn them off.';}
+if (!effectsDisabled) {
+    document.head.appendChild(link);
+    nfbText.innerHTML = 'Don\'t like the effects? Click <a onclick="changeEffects()">HERE</a> to turn them off.';
+}
 
 function changeEffects() {
     localStorage.setItem('effectsDisabled', !effectsDisabled);
     location.reload();
+}
+
+// Close details-tags on default for mobile devices to reduce large amount of text on home-tab
+if (window.matchMedia("(max-width: 767px)").matches) {
+    document.querySelectorAll('details').forEach(details => {details.removeAttribute('open');})
 }
 
 // Themes
@@ -85,7 +93,6 @@ if ('theme' in localStorage) {
 
 function changeTheme(theme) {
     localStorage.setItem('theme', theme);
-    let noise_vid = document.getElementById('noise_vid');
     let rain_vid = document.getElementById('rain_vid');
     // show > and < on selected theme
     let theme_list_items = document.getElementById('theme_list').children;
@@ -100,14 +107,12 @@ function changeTheme(theme) {
     // default values
     document.documentElement.style.setProperty('--bg-opacity', '0.31');
     rain_vid.style.display = 'none';
-    noise_vid.style.opacity = 0.5;
     if (!document.head.contains(link) && !effectsDisabled) {document.head.appendChild(link);}
     switch (theme) { 
         case 'ocean':
             document.documentElement.style.setProperty('--bg-color', '15, 129, 236');
             document.documentElement.style.setProperty('--main-color', '#72b6ff');
             document.documentElement.style.setProperty('--selection', '#3b6d8b');
-            noise_vid.style.opacity = 0.3;
             break;
         case 'terminal':
             document.documentElement.style.setProperty('--bg-color', '61, 150, 51');
@@ -146,9 +151,11 @@ function changeTheme(theme) {
             document.documentElement.style.setProperty('--main-color', '#ffffff');
             document.documentElement.style.setProperty('--selection', '#3b6d8b');
             document.documentElement.style.setProperty('--bg-opacity', '1.0');
-            noise_vid.style.opacity = 0;
             document.head.removeChild(link);
             break;
     }
+    // Main-color with 40% opacity (Adding hex alpha AA to #RRGGBB)
+    document.documentElement.style.setProperty('--main-color-40', document.documentElement.style.getPropertyValue('--main-color') + '66');
+   
     if (effectsDisabled) {rain_vid.style.display = 'none';}
 }
