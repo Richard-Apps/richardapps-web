@@ -9,7 +9,6 @@
 	<title>RichardApps' Personal Website: Coding, Photography, and More</title>
 	
 	<link rel="icon" type="image/png" href="src/media/favicon.png">
-	<link rel="apple-touch-icon" href="apple-touch-icon.png">
 	<link rel="canonical" href="https://www.richardapps.net">
 
 	<script src="script.js" defer></script>
@@ -28,39 +27,25 @@
 	<meta name="revisit-after" content="7 days">
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
 </head>
 
 <body>
 	<video
-		preload="none"
-		onloadstart="this.playbackRate = 0.65;"
-		autoplay
-		muted
-		loop
-		playsinline
-		id="noise_vid"
-		src="https://files.catbox.moe/hop8wg.mp4"
-		poster="/src/media/noise_static.png"
-		>
-	</video>
-
-	<video
-		preload="none"
+		preload="metadata"
 		onloadstart="this.playbackRate = 0.85;"
 		autoplay
 		muted
 		loop
 		playsinline
 		id="rain_vid"
-		src="https://files.catbox.moe/i7le27.mp4"
 		poster="/src/media/rain_bg_static.png"
-		>
+		src="/src/media/rain_bg.mp4">
 	</video>
-
+	<img id="grunge_overlay">
+	<img id="noise_overlay">
 	<div class="vignette"></div>
-
 	<div id="videohue"></div>
+
 	<div id="canvas">
 		<header>
 			<pre id="title">    ____  _      __                   _____                    
@@ -72,6 +57,7 @@
 			<h1 id="sub_title">Coding, photography, 3D-art and personal projects!</h1>
 			<p id="changeEffects">Want some fancy effects? Click <a onclick="changeEffects()">HERE</a> to turn them on.</p>
 		</header>
+		
 		<br>
 		<p>Some things you might be interested in:</p>
 		<nav id="nav_tabs">
@@ -83,12 +69,13 @@
 				<li><a href="#about" class="tab_switcher" id="about_tab">About</a></li>
 			</ul>
 		</nav>
+
 		<div id="home" class="tabs">
 			<div class="grid">
 				<div class="grid_row">
 					<div class="grid_row_box">
-						<h2>Welcome visitor!</h2>
-						<p><em>Updated on AUGUST 8TH, 2024</em></p>
+						<h2 id="welcome_title">Welcome visitor!</h2>
+						<p><em>★ Updated on AUGUST 8TH, 2024:</em></p>
 						<br>
 						<p>This is my personal webpage with all my projects, images, news and more! Be sure to take a look around.</p>
 						<br>
@@ -100,32 +87,44 @@
 				</div>
 				<div class="grid_row">
 					<div class="grid_row_box">
-						<h2>Latest Updates</h2>
-						<p><em>AUGUST 8TH, 2024</em> More themes, a lot of QoL-improvements and a updated welcome post.</p>
-						<p><em>JUNE 30TH, 2024</em> Added Themes! You can switch between them to the right of the update list. 'cherry' is my favorite one :).</p>
-						<p><em>JUNE 15TH, 2024</em> Some important changes! Font-weight reduced to make everything sharper, optimized the background videos for faster loading times and fixed the 404 page. :)</p>
-						<p><em>MAY 24TH, 2024:</em> New animations, added another background, improved the about-page and a lot of minor improvements!</p>
-						<p><em>MAY 20TH, 2024:</em> Redesigned the main- and about-page. Changed from news-tab to home-tab, now presenting more of a 'hub' design.</p>
+						<details open>
+							<summary>
+								<h2>Latest Updates</h2>
+							</summary>
+							<div id="update_list">
+								<p><em>★ OCTOBER 27TH, 2024:</em> Adding collapsible sections to improve the experience on mobile devices, a lot of other small enhancements and new effects.</p>
+								<p><em>★ AUGUST 8TH, 2024:</em> More themes, a lot of QoL-improvements and a updated welcome post.</p>
+								<p><em>★ JUNE 30TH, 2024:</em> Added Themes! You can switch between them to the right of the update list. 'cherry' is my favorite one :).</p>
+								<p><em>★ JUNE 15TH, 2024:</em> Some important changes! Font-weight reduced to make everything sharper, optimized the background videos for faster loading times and fixed the 404 page. :)</p>
+								<p><em>★ MAY 24TH, 2024:</em> New animations, added another background, improved the about-page and a lot of minor improvements!</p>
+								<p><em>★ MAY 20TH, 2024:</em> Redesigned the main- and about-page. Changed from news-tab to home-tab, now presenting more of a 'hub' design.</p>
+							</div>
+						</details>
 					</div>
 					<div class="grid_row_box grid_row_box_shrink">
 						<div id="theme_selector">
-							<h2>THEMES</h2>
-							<div id="theme_list">
-								<p><a onclick="changeTheme('ocean')">> ocean <</a></p>
-								<p><a onclick="changeTheme('terminal')">terminal</a></p>
-								<p><a onclick="changeTheme('cherry')">cherry</a></p>
-								<p><a onclick="changeTheme('amber')">amber</a></p>
-								<p><a onclick="changeTheme('deepsea')">deepsea</a></p>
-								&nbsp;
-								<p><a onclick="changeTheme('danger')">danger</a></p>
-								<p><a onclick="changeTheme('rainy')">rainy</a></p>
-								<p><a onclick="changeTheme('win95')">win95</a></p>
-							</div>
+							<details open>
+								<summary>
+									<h2>Themes</h2>
+								</summary>
+								<div id="theme_list">
+									<p><a onclick="changeTheme('ocean')">> ocean <</a></p>
+									<p><a onclick="changeTheme('terminal')">terminal</a></p>
+									<p><a onclick="changeTheme('cherry')">cherry</a></p>
+									<p><a onclick="changeTheme('amber')">amber</a></p>
+									<p><a onclick="changeTheme('deepsea')">deepsea</a></p>
+									&nbsp;
+									<p><a onclick="changeTheme('danger')">danger</a></p>
+									<p><a onclick="changeTheme('rainy')">rainy</a></p>
+									<p><a onclick="changeTheme('win95')">win95</a></p>
+								</div>
+							</details>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+
 		<div id="projects" class="tabs">
 			<h2>PROJECTS</h2>
 			<h3>A short list of projects made by me!</h3>
@@ -142,6 +141,12 @@
 					<p class="pr_warning">[!] Still under development, not fully functional yet! (Current Version only works on Chrome, for now)</p>
 					<br>
 					<p><a href="https://visualinc.richardapps.net" target="_blank">VISIT PAGE</a></p>
+				</li>
+				<li>
+					<p class="pr_title">Firefox-ASCII</p>
+					<p class="pr_desc">A simple userContent.css file that edits the appearance of the new-tab in Firefox.</p>
+					<br>
+					<p><a href="https://github.com/Richard-Apps/firefox-ascii" target="_blank">VISIT PAGE</a></p>
 				</li>
 				<li>
 					<p class="pr_title">RichardApps-web</p>
@@ -224,7 +229,6 @@
 						<p>- graphics -</p>
 						<p>-> photopea [<a href="https://www.photopea.com" target="_blank">link</a>] <em>A good browser-based image editor for quick edits!</em></p>
 						<p>-> postimages [<a href="https://postimages.org" target="_blank">link</a>] <em>Best service for hosting your images, without compressing them!</em></p>
-						<p>-> catbox [<a href="https://catbox.moe/" target="_blank">link</a>] <em>Another file hosting software that supports a lot more formats like videos!</em></p>
 						<p>-> caesium-ic [<a href="https://github.com/Lymphatus/caesium-image-compressor" target="_blank">link</a>] <em>Desktop software to optimize your images to make your page load faster.</em></p>
 						<p>-> raw therapee [<a href="https://www.rawtherapee.com/" target="_blank">link</a>] <em>A free lightroom alternative for high quality color grading.</em></p>
 					</div>
@@ -249,7 +253,7 @@
 						<p>Hi! Firstly, thank you for visiting my website! Glad to have you here.</p>
 						<p>As to me, my name is Richard. <em>(Crazy, right?)</em> I'm really interested in everything computer related!</p>
 						<p>I've done some coding, 3D-art, game-development - even digital drawing!</p>
-						<p><em>I'm no real expert in any of these, I just do them as a hobby.)</em></p>
+						<p><em>I'm no real expert in any of these, I just do them as a hobby.</em></p>
 					</div>
 					<div class="grid_row_box">
 						<h2>Skills</h2>

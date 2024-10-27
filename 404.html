@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="/effects.css">
 </head>
 <body>
+	<img id="grunge_overlay">
+	<img id="noise_overlay">
 	<pre>
 ███████╗██╗   ██╗███████╗████████╗███████╗███╗   ███╗    ███████╗ █████╗ ██╗██╗     ██╗   ██╗██████╗ ███████╗
 ██╔════╝╚██╗ ██╔╝██╔════╝╚══██╔══╝██╔════╝████╗ ████║    ██╔════╝██╔══██╗██║██║     ██║   ██║██╔══██╗██╔════╝
@@ -26,7 +28,7 @@
     <p>It might have been <em>relocated, deleted</em>, or <em>never existed</em> in the first place!</p>
     <br>&nbsp;
     <br>&nbsp;
-    <p>If you're looking for something specific, try checking the homepage or the archive, which is accessible from the projects tab.</p>
+    <p>If you're looking for something specific, try checking the homepage or the archive. (Which is accessible from the projects tab.)</p>
     <br>&nbsp;
     <br>&nbsp;
     <a href="/index.html">HOMEPAGE</a>
@@ -37,6 +39,7 @@
 <style>
     :root {
         --main-color: #f32121;
+        --main-color-40: #f3212166;
         --bg-color: rgb(224, 20, 20); /* Change, and paste inner values below */
         --bg-color: 224, 20, 20; /* Needs to be in this format, so opacity can be controlled individually */
         --bg-color-2: #f50c0c77;
@@ -60,16 +63,16 @@
     }
 
     pre, p, em, br, a {
-        z-index: 5;
+        z-index: 4;
 
         opacity: 0.9;
         white-space: unset;
 
-        text-shadow: none;
     }
 
     pre {
         user-select: none;
+        text-shadow: none;
     }
 
     p, em, a {
@@ -82,7 +85,7 @@
     }
 
     a {
-        border: 1px solid red;
+        border: 1px solid var(--main-color);
         padding: 0.25em 1em 0.25em 1em;
         text-decoration: none;
 
@@ -90,13 +93,9 @@
     }
 
     a:visited:hover, a:hover {
-        background-color: red;
+        background-color: var(--main-color);
         color: white;
         box-shadow: none;
-    }
-
-    #noise_vid {
-        opacity: 0.4;
     }
 
     footer {
@@ -106,7 +105,6 @@
         right: 0;
         padding-bottom: 1.5em;
         text-align: center;
-        font-weight: 100;
     }
 
     /* << MOBILE >> */
