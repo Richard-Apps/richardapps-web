@@ -16,14 +16,11 @@ You can view the full website here:
 ![App Screenshot](/assets/preview_3.png)
 
 ## Roadmap
+- [ ] Tidy up the [style.css](styles.css) file
 
-- [ ] Add a functional dynamic page content for news, updates and blog-posts
+- [ ] Add a functional dynamic page for news, updates and blog-posts
 
-- [ ] Make the effects more performant on mobile
-
-- [ ] Add more individual pages
-
-- [ ] Add more effects to improve on the terminal-look (screen curvature)
+- [ ] Further optimize the experience on mobile devices
 
 ## Contributing
 
@@ -34,18 +31,13 @@ Refer to [CONTRIBUTING.md](CONTRIBUTING.md).
 ## License
 #### GNU GPLv3 (GNU General Public License v3.0)
 
-You're free to copy, modify, distribute and use any of the source code in your own projects.
-
-Credit is not required, altough highly appreciated.
+You're free to copy, modify, distribute, and use the source code, provided that any derivative works are also licensed under GPLv3, with source code made available.
 
 ## Credit
 
 #### Font
 - Font: [Terminus](https://github.com/chrissimpkins/codeface/tree/master/fonts/terminus) by Dimitar Zhekov; compiled by Eric Cheng
 - License: GNU General Public License version 2.0 (GPL-2.0)
-
-#### Background Noise Video
-- Video by [Thomas Breher](https://pixabay.com/de/users/tbit-715211/?utm_source=link-attribution&utm_medium=referral&utm_campaign=video&utm_content=1285) / [Pixabay](https://pixabay.com/de/videos/fernseher-st%C3%B6rung-bildrauschen-1285/)
 
 #### Background Rain Video
 - Video by [RainStockEffect](https://pixabay.com/users/rainstockeffect-34483686/) / [Pixabay](https://pixabay.com/videos/raindrops-drops-rain-water-liquid-158959/)
