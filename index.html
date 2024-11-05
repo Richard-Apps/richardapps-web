@@ -27,13 +27,27 @@
 	<meta name="revisit-after" content="7 days">
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
 
-<body>
+	<style>
+        .no-fouc {
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body class=".no-fouc">
 	<script>
 		// prevent unstyled content css flash in firefox
-		let FF_FOUC_FIX;
+        document.addEventListener("DOMContentLoaded", function() {
+            document.body.classList.remove("no-fouc");
+        });
 	</script>
+	<noscript>
+		<style>
+			.no-fouc {
+				visibility: visible;
+			}
+		</style>
+	</noscript>
 	<video
 		preload="metadata"
 		onloadstart="this.playbackRate = 0.8;"
