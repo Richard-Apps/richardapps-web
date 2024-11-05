@@ -9,3 +9,7 @@ pre, p, li, h1, h2, h3, h4, td, summary {
 .pr_info, .pr_info em{
     text-shadow: 0 0 7px var(--info-color), 0 0 20px var(--info-color), 0 0 40px var(--info-color);
 }
+
+#noise_overlay, #grunge_overlay {
+    display: block;
+}
