@@ -19,6 +19,99 @@
     font-size: 10px;
 }
 
+html {
+    font-family: 'Terminus', monospace;
+
+    background-color: black;
+
+    overflow-x: hidden;
+
+    color: var(--main-color);
+}
+
+/* BACKGROUND AND OVERLAYS */
+#rain_vid, #grunge_overlay, #noise_overlay {
+    display: none; /* Hide background videos by default, will be overwritten if effects are enabled */
+}
+
+#videohue { /* used for background color */
+    display: block;
+
+    background: rgba(var(--bg-color), var(--bg-opacity));
+    opacity: 0.5;
+}
+
+#videohue, .vignette, #rain_vid, #noise_overlay, #grunge_overlay {
+    position: fixed;
+    overflow: hidden;
+
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+    height: 100vh;
+    width: 100vw;
+
+    transform: translateZ(0);
+}
+
+
+
+#rain_vid {
+    opacity: 0.275;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@keyframes noise {
+    0% {
+        background: url("/src/media/noise/noisy-texture-200x200-1.png")
+    }
+    25% {
+        background: url("/src/media/noise/noisy-texture-200x200-2.png")
+    }
+    50% {
+        background: url("/src/media/noise/noisy-texture-200x200-3.png")
+    }
+    75% {
+        background: url("/src/media/noise/noisy-texture-200x200-4.png")
+    }
+}
+
+#grunge_overlay {
+    background: url("/src/media/grunge.jpg");
+    background-size: cover;
+    mix-blend-mode: color-dodge;
+    z-index: 6;
+    pointer-events: none;
+    opacity: 0.9;
+}
+
+#noise_overlay {
+    background-blend-mode: multiply;
+    background: url("/src/media/noise/noisy-texture-200x200-1.png");
+    filter: contrast(1.5) brightness(0.4) hue-rotate(90deg);
+    opacity: 0.65;
+
+    pointer-events: none;
+    z-index: 5;
+
+    mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0) 150%);
+    mask-size: cover;
+    mask-position: center;
+
+    animation: noise steps(4) infinite .3s;
+}
+
+.vignette {
+    opacity: 0.2;
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0) 50%, rgb(var(--bg-color)) 250%);
+}
+
+/* global styles */
+
 ::selection {
     background-color: var(--selection);
 }
@@ -84,16 +177,6 @@ details[open] summary:not(:hover) {
     background: linear-gradient(90deg, transparent -15%, rgba(var(--bg-color), 0.3) 65%);
 }
 
-body {
-    font-family: 'Terminus', monospace;
-
-    background-color: black;
-
-    overflow-x: hidden;
-
-    color: var(--main-color);
-}
-
 #canvas {
     font-size: 1.75em;
     padding: 1.8em;
@@ -131,86 +214,6 @@ pre:not(#title), code {
     flex-direction: row;
     align-items: center;
     gap: .2em;
-}
-
-/* BACKGROUND AND OVERLAYS */
-#videohue { /* used for background color */
-    display: block;
-
-    background: rgba(var(--bg-color), var(--bg-opacity));
-    opacity: 0.5;
-}
-
-#videohue, .vignette, #rain_vid, #noise_overlay, #grunge_overlay {
-    position: fixed;
-    overflow: hidden;
-
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-
-    height: 100vh;
-    width: 100vw;
-
-    transform: translateZ(0);
-}
-
-/* Hide background videos by default, will be overwritten if effects are enabled */
-#rain_vid, #grunge_overlay, #noise_overlay {
-    display: none;
-}
-
-#rain_vid {
-    opacity: 0.275;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-@keyframes noise {
-    0% {
-        background: url("/src/media/noise/noisy-texture-200x200-1.png")
-    }
-    25% {
-        background: url("/src/media/noise/noisy-texture-200x200-2.png")
-    }
-    50% {
-        background: url("/src/media/noise/noisy-texture-200x200-3.png")
-    }
-    75% {
-        background: url("/src/media/noise/noisy-texture-200x200-4.png")
-    }
-}
-
-#grunge_overlay {
-    background: url("/src/media/grunge.jpg");
-    background-size: cover;
-    mix-blend-mode: color-dodge;
-    z-index: 6;
-    pointer-events: none;
-    opacity: 0.9;
-}
-
-#noise_overlay {
-    background-blend-mode: multiply;
-    background: url("/src/media/noise/noisy-texture-200x200-1.png");
-    filter: contrast(1.5) brightness(0.4) hue-rotate(90deg);
-    opacity: 0.65;
-
-    pointer-events: none;
-    z-index: 5;
-
-    mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0) 150%);
-    mask-size: cover;
-    mask-position: center;
-
-    animation: noise steps(4) infinite .3s;
-}
-
-.vignette {
-    opacity: 0.2;
-    background: radial-gradient(ellipse at center, rgba(0,0,0,0) 50%, rgb(var(--bg-color)) 250%);
 }
 
 /* NAV BAR USED FOR TAB PAGES */
