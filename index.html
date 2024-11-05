@@ -30,9 +30,13 @@
 </head>
 
 <body>
+	<script>
+		// prevent unstyled content css flash in firefox
+		let FF_FOUC_FIX;
+	</script>
 	<video
 		preload="metadata"
-		onloadstart="this.playbackRate = 0.85;"
+		onloadstart="this.playbackRate = 0.8;"
 		autoplay
 		muted
 		loop
