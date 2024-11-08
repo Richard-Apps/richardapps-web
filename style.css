@@ -530,6 +530,9 @@ nav ul li a {
 }
 
 @media screen and (max-width: 600px) {
+    .no_mobile {
+        display: none;
+    }
     .contact_link {
         margin-top: .5em;
     }
@@ -574,10 +577,6 @@ nav ul li a {
 
 @media (hover: none) {
     /* Disable hover-events on mobile */
-    a:hover {
-        background-color: transparent;
-        color: var(--main-color);
-    }
     summary:hover {
         background-color: transparent;
         color: var(--main-color);

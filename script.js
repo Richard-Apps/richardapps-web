@@ -51,6 +51,7 @@ function changeTab(tab) {
     } catch {
         location.hash = default_hash;
     }
+    window.scrollTo(0, 0);
 }
 
 // Picture-Collection

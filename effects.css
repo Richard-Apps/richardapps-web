@@ -13,3 +13,13 @@ pre, p, li, h1, h2, h3, h4, td, summary {
 #noise_overlay, #grunge_overlay {
     display: block;
 }
+
+/* optimize mobile experience */
+@media (max-width: 768px) {
+    pre, p, li, h1, h2, h3, h4, td, summary {
+        text-shadow: 0 0 9px var(--main-color-40), 0 0 14px var(--main-color);
+    }
+    #noise_overlay {
+        animation: none;
+    }
+}
