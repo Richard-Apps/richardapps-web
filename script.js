@@ -1,5 +1,9 @@
 const default_hash = '#home';
-const fade_in_delay = 18; // Lower to show elemets faster on site loading & while changing tabs
+let fade_in_delay = 18; // Lower to show elemets faster on site loading & while changing tabs
+
+if (window.matchMedia('(max-width: 767px)').matches) {
+    fade_in_delay = 0; // 0 to disable fade-in effects on mobile devices
+}
 
 // Effects
 let effectsDisabled = localStorage.getItem('effectsDisabled') === 'true';
