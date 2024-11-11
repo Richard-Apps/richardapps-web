@@ -1,7 +1,30 @@
 const default_hash = '#home';
 const fade_in_delay = 18; // Lower to show elemets faster on site loading & while changing tabs
 
+// Effects
 let effectsDisabled = localStorage.getItem('effectsDisabled') === 'true';
+
+let link = document.createElement('link');
+link.rel = 'stylesheet';
+link.type = 'text/css';
+link.href = 'effects.css';
+
+let nfbText = document.getElementById('toggleEffects');
+
+// Turn off major effects on default for mobile devices (performance issues on some mobile browsers)
+if (window.matchMedia('(max-width: 767px)').matches && !('effectsDisabled' in localStorage)) {
+    effectsDisabled = true;
+}
+
+if (!effectsDisabled) {
+    document.head.appendChild(link);
+    nfbText.innerHTML = 'Don\'t like the effects? Click <a onclick="toggleEffects()">HERE</a> to turn them off.';
+}
+
+function toggleEffects() {
+    localStorage.setItem('effectsDisabled', !effectsDisabled);
+    location.reload();
+}
 
 // Remove 'rgb' and brackets from --bg-value so the color can be used in combination with individual opacity-values (rgba)
 document.documentElement.style.setProperty('--bg-color', getComputedStyle(document.documentElement).getPropertyValue('--bg-color').trim().replace(/rgb\(|\)/g, ''));
@@ -10,6 +33,7 @@ location = location.hash||default_hash;
 changeTab(location.hash.slice(1));
 
 window.addEventListener('hashchange', function() {
+    window.scrollTo(0, 0);
     changeTab(location.hash.slice(1));
 })
 
@@ -45,7 +69,6 @@ function changeTab(tab) {
     } catch {
         location.hash = default_hash;
     }
-    window.scrollTo(0, 0);
 }
 
 // Picture-Collection
@@ -54,26 +77,6 @@ function changeColl(coll) {
     document.getElementById(coll).style.display = 'block';
     document.querySelectorAll('.pic_coll_tabs').forEach(element => { element.classList.remove('tab_active');});
     this.event.target.classList.add('tab_active');
-}
-
-// Load effects if not disabled
-let link = document.createElement('link');
-link.rel = 'stylesheet';
-link.type = 'text/css';
-link.href = 'effects.css';
-
-let nfbText = document.getElementById('toggleEffects');
-
-// Turn off major effects on default for mobile devices (performance issues on some mobile browsers)
-if (window.matchMedia('(max-width: 767px)').matches && !('effectsDisabled' in localStorage)) { effectsDisabled = true;}
-if (!effectsDisabled) {
-    document.head.appendChild(link);
-    nfbText.innerHTML = 'Don\'t like the effects? Click <a onclick="toggleEffects()">HERE</a> to turn them off.';
-}
-
-function toggleEffects() {
-    localStorage.setItem('effectsDisabled', !effectsDisabled);
-    location.reload();
 }
 
 // Close details-tags on default for mobile devices to reduce large amount of text on home-tab
