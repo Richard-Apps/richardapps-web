@@ -9,7 +9,6 @@
 	<title>RichardApps' Personal Website: Coding, Photography, and More</title>
 	
 	<link rel="icon" type="image/png" href="src/media/favicon.png">
-	<link rel="apple-touch-icon" href="apple-touch-icon.png">
 	<link rel="canonical" href="https://www.richardapps.net">
 
 	<script src="script.js" defer></script>
@@ -29,38 +28,42 @@
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+	<style>
+        .no-fouc {
+            visibility: hidden;
+        }
+    </style>
 </head>
-
-<body>
+<body class=".no-fouc">
+	<script>
+		// prevent unstyled content css flash in firefox
+        document.addEventListener("DOMContentLoaded", function() {
+            document.body.classList.remove("no-fouc");
+        });
+	</script>
+	<noscript>
+		<style>
+			.no-fouc {
+				visibility: visible;
+			}
+		</style>
+	</noscript>
 	<video
-		preload="none"
-		onloadstart="this.playbackRate = 0.65;"
-		autoplay
-		muted
-		loop
-		playsinline
-		id="noise_vid"
-		src="https://files.catbox.moe/hop8wg.mp4"
-		poster="/src/media/noise_static.png"
-		>
-	</video>
-
-	<video
-		preload="none"
-		onloadstart="this.playbackRate = 0.85;"
+		preload="metadata"
+		onloadstart="this.playbackRate = 0.8;"
 		autoplay
 		muted
 		loop
 		playsinline
 		id="rain_vid"
-		src="https://files.catbox.moe/i7le27.mp4"
 		poster="/src/media/rain_bg_static.png"
-		>
+		src="/src/media/rain_bg.mp4">
 	</video>
-
+	<img id="grunge_overlay">
+	<img id="noise_overlay">
 	<div class="vignette"></div>
-
 	<div id="videohue"></div>
+
 	<div id="canvas">
 		<header>
 			<pre id="title">    ____  _      __                   _____                    
@@ -70,8 +73,9 @@
 /_/ |_/_/\___/_/ /_/\__,_/_/   \__,_/_/  |_/ .___/ .___/____/  
                                           /_/   /_/            </pre>
 			<h1 id="sub_title">Coding, photography, 3D-art and personal projects!</h1>
-			<p id="changeEffects">Want some fancy effects? Click <a onclick="changeEffects()">HERE</a> to turn them on.</p>
+			<p id="toggleEffects">Want some fancy effects? Click <a onclick="toggleEffects()">HERE</a> to turn them on.</p>
 		</header>
+		
 		<br>
 		<p>Some things you might be interested in:</p>
 		<nav id="nav_tabs">
@@ -83,52 +87,65 @@
 				<li><a href="#about" class="tab_switcher" id="about_tab">About</a></li>
 			</ul>
 		</nav>
+
 		<div id="home" class="tabs">
 			<div class="grid">
 				<div class="grid_row">
 					<div class="grid_row_box">
-						<h2>Welcome visitor!</h2>
-						<p><em>Updated on AUGUST 8TH, 2024</em></p>
+						<h2 id="welcome_title">Welcome visitor!</h2>
+						<p><em>★ Updated on AUGUST 8TH, 2024:</em></p>
 						<br>
 						<p>This is my personal webpage with all my projects, images, news and more! Be sure to take a look around.</p>
 						<br>
 						<p>Any questions? You might find them answered on the about page: <a href="#about">ABOUT</a></p>
 						<p>Btw, this website is completly open source! I made a github repository for it: [<a href="https://github.com/Richard-Apps/richardapps-web" target="_blank">link</a>]</p>
-						<br>
-						<p>Don't forget to check out the different themes for the website! They are located below this post on the right.</p>
+						<br class="no_mobile">
+						<p class="no_mobile">Don't forget to check out the different themes for the website! They are located below this post on the right.</p>
 					</div>
 				</div>
 				<div class="grid_row">
 					<div class="grid_row_box">
-						<h2>Latest Updates</h2>
-						<p><em>AUGUST 8TH, 2024</em> More themes, a lot of QoL-improvements and a updated welcome post.</p>
-						<p><em>JUNE 30TH, 2024</em> Added Themes! You can switch between them to the right of the update list. 'cherry' is my favorite one :).</p>
-						<p><em>JUNE 15TH, 2024</em> Some important changes! Font-weight reduced to make everything sharper, optimized the background videos for faster loading times and fixed the 404 page. :)</p>
-						<p><em>MAY 24TH, 2024:</em> New animations, added another background, improved the about-page and a lot of minor improvements!</p>
-						<p><em>MAY 20TH, 2024:</em> Redesigned the main- and about-page. Changed from news-tab to home-tab, now presenting more of a 'hub' design.</p>
+						<details open>
+							<summary>
+								<h2>Latest Updates</h2>
+							</summary>
+							<div id="update_list">
+								<p><em>★ NOVEMBER 11TH, 2024:</em> Adding collapsible sections to improve the experience on mobile devices, a lot of other small enhancements and new effects.</p>
+								<p><em>★ AUGUST 8TH, 2024:</em> More themes, a lot of QoL-improvements and a updated welcome post.</p>
+								<p><em>★ JUNE 30TH, 2024:</em> Added Themes! You can switch between them to the right of the update list. 'cherry' is my favorite one :).</p>
+								<p><em>★ JUNE 15TH, 2024:</em> Some important changes! Font-weight reduced to make everything sharper, optimized the background videos for faster loading times and fixed the 404 page. :)</p>
+								<p><em>★ MAY 24TH, 2024:</em> New animations, added another background, improved the about-page and a lot of minor improvements!</p>
+								<p><em>★ MAY 20TH, 2024:</em> Redesigned the main- and about-page. Changed from news-tab to home-tab, now presenting more of a 'hub' design.</p>
+							</div>
+						</details>
 					</div>
 					<div class="grid_row_box grid_row_box_shrink">
 						<div id="theme_selector">
-							<h2>THEMES</h2>
-							<div id="theme_list">
-								<p><a onclick="changeTheme('ocean')">> ocean <</a></p>
-								<p><a onclick="changeTheme('terminal')">terminal</a></p>
-								<p><a onclick="changeTheme('cherry')">cherry</a></p>
-								<p><a onclick="changeTheme('amber')">amber</a></p>
-								<p><a onclick="changeTheme('deepsea')">deepsea</a></p>
-								&nbsp;
-								<p><a onclick="changeTheme('danger')">danger</a></p>
-								<p><a onclick="changeTheme('rainy')">rainy</a></p>
-								<p><a onclick="changeTheme('win95')">win95</a></p>
-							</div>
+							<details open>
+								<summary>
+									<h2>Themes</h2>
+								</summary>
+								<div id="theme_list">
+									<p><a onclick="changeTheme('ocean')">> ocean <</a></p>
+									<p><a onclick="changeTheme('terminal')">terminal</a></p>
+									<p><a onclick="changeTheme('cherry')">cherry</a></p>
+									<p><a onclick="changeTheme('amber')">amber</a></p>
+									<p><a onclick="changeTheme('deepsea')">deepsea</a></p>
+									&nbsp;
+									<p><a onclick="changeTheme('danger')">danger</a></p>
+									<p><a onclick="changeTheme('rainy')">rainy</a></p>
+									<p><a onclick="changeTheme('win95')">win95</a></p>
+								</div>
+							</details>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+
 		<div id="projects" class="tabs">
 			<h2>PROJECTS</h2>
-			<h3>A short list of projects made by me!</h3>
+			<h3 class="no_mobile">A short list of projects made by me!</h3>
 			<ul id="pr_list">
 				<li>
 					<p class="pr_title">NameGEN</p>
@@ -144,9 +161,15 @@
 					<p><a href="https://visualinc.richardapps.net" target="_blank">VISIT PAGE</a></p>
 				</li>
 				<li>
+					<p class="pr_title">Firefox-ASCII</p>
+					<p class="pr_desc">A simple userContent.css file that edits the appearance of the new-tab in Firefox.</p>
+					<br>
+					<p><a href="https://github.com/Richard-Apps/firefox-ascii" target="_blank">VISIT PAGE</a></p>
+				</li>
+				<li>
 					<p class="pr_title">RichardApps-web</p>
 					<p class="pr_desc">The public repository of the website's source code.</p>
-					<p class="pr_info">[?] Feel free to report bugs, add features and contribute if you'd like! :)</p>
+					<p class="pr_info no_mobile">[?] Feel free to report bugs, add features and contribute if you'd like! :)</p>
 					<br>
 					<p><a href="https://github.com/Richard-Apps/richardapps-web" target="_blank">VISIT PAGE</a></p>
 				</li>
@@ -170,32 +193,32 @@
 				<div id="blender" class="pic_coll">
 					<h3>Here's a collection of photos I made with the open-source software <a href="https://blender.org" target="_blank">Blender</a>! Color-grading was done using <a href="https://www.adobe.com/de/products/photoshop-lightroom-classic.html" target="_blank">Lightroom-Classic</a>!</h3>
 					<div class="row">
-						<img loading="lazy" src="https://i.postimg.cc/tgxSVBZf/richardapps-spaceship-testrender-widescreen.jpg" onclick="window.open('https://www.artstation.com/artwork/qe0eo2', '_blank')" alt="A cinematic image of a spaceship flying trough a space-station, created by me with Blender 3D." preload="none">
-						<img loading="lazy" src="https://i.postimg.cc/Gm9SbLcb/richardapps-cinematic-space-render3.jpg" onclick="window.open('https://www.artstation.com/artwork/rJzJOe', '_blank')" alt="A cinematic image of a spaceship flying above the ground with mountains in the background, created by me with Blender 3D." preload="none">
+						<img loading="lazy" src="/src/media/pictures_tab/richardapps-spaceship-testrender-widescreen.jpg" onclick="window.open('https://www.artstation.com/artwork/qe0eo2', '_blank')" alt="A cinematic image of a spaceship flying trough a space-station, created by me with Blender 3D." preload="none">
+						<img loading="lazy" src="/src/media/pictures_tab/richardapps-cinematic-space-render3.jpg" onclick="window.open('https://www.artstation.com/artwork/rJzJOe', '_blank')" alt="A cinematic image of a spaceship flying above the ground with mountains in the background, created by me with Blender 3D." preload="none">
 					</div>
 					<div class="row">
-						<img loading="lazy" src="https://i.postimg.cc/15vjxn1W/richardapps-default-cube-final-widescreen.jpg" onclick="window.open('https://www.artstation.com/artwork/491knk', '_blank')" alt="A destroyed default-cube flying over an ocean, created by me with Blender 3D." preload="none">
-						<img loading="lazy" src="https://i.postimg.cc/ncFPwKgj/richardapps-hms-victory-10.jpg" onclick="window.open('https://www.artstation.com/artwork/49n2Lk', '_blank')" alt="A cinematic image of a 3D-modeled ship inspired by the HMS Victory, created by me with Blender 3D." preload="none">
+						<img loading="lazy" src="/src/media/pictures_tab/richardapps-default-cube-final-widescreen.jpg" onclick="window.open('https://www.artstation.com/artwork/491knk', '_blank')" alt="A destroyed default-cube flying over an ocean, created by me with Blender 3D." preload="none">
+						<img loading="lazy" src="/src/media/pictures_tab/richardapps-hms-victory-10.jpg" onclick="window.open('https://www.artstation.com/artwork/49n2Lk', '_blank')" alt="A cinematic image of a 3D-modeled ship inspired by the HMS Victory, created by me with Blender 3D." preload="none">
 					</div>
 				</div>
 				<div id="photography" class="pic_coll">
 					<h3>Here are some images I took in the USA!</h3>
-					<p><em>Hover over them to view more information!</em></p>
+					<p class="no_mobile"><em>Hover over them to view more information!</em></p>
 					<div class="row row_photography">
 						<div class="img_container">
-							<img src="https://i.postimg.cc/9FkB5hND/P1020060.jpg" loading="lazy" alt="A monochrome picture of the Golden-Gate-Brige.">
+							<img src="/src/media/pictures_tab/P1020060.jpg" loading="lazy" alt="A monochrome picture of the Golden-Gate-Brige.">
 							<div class="img_desc"><p>The famous Golden-Gate-Brige! Was a bit cloudy that day, but that probably made it even better!</p></div>
 						</div>
 						<div class="img_container">
-							<img src="https://i.postimg.cc/bvVkXXT6/P1020722.jpg" loading="lazy" alt="A close-up picture of a chipmunk.">
+							<img src="/src/media/pictures_tab/P1020722.jpg" loading="lazy" alt="A close-up picture of a chipmunk.">
 							<div class="img_desc"><p>A chipmunk! We found them in a lot of different places. They were really friendly, weren't even scared of us, thus making photographing them pretty easy!</p></div>
 						</div>
 						<div class="img_container">
-							<img src="https://i.postimg.cc/MG6H9cbV/P1020951.jpg" loading="lazy" alt="A minimalistic picture of a helicopter.">
+							<img src="/src/media/pictures_tab/P1020951.jpg" loading="lazy" alt="A minimalistic picture of a helicopter.">
 							<div class="img_desc"><p>Nothing much to say here, but sometimes even the simple, minimalistic photos turn out quite cool!</p></div>
 						</div>
 						<div class="img_container">
-							<img src="https://i.postimg.cc/J0kzsjMV/P1020095.jpg" loading="lazy" alt="A picture of a bird in cloudy, dark weather.">
+							<img src="/src/media/pictures_tab/P1020095.jpg" loading="lazy" alt="A picture of a bird in cloudy, dark weather.">
 							<div class="img_desc"><p>We found this cool-looking bird! Fits well with the cloudy weather and the black stone, monochrome from nature!</p></div>
 						</div>
 					</div>
@@ -224,7 +247,6 @@
 						<p>- graphics -</p>
 						<p>-> photopea [<a href="https://www.photopea.com" target="_blank">link</a>] <em>A good browser-based image editor for quick edits!</em></p>
 						<p>-> postimages [<a href="https://postimages.org" target="_blank">link</a>] <em>Best service for hosting your images, without compressing them!</em></p>
-						<p>-> catbox [<a href="https://catbox.moe/" target="_blank">link</a>] <em>Another file hosting software that supports a lot more formats like videos!</em></p>
 						<p>-> caesium-ic [<a href="https://github.com/Lymphatus/caesium-image-compressor" target="_blank">link</a>] <em>Desktop software to optimize your images to make your page load faster.</em></p>
 						<p>-> raw therapee [<a href="https://www.rawtherapee.com/" target="_blank">link</a>] <em>A free lightroom alternative for high quality color grading.</em></p>
 					</div>
@@ -249,15 +271,15 @@
 						<p>Hi! Firstly, thank you for visiting my website! Glad to have you here.</p>
 						<p>As to me, my name is Richard. <em>(Crazy, right?)</em> I'm really interested in everything computer related!</p>
 						<p>I've done some coding, 3D-art, game-development - even digital drawing!</p>
-						<p><em>I'm no real expert in any of these, I just do them as a hobby.)</em></p>
+						<p><em>I'm no real expert in any of these, I just do them as a hobby.</em></p>
 					</div>
 					<div class="grid_row_box">
 						<h2>Skills</h2>
 						<p>Some things I learned during my journey:</p>
-						<p>-> Blender <em>I use it to create some cool 3D worlds!</em></p>
-						<p>-> HTML/CSS/JS <em>Obviously used to create this site.</em></p>
-						<p>-> GD-Script <em>The language of Godot! Used for some light game-development.</em></p>
-						<p>-> Python <em>Useful for a lot of projects. Still in the process of learning it, though.</em></p>
+						<p>-> Blender <em class="no_mobile">I use it to create some cool 3D worlds!</em></p>
+						<p>-> HTML/CSS/JS <em class="no_mobile">Obviously used to create this site.</em></p>
+						<p>-> GD-Script <em class="no_mobile">The language of Godot! Used for some light game-development.</em></p>
+						<p>-> Python <em class="no_mobile">Useful for a lot of projects. Still in the process of learning it, though.</em></p>
 					</div>
 				</div>
 				<div class="grid_row">
@@ -273,9 +295,11 @@
 					</div>
 					<div class="grid_row_box">
 						<h2>Social Media</h2>
+						<!-- Don't forget to add the fa-fw class for fixed-width -->
 						<p class="contact_link"><i class="fa-brands fa-instagram fa-fw"></i><a href="https://instagram.com/luqiedesign" target="_blank">Instagram</a></p>
 						<p class="contact_link"><i class="fa-brands fa-github fa-fw"></i><a href="https://github.com/richard-apps" target="_blank">GitHub</a></p>
 						<p class="contact_link"><i class="fa-brands fa-artstation fa-fw"></i><a href="https://www.artstation.com/richardapps" target="_blank">Artstation</a></p>
+						<p class="contact_link"><i class="fa-solid fa-mug-hot fa-fw"></i><a href="https://ko-fi.com/richardapps" target="_blank">Ko-Fi</a></p>
 					</div>
 					<div class="grid_row_box">
 						<h2>Contact</h2>

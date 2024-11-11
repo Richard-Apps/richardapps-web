@@ -7,8 +7,9 @@
 }
 
 :root {
-    /* Will be overwritten if theme is selected (theme-selections are saved in localStorage) */
+    /* Will be overwritten if theme is selected (theme-selections are saved in localStorage [key: "theme"] and managed in script.js) */
     --main-color: #72b6ff;
+    --main-color-40: #72b6ff80;
     --bg-color: rgb(15, 129, 236); /* needs to be in rgb format */
     --bg-opacity: 0.31;
     --selection: #3b6d8b;
@@ -18,64 +19,18 @@
     font-size: 10px;
 }
 
-pre:not(#title), code {
-    white-space: pre-wrap;
-}
-
-body {
-    font-family: 'Terminus', sans-serif;
-
+html {
+    font-family: 'Terminus', monospace;
+    color: var(--main-color);
     background-color: black;
-
     overflow-x: hidden;
-
-    color: var(--main-color);
 }
 
-a:link:not(.tab_active, a:hover), a:visited:not(.tab_active, a:visited:hover), em a:visited {
-    color: var(--main-color);
+/* BACKGROUND AND OVERLAYS */
+#rain_vid, #grunge_overlay, #noise_overlay {
+    display: none; /* Hide background videos by default, will be overwritten if effects are enabled */
 }
 
-#canvas {
-    font-size: 1.75em;
-    padding: 1.8em;
-
-    height: 100%;
-
-    transform: translateZ(0);
-}
-
-#title {
-    width: 100%;
-    font-size: 1.3em;
-    font-family: 'Courier New', Courier, monospace;
-    -webkit-user-select: none;
-    user-select: none;
-
-    margin-bottom: 1em;
-}
-
-pre, p, li, h1, h2, h3, h4, td{
-    margin: 0;
-    font-weight: normal;
-}
-
-#sub_title, h4 {
-    font-size: 1em;
-}
-
-#changeEffects a {
-    text-decoration: underline;
-}
-
-#div_h {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: .2em;
-}
-
-/* NOISE */
 #videohue { /* used for background color */
     display: block;
 
@@ -83,7 +38,7 @@ pre, p, li, h1, h2, h3, h4, td{
     opacity: 0.5;
 }
 
-#videohue, #noise_vid, .vignette, #rain_vid {
+#videohue, .vignette, #rain_vid, #noise_overlay, #grunge_overlay {
     position: fixed;
     overflow: hidden;
 
@@ -98,20 +53,163 @@ pre, p, li, h1, h2, h3, h4, td{
     transform: translateZ(0);
 }
 
-.vignette {
-    opacity: 0.2;
-    background: radial-gradient(ellipse at center, rgba(0,0,0,0) 50%, rgb(var(--bg-color)) 250%);
-}
-
-/* RAIN VIDEO */
 #rain_vid {
-    opacity: 0.125;
+    opacity: 0.275;
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-/* NAV BAR */
+@keyframes noise {
+    0% {
+        background: url("/src/media/noise/noisy-texture-200x200-1.png")
+    }
+    25% {
+        background: url("/src/media/noise/noisy-texture-200x200-2.png")
+    }
+    50% {
+        background: url("/src/media/noise/noisy-texture-200x200-3.png")
+    }
+    75% {
+        background: url("/src/media/noise/noisy-texture-200x200-4.png")
+    }
+}
+
+#grunge_overlay {
+    background: url("/src/media/grunge.jpg");
+    background-size: cover;
+    mix-blend-mode: color-dodge;
+    z-index: 6;
+    pointer-events: none;
+    opacity: 0.9;
+}
+
+#noise_overlay {
+    background-blend-mode: multiply;
+    background: url("/src/media/noise/noisy-texture-200x200-1.png");
+    filter: contrast(1.5) brightness(0.4) hue-rotate(90deg);
+    opacity: 0.65;
+
+    pointer-events: none;
+    z-index: 5;
+
+    mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0) 150%);
+    mask-size: cover;
+    mask-position: center;
+
+    animation: noise steps(4) infinite .3s;
+}
+
+.vignette {
+    opacity: 0.2;
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0) 50%, rgb(var(--bg-color)) 250%);
+}
+
+/* global styles */
+
+::selection {
+    background-color: var(--selection);
+}
+
+a:link:not(.tab_active, a:hover), a:visited:not(.tab_active, a:visited:hover), em a:visited {
+    color: var(--main-color);
+}
+
+a:hover {
+    background-color: var(--main-color);
+    cursor: pointer;
+    color: rgba(24, 45, 75, 0.616);
+
+    transition: box-shadow 0.1s, background-color 0s, color 0s;
+
+    text-decoration: none;
+}
+
+pre, p, li, h1, h2, h3, h4, td{
+    margin: 0;
+    font-weight: normal;
+}
+
+h4 {
+    font-size: 1em;
+}
+
+p em {
+    opacity: 0.7;
+}
+
+i {
+    margin-right: .75em;
+    vertical-align: middle;
+}
+
+summary {
+    -webkit-user-select: none; /* Safari */
+    user-select: none;
+    outline: 1px solid var(--main-color);
+    padding-left: .5em;
+}
+
+summary h2 {
+    display: inline;
+    padding-left: 0;
+}
+
+summary::marker {
+    font-size: 1.5em;
+}
+
+summary:hover {
+    cursor: pointer;
+    background-color: var(--main-color);
+    color: rgba(24, 45, 75, 0.616);
+}
+
+details[open] summary {
+    margin-bottom: .5em;
+}
+
+details[open] summary:not(:hover) {
+    background: linear-gradient(90deg, transparent -15%, rgba(var(--bg-color), 0.3) 65%);
+}
+
+#canvas {
+    font-size: 1.75em;
+    padding: 1.8em;
+    height: 100%;
+    transform: translateZ(0);
+}
+
+/* ASCII AND INTRODUCTION */
+pre:not(#title), code {
+    white-space: pre-wrap;
+}
+
+#title {
+    width: 100%;
+    font-size: 1.3em;
+    font-family: 'Courier New', Courier, monospace;
+    -webkit-user-select: none; /* Safari */
+    user-select: none;
+    margin-bottom: 1em;
+}
+
+#sub_title {
+    font-size: 1em;
+}
+
+#toggleEffects a {
+    text-decoration: underline;
+}
+
+#div_h {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: .2em;
+}
+
+/* NAV BAR USED FOR TAB PAGES */
 nav ul {
     list-style-type: none;
     padding: 0;
@@ -128,10 +226,7 @@ nav ul li:not(:last-child) {
 nav ul li a {
     display: block;
     text-decoration: underline;
-
     padding: 0.2em 0.3em;
-
-    transition: background-color 0.1s ease-out;
 }
 
 .tab_active {
@@ -140,25 +235,9 @@ nav ul li a {
     text-decoration: none;
 }
 
-@media (hover: hover) {
-    a:hover {
-        background-color: var(--main-color);
-        cursor: pointer;
-        color: rgba(24, 45, 75, 0.616);
-
-        transition: color box-shadow 0.1s;
-
-        text-decoration: none;
-    }
-    a:hover:not(.tab_switcher, .pic_coll_tabs) {
-        box-shadow: 0 0 18px 0px var(--main-color);
-    }
-}
-
-/* PRINT ANIMATION */
+/* PRINT ANIMATION WHEN CHANGING TABS AND ON PAGE LOAD */
 .fade-in {
     opacity: 0;
-    /*transform: translateY(20px);*/
 }
 
 .fade-in.visible:not(em) {
@@ -174,7 +253,7 @@ nav ul li a {
 @keyframes fade-in-anim {
     0% {
         opacity: 0.75;
-        transform: scale(0.975);
+        transform: scale(0.985) rotateX(-15deg);
     }
     35% {
         opacity: 0.8
@@ -182,20 +261,15 @@ nav ul li a {
     
     100% {
         opacity: 1.0;
-        transform: scale(1.0);
+        transform: scale(1.0) rotateX(0);
     }
 }
 
 .fade-in-anim:not(em) {
-    animation: fade-in-anim 0.5s ease-in-out;
+    animation: fade-in-anim 0.5s ease-out;
 }
 
-/* SELECT */
-::selection {
-    background-color: var(--selection);
-}
-
-/* PAGES */ 
+/* TABS */ 
 .invisible {
     display: none;
 }
@@ -207,11 +281,11 @@ nav ul li a {
 .tabs {
     border: solid var(--main-color);
     padding: 1.5em;
-    backdrop-filter: blur(100px);
+    backdrop-filter: blur(6px);
     background: linear-gradient(45deg, rgba(var(--bg-color), 0.05) 70%, rgba(var(--bg-color), 0.2) 110%);
 }
 
-/* GRID-CONTENT (HOME/ABOUT) */
+/* GRID-SYSTEM FOR INSIDE TABS */
 .grid_row, .grid {
     display: flex;
     gap: 1em;
@@ -224,15 +298,31 @@ nav ul li a {
 .grid_row_box {
     padding: .5em;
     width: 100%;
-
-    border: 1px solid var(--main-color);
+    border: 1px dotted var(--main-color);
 }
 
 .grid_row_box_shrink {
     flex-shrink: 5;
 }
 
-/* PROJECTS */
+/* HOME TAB */
+#welcome_title {
+    background: linear-gradient(90deg, transparent -15%, rgba(var(--bg-color), 0.3) 65%);
+    outline: 1px solid var(--main-color);
+    margin-bottom: .5em;
+    padding-left: .25em;
+}
+
+#update_list em::after {
+    content: '\A';
+    white-space: pre;
+}
+
+#update_list p:not(:last-child) {
+    margin-bottom: .75em;
+}
+
+/* PROJECTS TAB */
 #pr_list {
     padding-left: 0;
 }
@@ -242,7 +332,6 @@ nav ul li a {
     border: solid var(--main-color);
     border-width: 1px;
     padding: .5em;
-    
     background: linear-gradient(45deg, rgba(var(--bg-color), 0.05) 70%, rgba(var(--bg-color), 0.2) 110%);
 }
 
@@ -266,26 +355,26 @@ nav ul li a {
     color: var(--info-color);
 }
 
-/* PICTURES */
+/* PICTURES TAB */
 .row, .img_container {
     margin-top: 1.5em;
     margin-bottom: 1.5em;
-    
+
     display: flex;
     justify-content: space-between;
     gap: 1.5em;
-    
+
     width: 100%;
 }
 
 .row img, .img_container {
     flex: 1 1 auto;
-    -webkit-user-select: none;
+    -webkit-user-select: none; /* Safari */
     user-select: none;
 
     transition: filter 0.3s ease-in-out;
 
-    width: 0; /* Needed to make it work in Chrome, for some reason */
+    width: 0;
 }
 
 .img_desc {
@@ -326,11 +415,13 @@ nav ul li a {
 }
 
 .pic_coll div img {
-    filter: brightness(1.2)
+    filter: brightness(1.2);
+    border: 1px dotted var(--main-color);
 }
 
 #pictures_list nav ul li a {
     padding: 0.2em 0.3em;
+    -webkit-user-select: none; /* Safari */
     user-select: none;
 }
 
@@ -338,11 +429,7 @@ nav ul li a {
     margin-top: -.5em;
 }
 
-/* ABOUT */
-table {
-    width: 100%;
-}
-
+/* ABOUT TAB */
 .desc {
     padding-left: 1.em;
     width: max-content;
@@ -351,30 +438,24 @@ table {
     text-align: left;
 }
 
-p em {
-    opacity: 0.7;
-}
-
-em a {
-    transition: background-color 0.4s ease-out;
-}
-
-i {
-    margin-right: .75em;
-    vertical-align: middle;
-}
-
 .contact_link {
     margin-bottom: .25em;
 }
 
-/* CONTACT */
 #contact p a {
     text-decoration: underline;
 }
 
-/* MOBILE */
-@media screen and (max-width: 50em) {
+/* RESPONSIVENESS */
+@media screen and (max-width: 70em) {
+    #resources .grid_row_box em::before {
+        content: '\A';
+        white-space: pre;
+    }
+    
+    #resources .grid_row_box p:not(:last-child) {
+        margin-bottom: .75em;
+    }
     #rain_vid {
         object-fit: fill;
     }
@@ -383,6 +464,9 @@ i {
     }
     .row img {
         width: 100%;
+    }
+    #theme_list p:not(:last-child) {
+        margin-bottom: .3em;
     }
     .img_desc {
         filter: opacity(100%);
@@ -407,7 +491,11 @@ i {
     }
 }
 
+/* Mobile */
 @media screen and (max-width: 600px) {
+    .no_mobile {
+        display: none;
+    }
     .contact_link {
         margin-top: .5em;
     }
@@ -450,16 +538,19 @@ i {
     }
 }
 
+@media (hover: none) {
+    /* Disable hover-events on mobile */
+    summary:hover {
+        background-color: transparent;
+        color: var(--main-color);
+    }
+}
+
 /* To comply with outlinenone.com :) */
-:focus {
+:focus:not(summary) {
     outline: 2px solid var(--main-color);
     color: var(--main-color);
     background: rgba(var(--bg-color), 0.3);
     
     text-decoration: none;
-}
-
-/* Will be overwritten if effects enabled */
-#noise_vid, #rain_vid {
-    display: none;
 }

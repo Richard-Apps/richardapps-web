@@ -1,12 +1,35 @@
 const default_hash = '#home';
-const fade_in_delay = 27 // lower values makes the elements show faster on site loading and while changing tabs
+const fade_in_delay = 18; // Lower to show elemets faster on site loading & while changing tabs
 
+// Effects
 let effectsDisabled = localStorage.getItem('effectsDisabled') === 'true';
 
-// remove 'rgb' and brackets from --bg-value so the color can be used in combination with individual opacity-values (rgba)
+let link = document.createElement('link');
+link.rel = 'stylesheet';
+link.type = 'text/css';
+link.href = 'effects.css';
+
+let nfbText = document.getElementById('toggleEffects');
+
+// Turn off major effects on default for mobile devices (performance issues on some mobile browsers)
+if (window.matchMedia('(max-width: 767px)').matches && !('effectsDisabled' in localStorage)) {
+    effectsDisabled = true;
+}
+
+if (!effectsDisabled) {
+    document.head.appendChild(link);
+    nfbText.innerHTML = 'Don\'t like the effects? Click <a onclick="toggleEffects()">HERE</a> to turn them off.';
+}
+
+function toggleEffects() {
+    localStorage.setItem('effectsDisabled', !effectsDisabled);
+    location.reload();
+}
+
+// Remove 'rgb' and brackets from --bg-value so the color can be used in combination with individual opacity-values (rgba)
 document.documentElement.style.setProperty('--bg-color', getComputedStyle(document.documentElement).getPropertyValue('--bg-color').trim().replace(/rgb\(|\)/g, ''));
 
-location = location.hash||default_hash
+// location = location.hash||default_hash;
 changeTab(location.hash.slice(1));
 
 window.addEventListener('hashchange', function() {
@@ -15,21 +38,22 @@ window.addEventListener('hashchange', function() {
 
 function changeTab(tab) {
     try {
-        // Hide all visible elements
+        if (tab === 'home') { 
+            window.scrollTo(0, 0);
+        } else {
+            document.getElementById('nav_tabs').scrollIntoView({ behavior: 'smooth' });
+        }
+
         document.querySelectorAll('.fade-in.visible').forEach(element => {
             element.classList.remove('visible');
             element.classList.remove('fade-in-anim');
         });
 
-        // Remove active tab class from all tab_switchers
         document.querySelectorAll('.tab_switcher').forEach(element => { 
             element.classList.remove('tab_active'); 
         });
 
-        // Activate the selected tab
         document.getElementById(tab + '_tab').classList.add('tab_active');
-
-        // Show elements of the selected tab
         let elements = document.getElementById(tab).querySelectorAll('*');
         
         if (!effectsDisabled) {
@@ -43,13 +67,13 @@ function changeTab(tab) {
                 delay += fade_in_delay;
             });
         } else {
-            // If effects are disabled, make elements visible directly
             Array.from(elements).forEach(element => {
-                element.classList.add('visible'); // Ensure elements are visible
+                element.classList.add('visible');
             });
         }
     } catch {
         location.hash = default_hash;
+        window.scrollTo(0, 0);
     }
 }
 
@@ -59,35 +83,22 @@ function changeColl(coll) {
     document.getElementById(coll).style.display = 'block';
     document.querySelectorAll('.pic_coll_tabs').forEach(element => { element.classList.remove('tab_active');});
     this.event.target.classList.add('tab_active');
+    document.getElementById('nav_tabs').scrollIntoView({ behavior: 'smooth' });
 }
 
-// Load effects if not disabled
-let link = document.createElement('link');
-link.rel = 'stylesheet';
-link.type = 'text/css';
-link.href = 'effects.css';
-
-let nfbText = document.getElementById('changeEffects');
-
-// Turn off major effects on default for mobile devices (performance issues on some mobile browsers)
-if (window.matchMedia("(max-width: 767px)").matches && !('effectsDisabled' in localStorage)) { effectsDisabled = true;}
-if (!effectsDisabled) { document.head.appendChild(link); nfbText.innerHTML = 'Don\'t like the effects? Click <a onclick="changeEffects()">HERE</a> to turn them off.';}
-
-function changeEffects() {
-    localStorage.setItem('effectsDisabled', !effectsDisabled);
-    location.reload();
+// Close details-tags on default for mobile devices to reduce large amount of text on home-tab
+if (window.matchMedia('(max-width: 767px)').matches) {
+    document.querySelectorAll('details').forEach(details => {details.removeAttribute('open');})
 }
 
 // Themes
-if ('theme' in localStorage) {
-    changeTheme(localStorage.getItem('theme'));
-}
+if ('theme' in localStorage) { changeTheme(localStorage.getItem('theme')); }
 
 function changeTheme(theme) {
     localStorage.setItem('theme', theme);
-    let noise_vid = document.getElementById('noise_vid');
     let rain_vid = document.getElementById('rain_vid');
-    // show > and < on selected theme
+
+    // show ">" and "<" on selected theme
     let theme_list_items = document.getElementById('theme_list').children;
     Array.from(theme_list_items).forEach(item => {
         let a = item.firstChild
@@ -97,17 +108,17 @@ function changeTheme(theme) {
             a.innerHTML = a.innerHTML.replace(/(&gt|&lt|;|\s)/g, '');
         }
     })
+
     // default values
     document.documentElement.style.setProperty('--bg-opacity', '0.31');
     rain_vid.style.display = 'none';
-    noise_vid.style.opacity = 0.5;
+
     if (!document.head.contains(link) && !effectsDisabled) {document.head.appendChild(link);}
     switch (theme) { 
         case 'ocean':
             document.documentElement.style.setProperty('--bg-color', '15, 129, 236');
             document.documentElement.style.setProperty('--main-color', '#72b6ff');
             document.documentElement.style.setProperty('--selection', '#3b6d8b');
-            noise_vid.style.opacity = 0.3;
             break;
         case 'terminal':
             document.documentElement.style.setProperty('--bg-color', '61, 150, 51');
@@ -146,9 +157,11 @@ function changeTheme(theme) {
             document.documentElement.style.setProperty('--main-color', '#ffffff');
             document.documentElement.style.setProperty('--selection', '#3b6d8b');
             document.documentElement.style.setProperty('--bg-opacity', '1.0');
-            noise_vid.style.opacity = 0;
             document.head.removeChild(link);
             break;
     }
+    // Main-color with 40% opacity (Adding hex alpha AA to #RRGGBB)
+    document.documentElement.style.setProperty('--main-color-40', document.documentElement.style.getPropertyValue('--main-color') + '66');
+   
     if (effectsDisabled) {rain_vid.style.display = 'none';}
 }
