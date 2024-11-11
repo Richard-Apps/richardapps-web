@@ -21,12 +21,9 @@
 
 html {
     font-family: 'Terminus', monospace;
-
-    background-color: black;
-
-    overflow-x: hidden;
-
     color: var(--main-color);
+    background-color: black;
+    overflow-x: hidden;
 }
 
 /* BACKGROUND AND OVERLAYS */
@@ -55,8 +52,6 @@ html {
 
     transform: translateZ(0);
 }
-
-
 
 #rain_vid {
     opacity: 0.275;
@@ -133,10 +128,6 @@ p em {
     opacity: 0.7;
 }
 
-em a {
-    transition: background-color 0.4s ease-out;
-}
-
 i {
     margin-right: .75em;
     vertical-align: middle;
@@ -145,11 +136,8 @@ i {
 summary {
     -webkit-user-select: none; /* Safari */
     user-select: none;
-    transition: background-color 0.1s ease-out;
     outline: 1px solid var(--main-color);
     padding-left: .5em;
-
-    transition: color 1.3s ease-out, background-color 1.3s ease-out;
 }
 
 summary h2 {
@@ -165,8 +153,6 @@ summary:hover {
     cursor: pointer;
     background-color: var(--main-color);
     color: rgba(24, 45, 75, 0.616);
-
-    transition: background-color 0s, color 0s;
 }
 
 details[open] summary {
@@ -180,9 +166,7 @@ details[open] summary:not(:hover) {
 #canvas {
     font-size: 1.75em;
     padding: 1.8em;
-
     height: 100%;
-
     transform: translateZ(0);
 }
 
@@ -197,7 +181,6 @@ pre:not(#title), code {
     font-family: 'Courier New', Courier, monospace;
     -webkit-user-select: none; /* Safari */
     user-select: none;
-
     margin-bottom: 1em;
 }
 
@@ -205,7 +188,7 @@ pre:not(#title), code {
     font-size: 1em;
 }
 
-#changeEffects a {
+#toggleEffects a {
     text-decoration: underline;
 }
 
@@ -233,30 +216,13 @@ nav ul li:not(:last-child) {
 nav ul li a {
     display: block;
     text-decoration: underline;
-
     padding: 0.2em 0.3em;
-    transition: color 1.3s ease-out, background-color 1.3s ease-out;
 }
 
 .tab_active {
     background-color: var(--main-color);
     color:rgba(24, 45, 75, 0.616);
     text-decoration: none;
-}
-
-@media (hover: hover) {
-    a:hover {
-        background-color: var(--main-color);
-        cursor: pointer;
-        color: rgba(24, 45, 75, 0.616);
-
-        transition: box-shadow 0.1s, background-color 0s, color 0s;
-
-        text-decoration: none;
-    }
-    a:hover:not(.tab_switcher, .pic_coll_tabs) {
-        box-shadow: 0 0 18px 0px var(--main-color);
-    }
 }
 
 /* PRINT ANIMATION WHEN CHANGING TABS AND ON PAGE LOAD */
@@ -322,7 +288,6 @@ nav ul li a {
 .grid_row_box {
     padding: .5em;
     width: 100%;
-
     border: 1px dotted var(--main-color);
 }
 
@@ -347,14 +312,6 @@ nav ul li a {
     margin-bottom: .75em;
 }
 
-#theme_list p a {
-    transition: color 1s ease-out, background-color 1s ease-out;
-}
-
-#theme_list p a:hover {
-    transition: color 0s, background-color 0s;
-}
-
 /* PROJECTS TAB */
 #pr_list {
     padding-left: 0;
@@ -365,7 +322,6 @@ nav ul li a {
     border: solid var(--main-color);
     border-width: 1px;
     padding: .5em;
-    
     background: linear-gradient(45deg, rgba(var(--bg-color), 0.05) 70%, rgba(var(--bg-color), 0.2) 110%);
 }
 
@@ -393,11 +349,11 @@ nav ul li a {
 .row, .img_container {
     margin-top: 1.5em;
     margin-bottom: 1.5em;
-    
+
     display: flex;
     justify-content: space-between;
     gap: 1.5em;
-    
+
     width: 100%;
 }
 
@@ -408,7 +364,7 @@ nav ul li a {
 
     transition: filter 0.3s ease-in-out;
 
-    width: 0; /* Needed to make it work in Chrome, for some reason */
+    width: 0;
 }
 
 .img_desc {
@@ -480,12 +436,8 @@ nav ul li a {
     text-decoration: underline;
 }
 
-/* MOBILE AND RESPONSIVENESS */
+/* RESPONSIVENESS */
 @media screen and (max-width: 70em) {
-    .hide_mobile {
-        display: none;
-    }
-
     #resources .grid_row_box em::before {
         content: '\A';
         white-space: pre;
@@ -529,6 +481,7 @@ nav ul li a {
     }
 }
 
+/* Mobile */
 @media screen and (max-width: 600px) {
     .no_mobile {
         display: none;
