@@ -18,9 +18,9 @@ You can view the full website here:
 ## Roadmap
 - [ ] Tidy up the [style.css](styles.css) file
 
-- [ ] Add a functional dynamic page for news, updates and blog-posts
+- [ ] Add a dynamic system for news and blog-posts
 
-- [ ] Further optimize the experience on mobile devices
+- [ ] Improve the experience for different screen resolutions and devices (1080p screens, mobile)
 
 ## Contributing
 
