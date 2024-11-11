@@ -29,16 +29,21 @@ function toggleEffects() {
 // Remove 'rgb' and brackets from --bg-value so the color can be used in combination with individual opacity-values (rgba)
 document.documentElement.style.setProperty('--bg-color', getComputedStyle(document.documentElement).getPropertyValue('--bg-color').trim().replace(/rgb\(|\)/g, ''));
 
-location = location.hash||default_hash;
+// location = location.hash||default_hash;
 changeTab(location.hash.slice(1));
 
 window.addEventListener('hashchange', function() {
-    window.scrollTo(0, 0);
     changeTab(location.hash.slice(1));
 })
 
 function changeTab(tab) {
     try {
+        if (tab === 'home') { 
+            window.scrollTo(0, 0);
+        } else {
+            document.getElementById('nav_tabs').scrollIntoView({ behavior: 'smooth' });
+        }
+
         document.querySelectorAll('.fade-in.visible').forEach(element => {
             element.classList.remove('visible');
             element.classList.remove('fade-in-anim');
@@ -68,6 +73,7 @@ function changeTab(tab) {
         }
     } catch {
         location.hash = default_hash;
+        window.scrollTo(0, 0);
     }
 }
 
@@ -77,6 +83,7 @@ function changeColl(coll) {
     document.getElementById(coll).style.display = 'block';
     document.querySelectorAll('.pic_coll_tabs').forEach(element => { element.classList.remove('tab_active');});
     this.event.target.classList.add('tab_active');
+    document.getElementById('nav_tabs').scrollIntoView({ behavior: 'smooth' });
 }
 
 // Close details-tags on default for mobile devices to reduce large amount of text on home-tab
