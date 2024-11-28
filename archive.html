@@ -3,15 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylehseet" href="effects.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
     <title>RichardApps - Archive</title>
 	
 	<link rel="icon" type="image/png" href="src/media/favicon.png">
     <link rel="canonical" href="https://www.richardapps.net">
+
+    <script src="/src/js/archive.js" type="module"></script>
 </head>
 <body>
-	<div id="videohue"></div>
+    <video
+		id="rain-vid"
+		src="/assets/videos/rain-bg.mp4"
+		poster="/assets/images/rain-bg-static.png"
+		preload="metadata"
+		onloadstart="this.playbackRate = 0.8;"
+		autoplay
+		muted
+		loop
+		playsinline>
+	</video>
+	<img id="grunge-overlay" loading="lazy">
+	<img id="noise-overlay" loading="lazy">
+	<div class="vignette"></div>
+	<div id="hue"></div>
 
     <div id="canvas">
         <h1 id="archive-title">Archive</h1>
@@ -20,25 +35,25 @@
         <p>Some of them might not work anymore, but feel free to explore. :)</p>
 
         <br>
-        <ul id="pr_list">
+        <ul id="pr-list">
             <li>
-                <p class="pr_title">LuqieDesign</p>
-                <p class="pr_desc">A YouTube channel featuring tutorials on video editing and motion graphics using a mobile app called 'AlightMotion'.</p>
-                <p class="pr_info">[?] Since I now have better hardware (PC), I understandably switched to desktop software.</p>
+                <p class="pr-title">LuqieDesign</p>
+                <p class="pr-desc">A YouTube channel featuring tutorials on video editing and motion graphics using a mobile app called 'AlightMotion'.</p>
+                <p class="pr-info">[?] Since I now have better hardware (PC), I understandably switched to desktop software.</p>
                 <br>
                 <p><a href="https://www.youtube.com/@LuqieDesign" target="_blank">VISIT PAGE</a></p>
             </li>
             <li>
-                <p class="pr_title">Old webpage</p>
-                <p class="pr_desc">My old personal webpage before I decided to fully redo it. Will not be updated, but should still work.</p>
+                <p class="pr-title">Old webpage</p>
+                <p class="pr-desc">My old personal webpage before I decided to fully redo it. Will not be updated, but should still work.</p>
                 <br>
                 <p><a href="https://old.richardapps.net" target="_blank">VISIT PAGE</a></p>
             </li>
             <li>
-                <p class="pr_title">TropicalMC</p>
-                <p class="pr_desc">A minecraft server featuring common gamemodes, while also some unique modes:</p>
-                <p class="pr_desc">-> A RPG gamemode with a explorable world, custom weapons, npc's with AI, and a main quest!</p>
-                <p class="pr_info">[?] Is currently not being worked on anymore.</p>
+                <p class="pr-title">TropicalMC</p>
+                <p class="pr-desc">A minecraft server featuring common gamemodes, while also some unique modes:</p>
+                <p class="pr-desc">-> A RPG gamemode with a explorable world, custom weapons, npc's with AI, and a main quest!</p>
+                <p class="pr-info">[?] Is currently not being worked on anymore.</p>
                 <br>
                 <p><a href="https://tropicalminecraft.com" target="_blank">VISIT PAGE</a></p>
             </li>
@@ -49,28 +64,12 @@
     </div>
 </body>
 <style>
-    #videohue {
-        animation: none;
-    }
-    p, .pr_info, .pr_warning {
-        text-shadow: none;
-        font-weight: 400;
-    }
-    #canvas {
-        animation: none;
-    }
-    #archive-title, .pr_title {
-        font-weight: 800;
-    }
-
     #archive-title {
         font-family: 'Courier New', Courier, monospace;
+        font-weight: bold;
     }
-    
-    :root {
-        --main-color: #ff8215;
-        --bg-color: 224, 115, 20; /* Needs to be in this format, so opacity can be controlled individually */
-        --bg-color-2: #f5780c77;
+    #noise-overlay, #grunge-overlay {
+        display: block;
     }
 </style>
 </html>

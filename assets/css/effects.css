@@ -1,0 +1,119 @@
+pre,
+p,
+li,
+h1,
+h2,
+h3,
+h4,
+td,
+summary,
+span,
+em {
+	text-shadow: 0 0 7px var(--main-color-40), 0 0 25px var(--main-color), 0 0 40px var(--main-color);
+}
+
+.pr-warning,
+.pr-warning em {
+	text-shadow: 0 0 7px var(--warning-color), 0 0 20px var(--warning-color), 0 0 40px var(--warning-color);
+}
+
+.pr-info,
+.pr-info em {
+	text-shadow: 0 0 7px var(--info-color), 0 0 20px var(--info-color), 0 0 40px var(--info-color);
+}
+
+#noise-overlay,
+#grunge-overlay {
+	display: block;
+}
+
+@media (hover: hover) {
+	summary,
+	a {
+		transition: color 1.3s ease-out, background-color 1.3s ease-out;
+	}
+
+	summary:hover,
+	a:hover {
+		transition: background-color 0s, color 0s;
+	}
+
+	a:hover:not(.tab-switcher, .pic-coll-tabs) {
+		box-shadow: 0 0 18px 0px var(--main-color);
+	}
+}
+
+/* optimize mobile experience */
+@media (max-width: 768px) {
+	pre,
+	p,
+	li,
+	h1,
+	h2,
+	h3,
+	h4,
+	td,
+	summary {
+		text-shadow: 0 0 9px var(--main-color-40), 0 0 14px var(--main-color);
+	}
+}
+
+/* ADDITIONAL CHANGES (EXPERIMENTAL) */
+
+/* - edge-blur - */
+/* body {
+    &:after {
+        content: '';
+        inset: 0;
+        position: absolute;
+        backdrop-filter: blur(8px) brightness(0.5);
+        filter: blur(10px);
+        -webkit-mask: radial-gradient(transparent 50%, white 95%);
+        mask: radial-gradient(transparent 50%, white 89%);
+        pointer-events: none;
+        transform: scaleZ(2.5);
+    }
+} */
+
+/* - rounded design - */
+/* :root {
+    --br: 20px;
+}
+
+nav ul {
+    border: solid var(--main-color);
+    padding: .25em;
+}
+
+nav ul li a {
+    padding: .5em;
+}
+
+summary, #welcome-title, a, .tabs, #pr-list li, img, .grid-row-box, nav ul, .pr-title, .post, .tag {
+    border-radius: var(--br);
+} */
+
+/* - additional glow - */
+/* :root {
+    --glow-opacity: 0.75;
+    --glow-spread: 5em;
+}
+a, p, h1, h2, h3, h4, li, code, pre, em, summary, span, li, i, .post, li, header {
+    filter: drop-shadow(0 0 var(--glow-spread) rgba(var(--bg-color), var(--glow-opacity)));
+} */
+
+/* - CRT effect - */
+.crt-effect::before {
+	content: ' ';
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+		linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+	z-index: 15;
+	background-size: 100% 2px, 3px 100%;
+	pointer-events: none;
+}

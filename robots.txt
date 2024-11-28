@@ -1,5 +1,3 @@
 User-agent: *
-Disallow: /assets
-Disallow: /src
-Disallow: /404.html
-Disallow: /cdn-cgi
+Disallow: /src/example/
+Disallow: /cdn-cgi/
