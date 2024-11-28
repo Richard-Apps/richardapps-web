@@ -1,18 +1,7 @@
-# Contribution Guidelines
+# Contribution
 
-Thank you for considering contributing to my project!
-I welcome contributions from everyone, whether you're a seasoned developer or just starting out.
-Your help is invaluable in making my project better.
-
-## How to Contribute
-
-I welcome contributions in the following areas:
-
-- General code improvements
-- Bug fixes
-- Adding features
-
-If you're unsure about something or need assistance, feel free to reach out to me. I'm here to help!
+Thank you for considering contributing to my project.
+I welcome contributions from everyone!
 
 ## Getting Started
 
@@ -25,8 +14,18 @@ If you're unsure about something or need assistance, feel free to reach out to m
 7. Push to your branch: `git push origin feature/your-feature`.
 8. Submit a pull request.
 
+## Recommended tools/extensions
+
+- Code Editor: [Visual Studio Code](https://code.visualstudio.com/)
+- Extensions:
+  1. [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode): Code formatter for a consistent style.
+  2. [Live-Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer): Development server with live reloading.
+  3. [Code-Spell-Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker): Basic spell checker.
+  4. [Better-Comments](https://marketplace.visualstudio.com/items?itemName=aaron-bond.better-comments): Enhanced comment readability.
+
 ## Code Style and Guidelines
 
+- Use the Prettier configuration (`.prettierrc`) for formatting.
 - Follow the coding style and guidelines already established in the project.
 - Write clear and concise code with appropriate comments where necessary.
 - Ensure your code is well-tested and doesn't break existing functionality.
@@ -40,13 +39,11 @@ If you encounter a bug, please help me fix it by following these steps:
 
 ## Feature Requests
 
-Have a great idea for a new feature? We'd love to hear it! Follow these steps:
+Have a great idea for a new feature? I'd love to hear it! Follow these steps:
 
 1. Check if the feature has already been requested by searching through the [issues](https://github.com/Richard-Apps/richardapps-web/issues).
-2. If not, open a new issue and describe the feature you'd like to see.
+2. If not, open a new issue with the 'enhancement' label and describe the feature you'd like to see.
 
-## Feedback
- 
-I welcome any feedback that can help me improve the project. Whether it's a suggestion, a critique, or just a general comment, feel free to share it with me.
+---
 
-Thank you for contributing!
+Thank you!
