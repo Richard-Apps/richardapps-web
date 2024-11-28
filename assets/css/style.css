@@ -248,8 +248,8 @@ hr.dotted {
 /* NAV BAR USED FOR TAB PAGES */
 nav ul {
 	list-style-type: none;
-	padding: 0;
 	display: flex;
+	padding: 0;
 	gap: 2.5em;
 }
 
@@ -464,6 +464,10 @@ nav ul li a {
 }
 
 /* BLOG TAB */
+#blog.post-open {
+	display: block;
+}
+
 #blog-window {
 	display: flex;
 	flex-direction: column;
@@ -541,11 +545,15 @@ nav ul li a {
 	nav ul {
 		gap: 0.25em;
 		width: 100%;
+		padding: 0.25em 0;
 		display: flex;
 		justify-content: space-between;
 	}
 	#rain-vid {
 		object-fit: fill;
+	}
+	body {
+		padding-bottom: env(safe-area-inset-bottom);
 	}
 
 	/* grid system */

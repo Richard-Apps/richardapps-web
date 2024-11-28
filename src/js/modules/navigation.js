@@ -5,6 +5,12 @@ import { CONFIG } from '../config.js';
 const CANVAS = document.getElementById('canvas');
 
 export function changeTab(newTab) {
+	if (newTab === 'home') {
+		window.scrollTo(0, 0);
+	} else {
+		document.getElementById('nav-tabs').scrollIntoView({ behavior: 'smooth' });
+	}
+
 	// update active tab indicator
 	document.querySelectorAll('.tab-switcher').forEach((element) => {
 		element.classList.remove('tab-active');

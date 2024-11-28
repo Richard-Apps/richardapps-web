@@ -1,12 +1,24 @@
 import { copyClipboard } from './utils.js';
 import { writeAnimation } from './animations.js';
+import { removeIDFromHash } from './routing.js';
+import { getEffectsDisabledState } from './effects.js';
 import { CONFIG } from '../config.js';
 
 const BLOG_URL = CONFIG.blogUrl;
 const POSTS_CONTAINER = document.getElementById('blog-window');
 
+let cachedPosts = [];
+let lastFetched = 0;
+let CACHE_DURATION = 300000; // 5 minutes (in ms)
+
 export async function fetchPosts() {
 	try {
+		const now = Date.now();
+		if (cachedPosts.length > 0 && now - lastFetched < CACHE_DURATION) {
+			console.log('Using cached posts');
+			return cachedPosts;
+		}
+
 		POSTS_CONTAINER.innerHTML = '<p>Loading posts...</p>';
 
 		const response = await fetch(BLOG_URL);
@@ -33,6 +45,9 @@ export async function fetchPosts() {
 
 		// sort by newest date first
 		posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+		cachedPosts = posts;
+		lastFetched = now;
 
 		return posts;
 	} catch (error) {
@@ -84,17 +99,23 @@ export function openPost(postId) {
             `;
 				const postShareBtn = document.getElementById('post-share-btn');
 				postShareBtn.addEventListener('click', () => {
-					copyClipboard(window.location.href + `?id=${post.id}`, postShareBtn, 'Link copied!');
+					copyClipboard(window.location.href, postShareBtn, 'Link copied!');
 				});
 				document.getElementById('post-back-btn').addEventListener('click', () => {
-					initPosts();
+					location.hash = '#blog';
 				});
-				if (CONFIG.writeAnimationOnPostOpen) {
-					writeAnimation(document.getElementById('post-content-full'), 7, 250, true);
+				if (CONFIG.writeAnimationOnPostOpen && !getEffectsDisabledState()) {
+					setTimeout(() => {
+						writeAnimation(document.getElementById('post-content-full'), 7, 250, true);
+					}, 0);
 				}
 			} else {
-				console.error('Post not found');
+				console.error(`Post with ID ${postId} not found`);
+				initPosts();
+				removeIDFromHash();
 			}
 		})
 		.catch((error) => console.error(error));
 }
+
+// TODO: back button should not reload the page
