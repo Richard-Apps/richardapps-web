@@ -1,0 +1,21 @@
+<blog>
+    <post id="1">
+        <date>2024-11-19</date>
+        <title>First Blog Post</title>
+        <preview>Short description of blog post</preview>
+        <content>
+            Full content for the first post goes here.
+        </content>
+        <tag>new</tag>
+    </post>
+    <post id="2">
+        <date>2024-11-20</date>
+        <title>Second Blog Post</title>
+        <preview>Another post preview...</preview>
+        <content>
+            Full content for the second post goes here.
+        </content>
+        <tag>tutorial</tag>
+        <tag>css</tag>
+    </post>
+</blog>
