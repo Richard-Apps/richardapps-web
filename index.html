@@ -42,9 +42,22 @@
         });
 	</script>
 	<noscript>
+		<h2 id="noscript-warning">You are viewing a limited version of this site because JavaScript is disabled.</h2>
 		<style>
 			.no-fouc {
 				visibility: visible;
+			}
+			.hide-noscript {
+				display: none;
+			}
+			#noscript-warning {
+				color: rgb(245, 67, 67);
+				text-align: center;
+				position: fixed;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				padding: 1em;
 			}
 		</style>
 	</noscript>
@@ -70,7 +83,7 @@
 /_/ |_/_/\___/_/ /_/\__,_/_/   \__,_/_/  |_/ .___/ .___/____/  
                                           /_/   /_/            </pre>
 			<h1 id="sub-title">Coding, photography, 3D-art and personal projects!</h1>
-			<p id="toggle-effects">Want some fancy effects? Click <a id="toggle-effects-link">HERE</a> to turn them on.</p>
+			<p id="toggle-effects" class="hide-noscript">Want some fancy effects? Click <a id="toggle-effects-link">HERE</a> to turn them on.</p>
 		</header>
 		<br>
 		<p>Some things you might be interested in:</p>
@@ -79,7 +92,7 @@
 				<li><a id="home-tab" class="tab-switcher" href="#home">Home</a></li>
 				<li><a id="projects-tab" class="tab-switcher" href="#projects">Projects</a></li>
 				<li><a id="pictures-tab" class="tab-switcher" href="#pictures">Pictures</a></li>
-				<li><a id="blog-tab" class="tab-switcher" href="#blog">Blog</a></li>
+				<li class="hide-noscript"><a id="blog-tab" class="tab-switcher" href="#blog">Blog</a></li>
 				<li class="no-mobile"><a id="resources-tab" class="tab-switcher" href="#resources">Resources</a></li>
 				<li><a id="about-tab" class="tab-switcher" href="#about">About</a></li>
 			</ul>
@@ -116,7 +129,7 @@
 							</div>
 						</details>
 					</div>
-					<div class="grid-row-box grid-row-box-shrink">
+					<div class="grid-row-box grid-row-box-shrink hide-noscript">
 						<div id="theme-selector">
 							<details open>
 								<summary>
@@ -196,7 +209,7 @@
 		<div id="pictures" class="tabs">
 			<h2>PICTURES</h2>
 			<div id="pictures-list">
-				<nav>
+				<nav class="hide-noscript">
 					<ul>
 						<li><a class="tab-active pic-coll-tabs" data-id="blender">Blender</a></li>
 						<li><a class="pic-coll-tabs" data-id="photography">Photography</a></li>
