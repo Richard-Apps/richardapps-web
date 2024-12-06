@@ -12,7 +12,7 @@
 	--main-color: #72b6ff;
 	--main-color-40: #72b6ff80;
 	--main-color-20: #72b6ff33;
-	--bg-color: 15, 129, 236; /* use like this: rgba(var(--bg-color)) */
+	--bg-color: 15, 129, 236; /* example: rgba(var(--bg-color), 0.5) to use the background-color with 50% opacity */
 	--bg-opacity: 0.15;
 	--selection: #3b6d8b;
 
@@ -20,7 +20,7 @@
 	--warning-color: rgb(240, 86, 86);
 	--info-color: #ffffff;
 
-	--noise-opacity: 0.75;
+	--noise-opacity: 0.65;
 	--background-video-opacity: 0.275;
 	--grunge-overlay-opacity: 0.9;
 
@@ -108,6 +108,26 @@ body {
 	mask-position: center;
 
 	animation: noise 0.3s steps(4) infinite;
+}
+
+.snowflake {
+	position: fixed;
+	animation-timing-function: linear;
+	z-index: -1;
+	background: white;
+	border-radius: 50%;
+	pointer-events: none;
+}
+
+@keyframes snowflake-fall {
+	0% {
+		transform: translateY(-15vh);
+		opacity: 0.75;
+	}
+	100% {
+		transform: translateY(125vh);
+		opacity: 1;
+	}
 }
 
 /* global styles | general */
@@ -213,7 +233,7 @@ details[open] summary:not(:hover) {
 }
 
 .tag[class*='open-source'] {
-	--tag-color: rgb(147, 87, 243);
+	--tag-color: rgb(179, 138, 245);
 	--bg-alpha: rgba(200, 95, 241, 0.3);
 }
 
@@ -230,6 +250,17 @@ hr.dotted {
 	border-top: 1px dotted var(--main-color);
 	height: 1px;
 	width: 100%;
+}
+
+.tooltip {
+	position: absolute;
+	background-color: rgba(var(--bg-color), 0.45);
+	color: var(--main-color);
+	padding: 5px 10px;
+	border: 1px solid var(--main-color);
+	font-size: 14px;
+	pointer-events: none;
+	white-space: nowrap;
 }
 
 /* ASCII AND INTRODUCTION */
@@ -498,8 +529,24 @@ nav ul li a {
 	cursor: pointer;
 }
 
+.post-header {
+	display: flex;
+	justify-content: space-between;
+	gap: 0.5em;
+}
+
 .post-title {
 	font-weight: bold;
+	text-align: left;
+	flex-grow: 1;
+}
+
+.post-time-to-read {
+	text-align: right;
+	padding: 0 0.75em;
+	background: linear-gradient(90deg, transparent -15%, rgba(var(--bg-color), 0.45) 65%);
+	border: 1px solid var(--main-color);
+	color: white;
 }
 
 .post-content {
@@ -623,7 +670,6 @@ nav ul li a {
 }
 
 @media (hover: none) {
-	/* Disable hover-events on mobile */
 	summary:hover {
 		background-color: transparent;
 		color: var(--main-color);

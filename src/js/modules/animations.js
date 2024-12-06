@@ -98,3 +98,36 @@ export function tabAnimation(tab, fadeInDelay = 16) {
 		});
 	}
 }
+
+export function snowAnimation() {
+	const effectsDisabled = getEffectsDisabledState();
+
+	if (!effectsDisabled) {
+		const snowflakeContainer = document.getElementById('snow-container');
+		const snowflakeCount = 90;
+		const snowflakeSize = 5;
+		const snowflakeDuration = 10;
+		const snowflakeDelay = 5;
+
+		for (let i = 0; i < snowflakeCount; i++) {
+			const snowflake = document.createElement('div');
+			snowflake.classList.add('snowflake');
+
+			let size = Math.random() * snowflakeSize;
+			snowflake.style.width = `${size}px`;
+			snowflake.style.height = `${size}px`;
+
+			snowflake.style.left = `${Math.random() * 100}vw`;
+			snowflake.style.top = `${Math.random() * -20}vh`;
+
+			snowflake.style.opacity = Math.random() + 0.2;
+
+			snowflake.style.animationName = 'snowflake-fall';
+			snowflake.style.animationIterationCount = 'infinite';
+			snowflake.style.animationDuration = `${snowflakeDuration + Math.random() * 10}s`;
+			snowflake.style.animationDelay = `${Math.random() * snowflakeDelay}s`;
+
+			snowflakeContainer.appendChild(snowflake);
+		}
+	}
+}

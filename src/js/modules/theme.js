@@ -1,43 +1,59 @@
 import { CONFIG } from '../config.js';
+import { snowAnimation } from './animations.js';
 
+// tip: add "editor.defaultColorDecorators": true to your VSCode settings.json file to make the color-picker work
 const THEMES = {
 	ocean: {
-		bgColor: '15, 129, 236',
+		bgColor: 'rgb(15, 129, 236)',
 		mainColor: '#72b6ff',
 		selection: '#3b6d8b',
 	},
 	terminal: {
-		bgColor: '61, 150, 51',
+		bgColor: 'rgb(61, 150, 51)',
 		mainColor: '#6dfd60',
 		selection: '#3b8b42',
 	},
 	cherry: {
-		bgColor: '192, 63, 63',
+		bgColor: 'rgb(192, 63, 63)',
 		mainColor: '#fd6060',
 		selection: '#8b3b3b',
 	},
 	amber: {
-		bgColor: '179, 105, 21',
+		bgColor: 'rgb(179, 105, 21)',
 		mainColor: '#fda93c',
 		selection: '#946612',
 	},
 	deepsea: {
-		bgColor: '9, 95, 92',
+		bgColor: 'rgb(9, 95, 92)',
 		mainColor: '#cbe9d1',
 		selection: '#56705a',
 	},
 	rainy: {
-		bgColor: '15, 129, 236',
+		bgColor: 'rgb(15, 129, 236)',
 		mainColor: '#a4cdf8',
 		selection: '#3b6d8b',
 	},
+	winter: {
+		bgColor: 'rgb(150, 150, 150)',
+		mainColor: '#c0c0c0',
+		selection: '#a0a0a0',
+	},
 };
+
+function removeRGB(rgb) {
+	return rgb
+		.replace(/rgb\(|\)/g, '')
+		.split(',')
+		.map((n) => parseInt(n));
+}
 
 export function changeTheme(theme) {
 	const settings = THEMES[theme];
 	if (!settings) return;
 
-	document.documentElement.style.setProperty('--bg-color', settings.bgColor);
+	const rawBG = removeRGB(settings.bgColor);
+
+	document.documentElement.style.setProperty('--bg-color', rawBG.join(', '));
 	document.documentElement.style.setProperty('--selection', settings.selection);
 	document.documentElement.style.setProperty('--main-color', settings.mainColor);
 	document.documentElement.style.setProperty('--main-color-40', settings.mainColor + '66'); // main-color with 40% opacity (Adding hex alpha AA (66 for 40% in this case) to #RRGGBB)
@@ -45,10 +61,16 @@ export function changeTheme(theme) {
 
 	// special cases
 	const rainVideo = document.getElementById('rain-vid');
-	if (theme === 'rainy') {
-		rainVideo.style.display = 'block';
-	} else {
-		rainVideo.style.display = 'none';
+	const snowContainer = document.getElementById('snow-container');
+	rainVideo.style.display = 'none';
+	snowContainer.innerHTML = '';
+	switch (theme) {
+		case 'rainy':
+			rainVideo.style.display = 'block';
+			break;
+		case 'winter':
+			snowAnimation();
+			break;
 	}
 
 	// update theme list by adding '>' and '<' to the current theme name and removing them from the others
@@ -76,9 +98,16 @@ export function addThemeList() {
 
 			const wrapper = document.createElement('p');
 			wrapper.appendChild(link);
+			wrapper.id = theme;
 
 			THEME_LIST.appendChild(wrapper);
 		});
+	}
+
+	// separate special cases
+	if (document.getElementById('rainy')) {
+		const rainy = document.getElementById('rainy');
+		rainy.style.marginTop = '1em';
 	}
 }
 
