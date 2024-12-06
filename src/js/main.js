@@ -4,6 +4,7 @@ import { initEffects, initEffectsToggle } from './modules/effects.js';
 import { initPosts } from './modules/blog.js';
 import { initPictureColl } from './modules/navigation.js';
 import { initRouting } from './modules/routing.js';
+import { initTooltips } from './modules/utils.js';
 
 document.addEventListener('DOMContentLoaded', () => {
 	addThemeList();
@@ -13,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	initPosts();
 	initPictureColl();
 	initRouting();
+	initTooltips();
 
 	// Close details-tags on default for mobile devices to reduce large amount of text on home-tab
 	if (window.matchMedia('(max-width: 767px)').matches) {
