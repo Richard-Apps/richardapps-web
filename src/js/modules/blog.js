@@ -4,7 +4,7 @@ import { removeIDFromHash } from './routing.js';
 import { getEffectsDisabledState } from './effects.js';
 import { CONFIG } from '../config.js';
 
-const BLOG_URL = CONFIG.blogUrl;
+const BLOG_URL = CONFIG.useExample ? '/src/example/blog.xml' : CONFIG.blogUrl;
 const POSTS_CONTAINER = document.getElementById('blog-window');
 
 let cachedPosts = [];
@@ -15,7 +15,6 @@ export async function fetchPosts() {
 	try {
 		const now = Date.now();
 		if (cachedPosts.length > 0 && now - lastFetched < CACHE_DURATION) {
-			console.log('Using cached posts');
 			return cachedPosts;
 		}
 
@@ -39,7 +38,8 @@ export async function fetchPosts() {
 			date: post.getElementsByTagName('date')[0].textContent,
 			title: post.getElementsByTagName('title')[0].textContent,
 			preview: post.getElementsByTagName('preview')[0].textContent,
-			content: post.getElementsByTagName('content')[0].textContent,
+			content: post.getElementsByTagName('content')[0].innerHTML,
+			timeToRead: post.getElementsByTagName('content')[0].innerHTML.split(' ').length / 200,
 			tags: Array.from(post.getElementsByTagName('tag')).map((tag) => tag.textContent),
 		}));
 
@@ -56,12 +56,17 @@ export async function fetchPosts() {
 	}
 }
 
+function convertReadTime(timeToRead) {
+	return timeToRead >= 1 ? timeToRead.toFixed(0) + ' min read' : (timeToRead * 60).toFixed(0) + 's read';
+}
+
 function createPostElement(post) {
 	return `
 		<div class="post" data-id="${post.id}" onclick="location.hash = '#blog?id=${post.id}'">
 			<div class="post-header">
 				<em class="post-date">[${post.date}]</em>
 				<span class="post-title">${post.title}</span>
+				<span class="post-time-to-read">${CONFIG.showEstimatedReadTime ? convertReadTime(post.timeToRead) : ''}</span>
 			</div>
 			<div class="post-content">
 				<span>${post.preview}</span>
@@ -90,6 +95,7 @@ export function openPost(postId) {
                 <div class="post-header">
                     <em class="post-date">[${post.date}]</em>
                     <span class="post-title">${post.title}</span>
+					<span class="post-time-to-read">${CONFIG.showEstimatedReadTime ? convertReadTime(post.timeToRead) : ''}</span>
                 </div>
                 <div>
                     <p id="post-content-full">${post.content}</p>
@@ -117,5 +123,3 @@ export function openPost(postId) {
 		})
 		.catch((error) => console.error(error));
 }
-
-// TODO: back button should not reload the page

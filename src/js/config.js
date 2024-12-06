@@ -18,5 +18,7 @@ export const CONFIG = {
 
 	// blog
 	blogUrl: 'https://data.richardapps.net/blog.xml', // example: '/src/example/blog.xml'
+	useExample: false,
 	writeAnimationOnPostOpen: true,
+	showEstimatedReadTime: true,
 };
