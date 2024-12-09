@@ -98,3 +98,38 @@ export function tabAnimation(tab, fadeInDelay = 16) {
 		});
 	}
 }
+
+export function snowAnimation() {
+	const effectsDisabled = getEffectsDisabledState();
+
+	if (!effectsDisabled) {
+		const snowflakeContainer = document.getElementById('snow-container');
+		const snowflakeCount = 90;
+		const snowflakeSize = 6;
+		const snowflakeDuration = 15;
+
+		for (let i = 0; i < snowflakeCount; i++) {
+			const snowflake = document.createElement('div');
+			snowflake.classList.add('snowflake');
+
+			let size = Math.random() * snowflakeSize + 0.25;
+			snowflake.style.width = `${size}px`;
+			snowflake.style.height = `${size}px`;
+
+			snowflake.style.left = `${Math.random() * 100}vw`;
+			snowflake.style.top = `${Math.random() * -20}vh`;
+
+			snowflake.style.opacity = Math.random() * 0.6 + 0.1;
+
+			snowflake.style.animation = `snowflake-fall ${snowflakeDuration + Math.random() * 10}s linear infinite`;
+			if (Math.random() > 0.3) {
+				const horizontalAnimation = Math.random() > 0.5 ? 'snowflake-fall-horizontal-1' : 'snowflake-fall-horizontal-2';
+				snowflake.style.animation = `${horizontalAnimation} ${snowflakeDuration + Math.random() * 10}s linear infinite`;
+			}
+
+			snowflake.style.animationDelay = `-${(snowflakeDuration + Math.random() * 50) / 4}s`; // randomize start
+
+			snowflakeContainer.appendChild(snowflake);
+		}
+	}
+}

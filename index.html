@@ -15,7 +15,7 @@
 
 	<link rel="preload" as="font" href="/assets/fonts/terminus-webfont.woff2" type="font/woff2" crossorigin="anonymous">
 
-	<link rel="stylesheet" href="/assets/css/style.css?v=3"> <!-- increase version after significant changes to prevent browsers from using a old cached version (cache busting) -->
+	<link rel="stylesheet" href="/assets/css/style.css?v=4"> <!-- increase version after significant changes to prevent browsers from using a old cached version (cache busting) -->
 
 	<meta property="og:title" content="RichardApps">
 	<meta property="og:description" content="RichardApps' personal webpage! Explore a place with all my projects, pictures, and thoughts. Featuring a terminal-inspired design with stunning effects.">
@@ -74,6 +74,7 @@
 	</video>
 	<img id="grunge-overlay" loading="lazy">
 	<img id="noise-overlay" loading="lazy">
+	<div id="snow-container"></div>
 	<div id="canvas">
 		<header>
 			<pre id="title">    ____  _      __                   _____                    
@@ -167,7 +168,7 @@
 						<p class="tag">HTML</p>
 						<p class="tag">CSS</p>
 						<p class="tag">JS</p>
-						<p class="tag inactive">On Hold</p>
+						<p class="tag inactive" data-tooltip="not currently being worked on">On Hold</p>
 					</div>
 					<br>
 					<p><a href="https://visualinc.richardapps.net" target="_blank">[VISIT PREVIEW]</a></p>
