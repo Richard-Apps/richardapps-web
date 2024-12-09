@@ -47,7 +47,7 @@ function removeRGB(rgb) {
 		.map((n) => parseInt(n));
 }
 
-export function changeTheme(theme) {
+export function changeTheme(theme, save = true) {
 	const settings = THEMES[theme];
 	if (!settings) return;
 
@@ -57,7 +57,10 @@ export function changeTheme(theme) {
 	document.documentElement.style.setProperty('--selection', settings.selection);
 	document.documentElement.style.setProperty('--main-color', settings.mainColor);
 	document.documentElement.style.setProperty('--main-color-40', settings.mainColor + '66'); // main-color with 40% opacity (Adding hex alpha AA (66 for 40% in this case) to #RRGGBB)
-	localStorage.setItem('theme', theme);
+
+	if (save) {
+		localStorage.setItem('theme', theme);
+	}
 
 	// special cases
 	const rainVideo = document.getElementById('rain-vid');
@@ -122,8 +125,20 @@ export function initTheme() {
 		console.error('Default theme set in /src/js/config.js invalid!');
 	}
 
-	const THEME =
+	let THEME =
 		localStorage.getItem('theme') ||
 		(Object.keys(THEMES).includes(CONFIG.defaultTheme) ? CONFIG.defaultTheme : Object.keys(THEMES)[0]);
-	changeTheme(THEME);
+
+	// seasonal default theme
+	if (CONFIG.seasonalTheme && !localStorage.getItem('theme')) {
+		const date = new Date();
+		const month = date.getMonth(); // returns value between 0 and 11
+
+		// winter
+		if (month === 11 || month === 0) {
+			THEME = Object.keys(THEMES).includes('winter') ? 'winter' : THEME;
+		}
+	}
+
+	changeTheme(THEME, false);
 }

@@ -24,6 +24,8 @@
 	--background-video-opacity: 0.275;
 	--grunge-overlay-opacity: 0.9;
 
+	--tab-background-blur: 4px;
+
 	font-size: 10px;
 }
 
@@ -117,16 +119,33 @@ body {
 	background: white;
 	border-radius: 50%;
 	pointer-events: none;
+	filter: blur(1px);
 }
 
 @keyframes snowflake-fall {
 	0% {
 		transform: translateY(-15vh);
-		opacity: 0.75;
 	}
 	100% {
 		transform: translateY(125vh);
-		opacity: 1;
+	}
+}
+
+@keyframes snowflake-fall-horizontal-1 {
+	0% {
+		transform: translateX(0) translateY(-15vh);
+	}
+	100% {
+		transform: translateX(20vw) translateY(125vh);
+	}
+}
+
+@keyframes snowflake-fall-horizontal-2 {
+	0% {
+		transform: translateX(0) translateY(-15vh);
+	}
+	100% {
+		transform: translateX(-20vw) translateY(125vh);
 	}
 }
 
@@ -336,7 +355,7 @@ nav ul li a {
 .tabs {
 	border: solid var(--main-color);
 	padding: 1.5em;
-	backdrop-filter: blur(6px);
+	backdrop-filter: blur(var(--tab-background-blur));
 	background: linear-gradient(45deg, rgba(var(--bg-color), 0.05) 70%, rgba(var(--bg-color), 0.2) 110%);
 }
 
