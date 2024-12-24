@@ -77,20 +77,33 @@ em {
 
 /* - rounded design - */
 /* :root {
-    --br: 20px;
+	--br: 20px;
 }
 
 nav ul {
-    border: solid var(--main-color);
-    padding: .25em;
+	border: solid var(--main-color);
+	padding: 0.5em 0;
 }
 
 nav ul li a {
-    padding: .5em;
+	padding: 0.5em;
 }
 
-summary, #welcome-title, a, .tabs, #pr-list li, img, .grid-row-box, nav ul, .pr-title, .post, .tag {
-    border-radius: var(--br);
+summary,
+#welcome-title,
+a,
+.tabs,
+#pr-list li,
+img,
+.grid-row-box,
+nav ul,
+.pr-title,
+.post,
+.tag,
+#theme-list p,
+.tooltip,
+.post-time-to-read {
+	border-radius: var(--br);
 } */
 
 /* - additional glow - */
