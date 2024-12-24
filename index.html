@@ -15,7 +15,7 @@
 
 	<link rel="preload" as="font" href="/assets/fonts/terminus-webfont.woff2" type="font/woff2" crossorigin="anonymous">
 
-	<link rel="stylesheet" href="/assets/css/style.css?v=4"> <!-- increase version after significant changes to prevent browsers from using a old cached version (cache busting) -->
+	<link rel="stylesheet" href="/assets/css/style.css?v=5"> <!-- increase version after significant changes to prevent browsers from using the old cached version (cache busting) -->
 
 	<meta property="og:title" content="RichardApps">
 	<meta property="og:description" content="RichardApps' personal webpage! Explore a place with all my projects, pictures, and thoughts. Featuring a terminal-inspired design with stunning effects.">
@@ -49,6 +49,9 @@
 			}
 			.hide-noscript {
 				display: none;
+			}
+			.show-noscript {
+				display: block;
 			}
 			#noscript-warning {
 				color: rgb(245, 67, 67);
@@ -93,7 +96,7 @@
 				<li><a id="home-tab" class="tab-switcher" href="#home">Home</a></li>
 				<li><a id="projects-tab" class="tab-switcher" href="#projects">Projects</a></li>
 				<li><a id="pictures-tab" class="tab-switcher" href="#pictures">Pictures</a></li>
-				<li class="hide-noscript"><a id="blog-tab" class="tab-switcher" href="#blog">Blog</a></li>
+				<li><a id="blog-tab" class="tab-switcher" href="#blog">Blog</a></li>
 				<li class="no-mobile"><a id="resources-tab" class="tab-switcher" href="#resources">Resources</a></li>
 				<li><a id="about-tab" class="tab-switcher" href="#about">About</a></li>
 			</ul>
@@ -294,6 +297,7 @@
 
 		<div id="blog" class="tabs">
 			<h1>Blog</h1>
+			<p class="show-noscript">Sorry, you need to enable JavaScript to view the blog page.</p>
 			<div id="blog-window"></div>
 		</div>
 
