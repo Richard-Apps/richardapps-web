@@ -79,7 +79,13 @@ export function changeTheme(theme, save = true) {
 	// update theme list by adding '>' and '<' to the current theme name and removing them from the others
 	if (document.getElementById('theme-list')) {
 		document.querySelectorAll('#theme-list p a').forEach((link) => {
-			link.textContent = link.dataset.theme === theme ? `> ${theme} <` : link.dataset.theme;
+			if (link.dataset.theme === theme) {
+				link.textContent = `> ${theme} <`;
+				link.classList.add('active');
+			} else {
+				link.textContent = link.dataset.theme;
+				link.classList.remove('active');
+			}
 		});
 	}
 }
@@ -110,7 +116,7 @@ export function addThemeList() {
 	// separate special cases
 	if (document.getElementById('rainy')) {
 		const rainy = document.getElementById('rainy');
-		rainy.style.marginTop = '1em';
+		rainy.style.marginTop = '1.5em';
 	}
 }
 
