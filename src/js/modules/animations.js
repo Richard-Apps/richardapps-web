@@ -75,7 +75,7 @@ export function tabAnimation(tab, fadeInDelay = 16) {
 			}, delay);
 			delay += fadeInDelay;
 
-			// add write-animation to text elements
+			// add write-animation to text elements if enabled in config.js
 			if (
 				CONFIG.writeAnimationOnTabChange &&
 				(element.tagName === 'P' ||

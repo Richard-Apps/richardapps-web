@@ -91,18 +91,22 @@ export function openPost(postId) {
 			const post = posts.find((p) => p.id === postId);
 			if (post) {
 				POSTS_CONTAINER.innerHTML = `
-                <hr class="dotted">
-                <div class="post-header">
-                    <em class="post-date">[${post.date}]</em>
-                    <span class="post-title">${post.title}</span>
+				<div class="post-directory">
+					<span><a href="#blog">BLOG</a></span>
+					<span>> ${post.title}</span>
+				</div>
+				<hr class="dotted">
+				<div class="post-header">
+					<em class="post-date">[${post.date}]</em>
+					<span class="post-title">${post.title}</span>
 					<span class="post-time-to-read">${CONFIG.showEstimatedReadTime ? convertReadTime(post.timeToRead) : ''}</span>
-                </div>
-                <div>
-                    <p id="post-content-full">${post.content}</p>
-                </div>
-                <hr class="dotted">
-                <div class="post-actions"><a class="post-action-btn" id="post-back-btn">&lt; Back to posts</a><a class="post-action-btn" id="post-share-btn">Share</a></div>
-            `;
+				</div>
+				<div>
+					<p id="post-content-full">${post.content}</p>
+				</div>
+				<hr class="dotted">
+				<div class="post-actions"><a class="post-action-btn" id="post-back-btn">&lt; Back to posts</a><a class="post-action-btn" id="post-share-btn">Share</a></div>
+			`;
 				const postShareBtn = document.getElementById('post-share-btn');
 				postShareBtn.addEventListener('click', () => {
 					copyClipboard(window.location.href, postShareBtn, 'Link copied!');

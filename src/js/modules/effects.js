@@ -36,9 +36,9 @@ export function initEffectsToggle() {
 		document.getElementById('toggle-effects').style.display = 'none';
 	} else {
 		const nfbText = document.getElementById('toggle-effects');
-		nfbText.innerHTML = `Don't like the effects? Click <a id="toggle-effects-link" href="#">HERE</a> to turn them ${
-			effectsDisabled ? 'on' : 'off'
-		}.`;
+		nfbText.innerHTML = `${
+			effectsDisabled ? 'Enable effects?' : "Don't like the effects?"
+		} Click <a id="toggle-effects-link" href="#">HERE</a> to turn them ${effectsDisabled ? 'on' : 'off'}.`;
 
 		document.getElementById('toggle-effects-link').addEventListener('click', (event) => {
 			event.preventDefault();
@@ -49,7 +49,7 @@ export function initEffectsToggle() {
 
 export function initEffects() {
 	if (
-		window.matchMedia('(max-width: 767px)').matches &&
+		window.matchMedia('(max-width: 767px)').matches && // Disable effects on mobile by default
 		!('effectsDisabled' in localStorage) &&
 		CONFIG.effectsDisabledByDefaultMobile
 	) {
