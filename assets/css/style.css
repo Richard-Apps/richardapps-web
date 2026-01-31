@@ -235,6 +235,25 @@ details[open] summary:not(:hover) {
 	margin: 0.5em 0;
 }
 
+@media (max-width: 768px) {
+    .tag-list {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 6px;
+    }
+    
+    .tag {
+        text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding: 0.1em 0.3em;
+        font-size: 0.8em;
+		background: linear-gradient(90deg, transparent -5%, rgba(var(--bg-color), 0.3) 75%);
+		border: 1px solid var(--main-color);
+    }
+}
+
 .tag {
 	padding: 0.1em 0.3em;
 	background: linear-gradient(90deg, transparent -5%, rgba(var(--bg-color), 0.3) 75%);
